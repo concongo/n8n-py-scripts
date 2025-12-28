@@ -1,0 +1,139 @@
+[
+  {
+    "parents": [
+      "1KPRkjbkggrFqcIppv_Q27YqBwitZlS2p"
+    ],
+    "lastModifyingUser": {
+      "displayName": "jfgonzalezm",
+      "kind": "drive#user",
+      "me": false,
+      "permissionId": "10175447638795150651",
+      "emailAddress": "jfgonzalezm@gmail.com",
+      "photoLink": "https://lh3.googleusercontent.com/a-/ALV-UjUkJYdCDVl7zDU32A4xXk-ya7vOEePjrW8XHgyz4ZiG1hBNPtPn=s64"
+    },
+    "owners": [
+      {
+        "displayName": "jfgonzalezm",
+        "kind": "drive#user",
+        "me": false,
+        "permissionId": "10175447638795150651",
+        "emailAddress": "jfgonzalezm@gmail.com",
+        "photoLink": "https://lh3.googleusercontent.com/a-/ALV-UjUkJYdCDVl7zDU32A4xXk-ya7vOEePjrW8XHgyz4ZiG1hBNPtPn=s64"
+      }
+    ],
+    "permissions": [
+      {
+        "kind": "drive#permission",
+        "id": "10175447638795150651",
+        "type": "user",
+        "emailAddress": "jfgonzalezm@gmail.com",
+        "role": "owner",
+        "displayName": "jfgonzalezm",
+        "photoLink": "https://lh3.googleusercontent.com/a-/ALV-UjUkJYdCDVl7zDU32A4xXk-ya7vOEePjrW8XHgyz4ZiG1hBNPtPn=s64",
+        "deleted": false,
+        "pendingOwner": false
+      },
+      {
+        "kind": "drive#permission",
+        "id": "01939395557398070086",
+        "type": "user",
+        "emailAddress": "n8n-test-workflow@n8n-mycoolserver.iam.gserviceaccount.com",
+        "role": "writer",
+        "displayName": "n8n-test-workflow@n8n-mycoolserver.iam.gserviceaccount.com",
+        "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocIZvtdXi0ZDzdJZCwt4TsdByaIIU9vxmOs-lwXj2w3eepG31Eo=s64",
+        "deleted": false,
+        "pendingOwner": false
+      }
+    ],
+    "spaces": [
+      "drive"
+    ],
+    "capabilities": {
+      "canAcceptOwnership": false,
+      "canAddChildren": false,
+      "canAddMyDriveParent": false,
+      "canChangeCopyRequiresWriterPermission": false,
+      "canChangeItemDownloadRestriction": false,
+      "canChangeSecurityUpdateEnabled": false,
+      "canChangeViewersCanCopyContent": false,
+      "canComment": true,
+      "canCopy": true,
+      "canDelete": false,
+      "canDisableInheritedPermissions": false,
+      "canDownload": true,
+      "canEdit": true,
+      "canEnableInheritedPermissions": true,
+      "canListChildren": false,
+      "canModifyContent": true,
+      "canModifyContentRestriction": true,
+      "canModifyEditorContentRestriction": true,
+      "canModifyOwnerContentRestriction": false,
+      "canModifyLabels": false,
+      "canMoveChildrenWithinDrive": false,
+      "canMoveItemIntoTeamDrive": false,
+      "canMoveItemOutOfDrive": false,
+      "canMoveItemWithinDrive": true,
+      "canReadLabels": false,
+      "canReadRevisions": true,
+      "canRemoveChildren": false,
+      "canRemoveContentRestriction": false,
+      "canRemoveMyDriveParent": true,
+      "canRename": true,
+      "canShare": true,
+      "canTrash": false,
+      "canUntrash": false
+    },
+    "permissionIds": [
+      "10175447638795150651",
+      "01939395557398070086"
+    ],
+    "linkShareMetadata": {
+      "securityUpdateEligible": false,
+      "securityUpdateEnabled": true
+    },
+    "downloadRestrictions": {
+      "itemDownloadRestriction": {
+        "restrictedForReaders": false,
+        "restrictedForWriters": false
+      },
+      "effectiveDownloadRestrictionWithContext": {
+        "restrictedForReaders": false,
+        "restrictedForWriters": false
+      }
+    },
+    "kind": "drive#file",
+    "id": "1OSOboZaZ9aA_-1LdX1S-ZieAeilkyB2z",
+    "name": "Individual-Positions-2025-12-14-155319.csv",
+    "mimeType": "text/csv",
+    "starred": false,
+    "trashed": false,
+    "explicitlyTrashed": false,
+    "version": "3",
+    "webContentLink": "https://drive.google.com/uc?id=1OSOboZaZ9aA_-1LdX1S-ZieAeilkyB2z&export=download",
+    "webViewLink": "https://drive.google.com/file/d/1OSOboZaZ9aA_-1LdX1S-ZieAeilkyB2z/view?usp=drivesdk",
+    "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/text/csv",
+    "hasThumbnail": true,
+    "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBPM9BqAsOQEvHEr10ujaYg8Fcd-qB_W2EbwXHqpKE33Qgez2XaR9SuwfvjhaYaDmO3I8hie4m5gVeSk95BcxijwJDLe5hmiede54Eoacl8KvIs=s220",
+    "thumbnailVersion": "1",
+    "viewedByMe": false,
+    "createdTime": "2025-12-14T20:53:50.854Z",
+    "modifiedTime": "2025-12-14T20:53:19.000Z",
+    "modifiedByMe": false,
+    "shared": true,
+    "ownedByMe": false,
+    "viewersCanCopyContent": true,
+    "copyRequiresWriterPermission": false,
+    "writersCanShare": true,
+    "originalFilename": "Individual-Positions-2025-12-14-155319.csv",
+    "fullFileExtension": "csv",
+    "fileExtension": "csv",
+    "md5Checksum": "7ee1aee1d4f8302b5a40e037f2373fbf",
+    "sha1Checksum": "729e3c74c32ed859f0a86fbbe2f9033fad2da522",
+    "sha256Checksum": "13a97dc35ebec28168d44eb84242fc7c1d92fbaac5acc2fd00c9cf7555b005ef",
+    "size": "8585",
+    "quotaBytesUsed": "8585",
+    "headRevisionId": "0BzlhHEQ6b9QDdEtJdHhxWXp4aTFnWDdSK2lreGhrSUJuaElnPQ",
+    "isAppAuthorized": false,
+    "inheritedPermissionsDisabled": false
+  }
+]
