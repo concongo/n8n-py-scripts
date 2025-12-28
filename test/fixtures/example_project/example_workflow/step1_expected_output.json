@@ -1,0 +1,5 @@
+{
+  "status": "success",
+  "row_count": 3,
+  "columns": ["id", "name", "price", "quantity"]
+}
