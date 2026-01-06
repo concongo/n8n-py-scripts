@@ -5,7 +5,9 @@ Extract the original filename from the first n8n item.
 from typing import Any
 
 
-def extract_filename(items: list[dict[str, Any]] | None = None) -> dict[str, str]:
+def extract_filename(
+    items: list[dict[str, Any]] | None = None,
+) -> dict[str, str]:
     """Return the filename from the first n8n item.
 
     Args:

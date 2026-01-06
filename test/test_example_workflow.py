@@ -14,7 +14,12 @@ from src.example_project.example_workflow.step2_analysis import analyze
 @pytest.fixture
 def fixtures_dir():
     """Get the fixtures directory for this workflow."""
-    return Path(__file__).parent / "fixtures" / "example_project" / "example_workflow"
+    return (
+        Path(__file__).parent
+        / "fixtures"
+        / "example_project"
+        / "example_workflow"
+    )
 
 
 @pytest.fixture

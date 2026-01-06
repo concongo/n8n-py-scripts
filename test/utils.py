@@ -1,10 +1,13 @@
 """Shared test utilities."""
+
 from functools import wraps
 
 import pytest
 
 
-def with_n8n_items(module_fixture_name: str, items_fixture_name: str = "n8n_items"):
+def with_n8n_items(
+    module_fixture_name: str, items_fixture_name: str = "n8n_items"
+):
     """Decorator that injects n8n items into a module before running a test.
 
     Args:
@@ -17,6 +20,7 @@ def with_n8n_items(module_fixture_name: str, items_fixture_name: str = "n8n_item
             result = extract_filename_module.extract_filename()
             assert result["filename"].endswith(".csv")
     """
+
     def decorator(test_func):
         @wraps(test_func)
         def wrapper(*args, **kwargs):
@@ -38,4 +42,5 @@ def with_n8n_items(module_fixture_name: str, items_fixture_name: str = "n8n_item
         # Mark the wrapper to request the 'request' fixture
         wrapper = pytest.mark.usefixtures("request")(wrapper)
         return wrapper
+
     return decorator
