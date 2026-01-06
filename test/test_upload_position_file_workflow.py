@@ -4,6 +4,8 @@ from pathlib import Path
 
 import pytest
 
+from test.utils import with_n8n_items
+
 
 @pytest.fixture
 def fixtures_dir():
@@ -41,10 +43,9 @@ def extract_filename_module():
 
 
 class TestStep:
-    def test_process_success(self, extract_filename_module, n8n_items):
+    @with_n8n_items(module_fixture_name="extract_filename_module", items_fixture_name="n8n_items")
+    def test_process_success(self, request, extract_filename_module):
         """Test extract_filename uses the injected _items global."""
-        extract_filename_module._items = n8n_items
-
         result = extract_filename_module.extract_filename()
 
         assert result["filename"].endswith(".csv")
