@@ -1,9 +1,36 @@
 import importlib.util
 import json
+from datetime import date, datetime
 from pathlib import Path
-from test.utils import with_n8n_items
 
 import pytest
+
+from test.utils import with_n8n_items
+
+JSON_KEY = "json"
+
+
+def date_serializer(obj):
+    """Serialize date and datetime objects to ISO format strings."""
+    if isinstance(obj, datetime):
+        # Format datetime with space instead of 'T' to match expected format
+        return obj.isoformat().replace("T", " ")
+    if isinstance(obj, date):
+        return obj.isoformat()
+    raise TypeError(f"Type {type(obj)} not serializable")
+
+
+def remove_dynamic_timestamps(data):
+    """Remove dynamic timestamp fields from nested data structures."""
+    if isinstance(data, dict):
+        return {
+            k: remove_dynamic_timestamps(v)
+            for k, v in data.items()
+            if k not in ("updated_at", "imported_at")
+        }
+    elif isinstance(data, list):
+        return [remove_dynamic_timestamps(item) for item in data]
+    return data
 
 
 @pytest.fixture
@@ -44,7 +71,18 @@ def cleanup_raw_data_for_storage_input(
     enrich_raw_data_with_sector_names_output,
 ):
     """Wrap fixture data using n8n's item shape."""
-    return [{"json": enrich_raw_data_with_sector_names_output[0]}]
+
+    return [
+        {"json": item} for item in enrich_raw_data_with_sector_names_output
+    ]
+
+
+@pytest.fixture
+def clean_raw_data_for_storage(fixtures_dir):
+    """Wrap fixture data using n8n's item shape."""
+
+    with open(fixtures_dir / "clean_raw_data_for_storage.json") as f:
+        return [{"json": json.load(f)}]
 
 
 @pytest.fixture
@@ -98,8 +136,24 @@ class TestStep:
         module_fixture_name="cleanup_raw_data_for_storage_module",
         items_fixture_name="cleanup_raw_data_for_storage_input",
     )
-    def cleanup_raw_data_for_storage(
-        self, request, cleanup_raw_data_for_storage_module
+    def test_cleanup_raw_data_for_storage(
+        self,
+        request,
+        cleanup_raw_data_for_storage_module,
+        clean_raw_data_for_storage,
     ):
-        result = extract_filename_module.cleanup_raw_data_for_storage()
-        assert result
+        result = (
+            cleanup_raw_data_for_storage_module.cleanup_raw_data_for_storage()
+        )
+        expected = clean_raw_data_for_storage[0]["json"]
+
+        # Remove dynamic timestamps before comparison
+        result_clean = remove_dynamic_timestamps(result)
+        expected_clean = remove_dynamic_timestamps(expected)
+
+        result_json = json.dumps(
+            result_clean, default=date_serializer, sort_keys=True
+        )
+        expected_json = json.dumps(expected_clean, sort_keys=True)
+
+        assert result_json == expected_json
