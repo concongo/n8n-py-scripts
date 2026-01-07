@@ -1,11 +1,10 @@
-import importlib.util
 import json
 from datetime import date, datetime
 from pathlib import Path
 
 import pytest
 
-from test.utils import with_n8n_items
+from test.utils import load_module, with_n8n_items
 
 JSON_KEY = "json"
 
@@ -87,38 +86,22 @@ def clean_raw_data_for_storage(fixtures_dir):
 
 @pytest.fixture
 def extract_filename_module():
-    """Load the extract-filename module from its file path."""
-    module_path = (
-        Path(__file__).parents[1]
-        / "src"
-        / "portfolio_analysis"
-        / "upload_position_file"
-        / "extract_filename.py"
+    """Load the extract-filename module."""
+    return load_module(
+        "extract_filename",
+        src_relative_path="portfolio_analysis/upload_position_file",
+        test_file=Path(__file__),
     )
-    spec = importlib.util.spec_from_file_location(
-        "extract_filename", module_path
-    )
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module
 
 
 @pytest.fixture
 def cleanup_raw_data_for_storage_module():
-    """Load the extract-filename module from its file path."""
-    module_path = (
-        Path(__file__).parents[1]
-        / "src"
-        / "portfolio_analysis"
-        / "upload_position_file"
-        / "cleanup_raw_data_for_storage.py"
+    """Load the cleanup_raw_data_for_storage module."""
+    return load_module(
+        "cleanup_raw_data_for_storage",
+        src_relative_path="portfolio_analysis/upload_position_file",
+        test_file=Path(__file__),
     )
-    spec = importlib.util.spec_from_file_location(
-        "cleanup_raw_data_for_storage", module_path
-    )
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    return module
 
 
 class TestStep:
