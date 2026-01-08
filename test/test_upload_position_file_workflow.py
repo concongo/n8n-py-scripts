@@ -1,10 +1,9 @@
 import json
 from datetime import date, datetime
 from pathlib import Path
+from test.utils import load_module, with_n8n_items
 
 import pytest
-
-from test.utils import load_module, with_n8n_items
 
 JSON_KEY = "json"
 
@@ -85,6 +84,14 @@ def clean_raw_data_for_storage(fixtures_dir):
 
 
 @pytest.fixture
+def clean_raw_data_for_storage_output(fixtures_dir):
+    """Wrap fixture data using n8n's item shape."""
+
+    with open(fixtures_dir / "clean_and_prepare_fields.json") as f:
+        return [{"json": row} for row in json.load(f)]
+
+
+@pytest.fixture
 def extract_filename_module():
     """Load the extract-filename module."""
     return load_module(
@@ -99,6 +106,16 @@ def cleanup_raw_data_for_storage_module():
     """Load the cleanup_raw_data_for_storage module."""
     return load_module(
         "cleanup_raw_data_for_storage",
+        src_relative_path="portfolio_analysis/upload_position_file",
+        test_file=Path(__file__),
+    )
+
+
+@pytest.fixture
+def calculate_security_type_aggregation_module():
+    """Load the cleanup_raw_data_for_storage module."""
+    return load_module(
+        "calculate_security_type_aggregation",
         src_relative_path="portfolio_analysis/upload_position_file",
         test_file=Path(__file__),
     )
@@ -140,3 +157,25 @@ class TestStep:
         expected_json = json.dumps(expected_clean, sort_keys=True)
 
         assert result_json == expected_json
+
+    @with_n8n_items(
+        module_fixture_name="calculate_security_type_aggregation_module",
+        items_fixture_name="clean_raw_data_for_storage_output",
+    )
+    def test_calculate_security_type_aggregation(
+        self,
+        request,
+        calculate_security_type_aggregation_module,
+    ):
+        result = calculate_security_type_aggregation_module.main()
+        expected_result = {
+            "snapshot_at": "2025-12-14 15:53:19+01:00",
+            "mv__cash_and_money_market": 898.11,
+            "mv__equity": 44479.98,
+            "mv__fixed_income": 31967.82,
+            "mv__total": 77345.91,
+            "alloc__cash_and_money_market": 0.011611602992323704,
+            "alloc__equity": 0.5750786305313365,
+            "alloc__fixed_income": 0.4133097664763398,
+        }
+        assert result[0]["json"] == expected_result
