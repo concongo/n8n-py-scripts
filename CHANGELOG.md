@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.2.2] - 2026-01-09
+
+### Changed
+- Refactored `calculate_security_type_aggregation_by_sector.py` to improve code organization and maintainability
+  - Extracted monolithic `main()` function into 9 focused helper functions with single responsibilities
+  - Added proper type hints throughout: `_validate_required_columns()`, `_normalize_snapshot_date()`, `_normalize_market_value()`, `_normalize_sector()`, `_extract_account_total()`, `_filter_equity_positions()`, `_calculate_sector_aggregations()`, `_pivot_market_values()`, `_pivot_allocations()`, `_merge_results()`
+  - Improved `main()` function to serve as clear orchestration of processing steps
+  - Enhanced testability by isolating business logic into discrete functions
+  - All tests pass, confirming behavior preservation
+- Added uv package manager instructions to `.claude/instructions.md`
+  - Documented requirement to use `uv run` prefix for all Python commands
+  - Included examples for running tests and other common commands
+
+### Added
+- Test case for sector-based aggregation in `test_upload_position_file_workflow.py`
+  - `test_calculate_security_type_by_sector_aggregation()` validates full workflow
+  - Uses fixture-based approach consistent with other tests
+- Fixture for sector aggregation module in `test/conftest.py`
+  - `calculate_security_type_by_sector_aggregation_module` fixture follows project patterns
+
 ## [0.2.1] - 2026-01-09
 
 ### Changed

@@ -80,16 +80,25 @@ def load_module(
         )
     """
     if module_path is None and src_relative_path is None:
-        raise ValueError("Either module_path or src_relative_path must be provided")
+        raise ValueError(
+            "Either module_path or src_relative_path must be provided"
+        )
 
     if module_path is not None and src_relative_path is not None:
-        raise ValueError("Only one of module_path or src_relative_path can be provided")
+        raise ValueError(
+            "Only one of module_path or src_relative_path can be provided"
+        )
 
     if src_relative_path is not None:
         if test_file is None:
-            raise ValueError("test_file must be provided when using src_relative_path")
+            raise ValueError(
+                "test_file must be provided when using src_relative_path"
+            )
         module_path = (
-            test_file.parents[1] / "src" / src_relative_path / f"{module_name}.py"
+            test_file.parents[1]
+            / "src"
+            / src_relative_path
+            / f"{module_name}.py"
         )
 
     spec = importlib.util.spec_from_file_location(module_name, module_path)

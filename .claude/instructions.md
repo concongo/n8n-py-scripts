@@ -53,6 +53,26 @@ Follow the conventional commit format:
 - `test:` for test additions or changes
 - `chore:` for maintenance tasks
 
+## Python Environment and Tooling
+
+### Using uv Package Manager
+
+This project uses `uv` as the Python package and project manager. **ALWAYS** prefix Python commands with `uv run`:
+
+**Running Tests:**
+```bash
+uv run pytest test/
+uv run pytest test/test_upload_position_file_workflow.py -v
+uv run pytest test/test_upload_position_file_workflow.py::TestStep::test_calculate_security_type_by_sector_aggregation -v
+```
+
+**Running Other Python Commands:**
+```bash
+uv run python script.py
+uv run mypy src/
+uv run ruff check .
+```
+
 ## Python Code Standards
 
 - Follow Python best practices and PEP 8

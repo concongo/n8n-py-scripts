@@ -50,7 +50,8 @@ def download_file_step_output(upload_position_fixtures_dir):
 def enrich_raw_data_with_sector_names_output(upload_position_fixtures_dir):
     """Load enrich_raw_data_with_sector_names output fixture."""
     with open(
-        upload_position_fixtures_dir / "enrich_raw_data_with_sector_names_output.json"
+        upload_position_fixtures_dir
+        / "enrich_raw_data_with_sector_names_output.json"
     ) as f:
         return json.load(f)
 
@@ -66,7 +67,9 @@ def cleanup_raw_data_for_storage_input(
     enrich_raw_data_with_sector_names_output,
 ):
     """Input data for cleanup_raw_data_for_storage step."""
-    return [{"json": item} for item in enrich_raw_data_with_sector_names_output]
+    return [
+        {"json": item} for item in enrich_raw_data_with_sector_names_output
+    ]
 
 
 @pytest.fixture
@@ -81,7 +84,9 @@ def clean_raw_data_for_storage(upload_position_fixtures_dir):
 @pytest.fixture
 def clean_raw_data_for_storage_output(upload_position_fixtures_dir):
     """Load clean_and_prepare_fields output fixture."""
-    with open(upload_position_fixtures_dir / "clean_and_prepare_fields.json") as f:
+    with open(
+        upload_position_fixtures_dir / "clean_and_prepare_fields.json"
+    ) as f:
         return [{"json": row} for row in json.load(f)]
 
 
@@ -110,6 +115,16 @@ def calculate_security_type_aggregation_module():
     """Load calculate_security_type_aggregation module."""
     return load_module(
         "calculate_security_type_aggregation",
+        src_relative_path="portfolio_analysis/upload_position_file",
+        test_file=Path(__file__),
+    )
+
+
+@pytest.fixture
+def calculate_security_type_by_sector_aggregation_module():
+    """Load calculate_security_type_aggregation module."""
+    return load_module(
+        "calculate_security_type_aggregation_by_sector",
         src_relative_path="portfolio_analysis/upload_position_file",
         test_file=Path(__file__),
     )

@@ -89,3 +89,36 @@ class TestStep:
             "alloc__fixed_income": 0.4133097664763398,
         }
         assert result[0]["json"] == expected_result
+
+    @with_n8n_items(
+        module_fixture_name="calculate_security_type_by_sector_aggregation_module",
+        items_fixture_name="clean_raw_data_for_storage_output",
+    )
+    def test_calculate_security_type_by_sector_aggregation(
+        self,
+        request,
+        calculate_security_type_by_sector_aggregation_module,
+    ):
+        result = calculate_security_type_by_sector_aggregation_module.main()
+        expected_result = {
+            "snapshot_at": "2025-12-14 15:53:19+01:00",
+            "mv__communication_services": 309.29,
+            "mv__consumer_discretionary": 2048.87,
+            "mv__consumer_staples": 9339,
+            "mv__energy": 908.82,
+            "mv__health_care": 8380.89,
+            "mv__industrials": 10667.71,
+            "mv__information_technology": 8300.96,
+            "mv__utilities": 3345.92,
+            "alloc__communication_services": 0.0071427152802699964,
+            "alloc__consumer_discretionary": 0.04731641843023306,
+            "alloc__consumer_staples": 0.2156740211530974,
+            "alloc__energy": 0.020988206864156544,
+            "alloc__health_care": 0.19354751548793042,
+            "alloc__industrials": 0.24635912969216278,
+            "alloc__information_technology": 0.1917016192987488,
+            "alloc__utilities": 0.07727037379340096,
+            "mv__equity_total": 43301.46,
+            "mv__account_total": 77345.91,
+        }
+        assert result[0]["json"] == expected_result
