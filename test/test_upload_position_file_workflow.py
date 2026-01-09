@@ -1,9 +1,9 @@
+"""Tests for the upload_position_file workflow."""
+
 import json
 from datetime import date, datetime
-from pathlib import Path
-from test.utils import load_module, with_n8n_items
 
-import pytest
+from test.utils import with_n8n_items
 
 JSON_KEY = "json"
 
@@ -29,96 +29,6 @@ def remove_dynamic_timestamps(data):
     elif isinstance(data, list):
         return [remove_dynamic_timestamps(item) for item in data]
     return data
-
-
-@pytest.fixture
-def fixtures_dir():
-    """Get the fixtures directory for this workflow."""
-    return (
-        Path(__file__).parent
-        / "fixtures"
-        / "portfolio_analysis"
-        / "upload_position_file"
-    )
-
-
-@pytest.fixture
-def download_file_step_output(fixtures_dir):
-    """Load step1 input fixture."""
-    with open(fixtures_dir / "download_file_step.json") as f:
-        return json.load(f)
-
-
-@pytest.fixture
-def enrich_raw_data_with_sector_names_output(fixtures_dir):
-    """Load step1 input fixture."""
-    with open(
-        fixtures_dir / "enrich_raw_data_with_sector_names_output.json"
-    ) as f:
-        return json.load(f)
-
-
-@pytest.fixture
-def n8n_items(download_file_step_output):
-    """Wrap fixture data using n8n's item shape."""
-    return [{"json": download_file_step_output[0]}]
-
-
-@pytest.fixture
-def cleanup_raw_data_for_storage_input(
-    enrich_raw_data_with_sector_names_output,
-):
-    """Wrap fixture data using n8n's item shape."""
-
-    return [
-        {"json": item} for item in enrich_raw_data_with_sector_names_output
-    ]
-
-
-@pytest.fixture
-def clean_raw_data_for_storage(fixtures_dir):
-    """Wrap fixture data using n8n's item shape."""
-
-    with open(fixtures_dir / "clean_raw_data_for_storage.json") as f:
-        return [{"json": json.load(f)}]
-
-
-@pytest.fixture
-def clean_raw_data_for_storage_output(fixtures_dir):
-    """Wrap fixture data using n8n's item shape."""
-
-    with open(fixtures_dir / "clean_and_prepare_fields.json") as f:
-        return [{"json": row} for row in json.load(f)]
-
-
-@pytest.fixture
-def extract_filename_module():
-    """Load the extract-filename module."""
-    return load_module(
-        "extract_filename",
-        src_relative_path="portfolio_analysis/upload_position_file",
-        test_file=Path(__file__),
-    )
-
-
-@pytest.fixture
-def cleanup_raw_data_for_storage_module():
-    """Load the cleanup_raw_data_for_storage module."""
-    return load_module(
-        "cleanup_raw_data_for_storage",
-        src_relative_path="portfolio_analysis/upload_position_file",
-        test_file=Path(__file__),
-    )
-
-
-@pytest.fixture
-def calculate_security_type_aggregation_module():
-    """Load the cleanup_raw_data_for_storage module."""
-    return load_module(
-        "calculate_security_type_aggregation",
-        src_relative_path="portfolio_analysis/upload_position_file",
-        test_file=Path(__file__),
-    )
 
 
 class TestStep:
