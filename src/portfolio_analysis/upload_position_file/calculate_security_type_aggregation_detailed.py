@@ -87,7 +87,9 @@ def _filter_equity_positions(df: pd.DataFrame) -> pd.DataFrame:
         df_positions = df_positions[df_positions["security_type"] != TOTAL_KEY]
 
     df_equity = df_positions[
-        df_positions["asset_key"].astype(str).str.startswith(EQUITY_ASSET_PREFIX)
+        df_positions["asset_key"]
+        .astype(str)
+        .str.startswith(EQUITY_ASSET_PREFIX)
     ].copy()
 
     if DROP_UNKNOWN_SECTOR:
@@ -163,7 +165,9 @@ def _calculate_sector_allocations(
     sec_mv: float, equity_total: float, account_total_val: float
 ) -> tuple[float, float]:
     sec_alloc_equity = (sec_mv / equity_total) if equity_total else 0.0
-    sec_alloc_account = (sec_mv / account_total_val) if account_total_val else 0.0
+    sec_alloc_account = (
+        (sec_mv / account_total_val) if account_total_val else 0.0
+    )
     return sec_alloc_equity, sec_alloc_account
 
 
@@ -223,7 +227,9 @@ def _process_snapshot(
         key: value
         for sector_name, sec_df in snap_df.groupby("sector", sort=False)
         for key, value in [
-            _process_sector(sector_name, sec_df, equity_total, account_total_val)
+            _process_sector(
+                sector_name, sec_df, equity_total, account_total_val
+            )
         ]
     }
 
@@ -235,7 +241,9 @@ def _process_snapshot(
     }
 
 
-def _build_empty_result(account_total: pd.DataFrame | None) -> list[dict[str, Any]]:
+def _build_empty_result(
+    account_total: pd.DataFrame | None,
+) -> list[dict[str, Any]]:
     if account_total is None or account_total.empty:
         return []
 
@@ -276,7 +284,9 @@ def _process_equity_data(
     df_equity: pd.DataFrame, acct_map: dict[Any, float]
 ) -> list[dict[str, Any]]:
     equity_totals, sector_totals = _calculate_totals(df_equity)
-    df_equity = _enrich_with_allocations(df_equity, equity_totals, sector_totals)
+    df_equity = _enrich_with_allocations(
+        df_equity, equity_totals, sector_totals
+    )
 
     return [
         _process_snapshot(snap_df, acct_map, snap_at)

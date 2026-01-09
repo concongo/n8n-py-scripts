@@ -139,3 +139,18 @@ class TestStep:
     ):
         result = calculate_security_type_aggregation_detailed_module.main()
         assert result == calculate_security_type_aggregation_detailed_output
+
+    @with_n8n_items(
+        module_fixture_name=("flat_aggregation_module"),
+        items_fixture_name=(
+            "calculate_security_type_aggregation_detailed_output"
+        ),
+    )
+    def test_flat_aggregation(
+        self,
+        request,
+        flat_aggregation_module,
+        flat_aggregation_output,
+    ):
+        result = flat_aggregation_module.main()
+        assert result == flat_aggregation_output

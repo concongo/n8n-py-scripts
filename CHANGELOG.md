@@ -7,6 +7,33 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.0] - 2026-01-09
+
+### Added
+- `flat_aggregation.py` module for flattening nested sector/holdings data into individual rows
+  - Transforms hierarchical portfolio sector data into flat tabular format with one row per holding
+  - Extracts and denormalizes snapshot, sector, and holding metadata into single records
+  - Includes contextual fields: sector totals, equity totals, account totals on every row
+  - Implements functional decomposition with focused helper functions:
+    - `_extract_document()` - handles n8n wrapper format
+    - `_extract_snapshot_metadata()` - extracts snapshot-level data
+    - `_extract_sector_metadata()` - extracts sector-level data
+    - `_create_flat_holding()` - builds final flat records
+  - Comprehensive docstrings with Args, Returns, and Raises sections
+  - Complete type hints throughout
+  - Passes all quality gates (ruff linting, pytest)
+- Test coverage for flat aggregation in `test_upload_position_file_workflow.py`
+  - `test_flat_aggregation()` validates full flattening workflow
+  - Uses fixture-based approach consistent with project patterns
+- Test fixtures in `test/conftest.py` and `test/fixtures/portfolio_analysis/upload_position_file/`
+  - `flat_aggregation_module` fixture for module loading
+  - `flat_aggregation_output.json` fixture with 625 expected flattened holding records
+
+### Changed
+- Applied ruff formatting fixes to `calculate_security_type_aggregation_detailed.py`
+  - Fixed line length violations by splitting long lines
+  - Improved code readability with proper line breaks
+
 ## [0.3.0] - 2026-01-09
 
 ### Added
