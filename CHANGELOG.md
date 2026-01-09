@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.4.1] - 2026-01-10
+
+### Added
+- Comprehensive documentation for Upload Position File n8n workflow
+  - `src/portfolio_analysis/upload_position_file/workflow/README.md` with complete workflow description
+  - Includes detailed mermaid diagram showing all nodes and data flow connections
+  - Documents all 18 workflow nodes with their purposes and configurations
+  - Describes 5 MongoDB collections written by the workflow
+  - Usage instructions and dependency requirements
+  - Explains multi-level aggregation strategy (security type, sector, detailed holdings)
+- Upload Position File n8n workflow JSON export
+  - Complete n8n workflow definition in `workflow/Upload Position File.json`
+  - Includes all node configurations, connections, and credentials
+
 ## [0.4.0] - 2026-01-09
 
 ### Added

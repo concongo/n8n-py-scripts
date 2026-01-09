@@ -1,0 +1,2834 @@
+{
+  "name": "Upload Position File",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "authentication": "serviceAccount",
+        "triggerOn": "specificFolder",
+        "folderToWatch": {
+          "__rl": true,
+          "value": "1KPRkjbkggrFqcIppv_Q27YqBwitZlS2p",
+          "mode": "list",
+          "cachedResultName": "charles_schwab",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1KPRkjbkggrFqcIppv_Q27YqBwitZlS2p"
+        },
+        "event": "fileCreated",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDriveTrigger",
+      "typeVersion": 1,
+      "position": [
+        304,
+        496
+      ],
+      "id": "21beb2e9-bd20-4aa3-a72a-36023bfa5f48",
+      "name": "Google Drive Trigger",
+      "credentials": {
+        "googleApi": {
+          "id": "HLrh4qUsK6xdBcTR",
+          "name": "n8n-test-workflow"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Drop the Downloaded file from Charles Schwab",
+        "height": 128,
+        "width": 288,
+        "color": 7
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        96
+      ],
+      "typeVersion": 1,
+      "id": "491bfd59-d38a-47cb-b94e-076f8244e83c",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "authentication": "serviceAccount",
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {
+          "fileName": "={{ $json.name }}"
+        }
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        528,
+        496
+      ],
+      "id": "1ed77d09-bc80-4a2d-88a2-af9696d4e357",
+      "name": "Download file",
+      "credentials": {
+        "googleApi": {
+          "id": "HLrh4qUsK6xdBcTR",
+          "name": "n8n-test-workflow"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "fromLine": 3
+        }
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        752,
+        304
+      ],
+      "id": "bfa29054-770b-4ba1-b1fe-a98325adca75",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "5d37093f-b188-42eb-8029-876d6d85e565",
+              "name": "account_id",
+              "value": "={{ $json.account_id }}",
+              "type": "string"
+            },
+            {
+              "id": "223ff568-f8fd-4bfd-86a3-3e50d64f8266",
+              "name": "asset_key",
+              "value": "={{ $json.asset.asset_key }}",
+              "type": "string"
+            },
+            {
+              "id": "5ed54b68-9c8c-48cb-a50b-c6bf5e8aa8b3",
+              "name": "symbol",
+              "value": "={{ $json.asset.symbol }}",
+              "type": "string"
+            },
+            {
+              "id": "588de459-abfd-4162-b8fe-a97e24a30bb7",
+              "name": "name",
+              "value": "={{ $json.asset.name }}",
+              "type": "string"
+            },
+            {
+              "id": "03c58f76-5ac1-4acb-b31d-a8acc6550bc8",
+              "name": "security_type",
+              "value": "={{ $json.asset.security_type }}",
+              "type": "string"
+            },
+            {
+              "id": "d0f7e6c4-8419-4eab-b94f-bfb1eeb2f5f3",
+              "name": "rating",
+              "value": "={{ $json.asset.rating }}",
+              "type": "string"
+            },
+            {
+              "id": "0fec3340-b8db-44ec-b031-00b9b558ca13",
+              "name": "quantity",
+              "value": "={{ $json.position.quantity }}",
+              "type": "number"
+            },
+            {
+              "id": "0f977687-454e-46b4-8876-e3ba01487afd",
+              "name": "price",
+              "value": "={{ $json.position.price }}",
+              "type": "number"
+            },
+            {
+              "id": "e6f2d5db-2be1-46d7-8185-fb9b9ca787d3",
+              "name": "market_value",
+              "value": "={{ $json.position.market_value }}",
+              "type": "number"
+            },
+            {
+              "id": "40ac7310-4d1c-46c5-8e12-05f40b87c626",
+              "name": "cost_basis",
+              "value": "={{ $json.position.cost_basis }}",
+              "type": "number"
+            },
+            {
+              "id": "310fedc7-2267-4b28-a675-1fd282b94c27",
+              "name": "gain_abs",
+              "value": "={{ $json.position.gain_abs }}",
+              "type": "number"
+            },
+            {
+              "id": "218e0468-3842-46b7-b497-a66e966679c7",
+              "name": "gain_pct",
+              "value": "={{ $json.position.gain_pct }}",
+              "type": "number"
+            },
+            {
+              "id": "bd1aa849-f155-4b16-90e2-c0ff380e27b2",
+              "name": "day_change_abs",
+              "value": "={{ $json.position.day_change_abs }}",
+              "type": "number"
+            },
+            {
+              "id": "2bf6d444-07df-4bdb-9c12-a3cffce07388",
+              "name": "day_change_pct",
+              "value": "={{ $json.position.day_change_pct }}",
+              "type": "number"
+            },
+            {
+              "id": "b6f72976-ff7f-4424-b818-38aaab20261a",
+              "name": "price_change_abs",
+              "value": "={{ $json.position.price_change_abs }}",
+              "type": "number"
+            },
+            {
+              "id": "d20f3914-4dc0-4830-9397-9bab33e74cc1",
+              "name": "price_change_pct",
+              "value": "={{ $json.position.price_change_pct }}",
+              "type": "number"
+            },
+            {
+              "id": "28be6cfb-99a8-4991-b37a-2fa1c213b8c3",
+              "name": "low_52w",
+              "value": "={{ $json.position.low_52w }}",
+              "type": "number"
+            },
+            {
+              "id": "8ee0692d-b02c-4927-a5cf-5d1fc538757f",
+              "name": "high_52w",
+              "value": "={{ $json.position.high_52w }}",
+              "type": "number"
+            },
+            {
+              "id": "6150ca15-d66d-4c2e-b39f-248715996366",
+              "name": "pe_ratio",
+              "value": "={{ $json.position.pe_ratio }}",
+              "type": "number"
+            },
+            {
+              "id": "1a01d64f-4647-4da4-a22b-39f962e72a28",
+              "name": "price_low_52w_ratio",
+              "value": "={{ $json.position.low_52w / $json.position.price }}",
+              "type": "number"
+            },
+            {
+              "id": "c2a8c407-ba78-4b8d-ac3f-5ddb5b1ee5f8",
+              "name": "updated_at",
+              "value": "={{ $json.asset.updated_at }}",
+              "type": "string"
+            },
+            {
+              "id": "c6271c2c-4cfc-40cf-9cfd-fdbfdde93bea",
+              "name": "doc_id",
+              "value": "={{ $json.doc_id }}",
+              "type": "string"
+            },
+            {
+              "id": "f56c2d09-e817-401e-a60d-9f04b826a44f",
+              "name": "snapshot_date",
+              "value": "={{ $json.snapshot_date }}",
+              "type": "string"
+            },
+            {
+              "id": "d40162eb-94e7-49cf-98a3-2618d48c7760",
+              "name": "snapshot_at",
+              "value": "={{ $json.snapshot_at }}",
+              "type": "string"
+            },
+            {
+              "id": "f427dd61-176e-448d-a5bd-25fbdbe6c150",
+              "name": "filename",
+              "value": "={{ $('Download file').item.json.name }}",
+              "type": "string"
+            },
+            {
+              "id": "5f89e7ff-ed17-4ce7-9610-cdb55b8fc63d",
+              "name": "sector",
+              "value": "={{ $json.asset.sector }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {
+          "ignoreConversionErrors": true
+        }
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1648,
+        496
+      ],
+      "id": "a406e0ce-b11d-472c-8601-acf88a3a793f",
+      "name": "Clean Up and Prepare Fields"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "collection": "portfolio_performance",
+        "updateKey": "doc_id",
+        "fields": "={{ $json.keys().filter(k => !['_id','id'].includes(k)).join(',') }}",
+        "upsert": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mongoDb",
+      "typeVersion": 1.2,
+      "position": [
+        1872,
+        112
+      ],
+      "id": "59a88aa0-4bb7-4de2-bd2e-cc734e80b2c4",
+      "name": "Create or Update raw data",
+      "credentials": {
+        "mongoDb": {
+          "id": "T9DgdtgaTRnaLRbg",
+          "name": "MongoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "collection": "historical_security_type_allocation",
+        "updateKey": "snapshot_at",
+        "fields": "={{ $json.keys().filter(k => !['_id','id'].includes(k)).join(',') }}",
+        "upsert": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mongoDb",
+      "typeVersion": 1.2,
+      "position": [
+        2096,
+        304
+      ],
+      "id": "76335ec5-300b-406f-9c8f-7ea771316da3",
+      "name": "Create or Update Security Type Aggregation",
+      "credentials": {
+        "mongoDb": {
+          "id": "T9DgdtgaTRnaLRbg",
+          "name": "MongoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineAll",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        976,
+        400
+      ],
+      "id": "f04810ba-95c1-4097-8991-d0f90c2cd08d",
+      "name": "Enrich raw data with filename"
+    },
+    {
+      "parameters": {
+        "collection": "ticker_sector_mapping",
+        "options": {
+          "projection": "{\"symbol\": 1, \"sector\": 1, \"_id\": 0}"
+        }
+      },
+      "type": "n8n-nodes-base.mongoDb",
+      "typeVersion": 1.2,
+      "position": [
+        976,
+        672
+      ],
+      "id": "6c23edb3-4dc1-4296-90f0-7d1dac5a0f4e",
+      "name": "Get Symbol Sector Mapping",
+      "credentials": {
+        "mongoDb": {
+          "id": "T9DgdtgaTRnaLRbg",
+          "name": "MongoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "advanced": true,
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "Symbol",
+              "field2": "symbol"
+            }
+          ]
+        },
+        "joinMode": "enrichInput1",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1200,
+        496
+      ],
+      "id": "8d515579-c613-4337-a191-8e93e7443f67",
+      "name": "Enrich raw data with sector names"
+    },
+    {
+      "parameters": {
+        "language": "pythonNative",
+        "pythonCode": "\"\"\"Data cleanup utilities for portfolio position files.\"\"\"\n\nimport re\nfrom datetime import UTC, datetime\nfrom typing import Any\nfrom zoneinfo import ZoneInfo\n\n\ndef to_number(value: Any) -> float | None:\n    \"\"\"Convert string to number, handling currency and accounting formats.\"\"\"\n    if value is None:\n        return None\n    s = str(value).strip()\n    if not s or s.lower() == \"n/a\":\n        return None\n    neg = bool(re.match(r\"^\\(.*\\)$\", s))\n    s = s.strip(\"()\").replace(\"$\", \"\").replace(\",\", \"\")\n    try:\n        n = float(s)\n    except ValueError:\n        return None\n    return -n if neg else n\n\n\ndef to_percent(value: Any) -> float | None:\n    \"\"\"Convert percentage string to decimal (e.g., \"50%\" -> 0.5).\"\"\"\n    if value is None:\n        return None\n    s = str(value).strip()\n    if not s or s.lower() == \"n/a\":\n        return None\n    s = s.replace(\"%\", \"\").replace(\",\", \"\")\n    try:\n        return float(s) / 100.0\n    except ValueError:\n        return None\n\n\ndef to_bool(value: Any) -> bool | None:\n    \"\"\"Convert string to boolean (yes/no, true/false).\"\"\"\n    if value is None:\n        return None\n    s = str(value).strip().lower()\n    if s in {\"yes\", \"y\", \"true\"}:\n        return True\n    if s in {\"no\", \"n\", \"false\"}:\n        return False\n    return None\n\n\ndef pick(row: dict[str, Any], *keys: str) -> Any:\n    \"\"\"Pick first non-empty value from row by trying multiple keys.\"\"\"\n    for k in keys:\n        if k in row and row[k] not in (None, \"\"):\n            return row[k]\n    return None\n\n\ndef _parse_snapshot_metadata(\n    filename: str,\n) -> tuple[datetime, datetime, datetime]:\n    \"\"\"Parse snapshot date and time from filename.\"\"\"\n    dt = datetime.strptime(\n        filename, \"Individual-Positions-%Y-%m-%d-%H%M%S.csv\"\n    ).replace(tzinfo=ZoneInfo(\"Europe/Madrid\"))\n    return dt.date(), dt, dt\n\n\ndef _extract_asset_identifiers(\n    row: dict[str, Any],\n) -> tuple[str, str, str, str]:\n    \"\"\"Extract asset identifiers: (symbol, description, security_type, sector).\"\"\"\n    symbol = (pick(row, \"Symbol\", \"SYM\", \"Ticker\") or \"\").strip().upper()\n    desc = (\n        pick(row, \"Description\", \"Desc\", \"Security Description\") or \"\"\n    ).strip()\n    sec_type = (pick(row, \"Security Type\", \"Type\") or \"\").strip()\n    sector = (pick(row, \"sector\", \"Sector\") or \"\").strip()\n    return symbol, desc, sec_type, sector\n\n\ndef _build_asset_key(symbol: str, desc: str) -> str:\n    \"\"\"Build unique asset key (e.g., \"EQUITY:SYMBOL:AAPL\").\"\"\"\n    if symbol:\n        return f\"EQUITY:SYMBOL:{symbol}\"\n    return f\"UNKNOWN:DESC:{desc}\"\n\n\ndef _build_asset_document(\n    account_id: str, asset_key: str, row: dict[str, Any]\n) -> dict[str, Any]:\n    \"\"\"Build asset document from row data.\"\"\"\n    symbol, desc, sec_type, sector = _extract_asset_identifiers(row)\n    return {\n        \"account_id\": account_id,\n        \"asset_key\": asset_key,\n        \"symbol\": symbol or None,\n        \"name\": desc or None,\n        \"security_type\": sec_type or None,\n        \"sector\": sector or None,\n        \"rating\": pick(row, \"Ratings\", \"Rating\") or None,\n        \"updated_at\": datetime.now(UTC).isoformat(timespec=\"seconds\") + \"Z\",\n    }\n\n\ndef _extract_basic_position_data(row: dict[str, Any]) -> dict[str, Any]:\n    \"\"\"Extract basic position data (quantity, price, values).\"\"\"\n    return {\n        \"quantity\": to_number(pick(row, \"Qty (Quantity)\", \"Qty\", \"Quantity\")),\n        \"price\": to_number(pick(row, \"Price\")),\n        \"market_value\": to_number(\n            pick(row, \"Mkt Val (Market Value)\", \"Market Value\")\n        ),\n        \"cost_basis\": to_number(pick(row, \"Cost Basis\")),\n    }\n\n\ndef _extract_gain_loss_data(row: dict[str, Any]) -> dict[str, Any]:\n    \"\"\"Extract gain/loss metrics.\"\"\"\n    return {\n        \"gain_abs\": to_number(\n            pick(row, \"Gain $ (Gain/Loss $)\", \"Gain/Loss $\", \"Gain $\")\n        ),\n        \"gain_pct\": to_percent(\n            pick(row, \"Gain % (Gain/Loss %)\", \"Gain/Loss %\", \"Gain %\")\n        ),\n    }\n\n\ndef _extract_change_data(row: dict[str, Any]) -> dict[str, Any]:\n    \"\"\"Extract day and price change metrics.\"\"\"\n    return {\n        \"day_change_abs\": to_number(\n            pick(row, \"Day Chng $ (Day Change $)\", \"Day Change $\")\n        ),\n        \"day_change_pct\": to_percent(\n            pick(row, \"Day Chng % (Day Change %)\", \"Day Change %\")\n        ),\n        \"price_change_abs\": to_number(\n            pick(row, \"Price Chng $ (Price Change $)\", \"Price Change $\")\n        ),\n        \"price_change_pct\": to_percent(\n            pick(row, \"Price Chng % (Price Change %)\", \"Price Change %\")\n        ),\n    }\n\n\ndef _extract_market_data(row: dict[str, Any]) -> dict[str, Any]:\n    \"\"\"Extract market data (52w high/low, P/E ratio, reinvestment flags).\"\"\"\n    return {\n        \"low_52w\": to_number(\n            pick(row, \"52 Wk Low (52 Week Low)\", \"52 Week Low\")\n        ),\n        \"high_52w\": to_number(\n            pick(row, \"52 Wk High (52 Week High)\", \"52 Week High\")\n        ),\n        \"pe_ratio\": to_number(\n            pick(row, \"P/E Ratio (Price/Earnings Ratio)\", \"P/E Ratio\")\n        ),\n        \"reinvest_dividends\": to_bool(pick(row, \"Reinvest?\")),\n        \"reinvest_cap_gains\": to_bool(pick(row, \"Reinvest Capital Gains?\")),\n    }\n\n\ndef _extract_position_metrics(row: dict[str, Any]) -> dict[str, Any]:\n    \"\"\"Extract all position metrics from row data.\"\"\"\n    return {\n        **_extract_basic_position_data(row),\n        **_extract_gain_loss_data(row),\n        **_extract_change_data(row),\n        **_extract_market_data(row),\n    }\n\n\ndef _build_position_document(\n    metadata: dict[str, Any], row: dict[str, Any]\n) -> dict[str, Any]:\n    \"\"\"Build position document from metadata and row data.\"\"\"\n    metrics = _extract_position_metrics(row)\n    return {\n        **metadata,\n        **metrics,\n        \"imported_at\": datetime.now(UTC).isoformat(timespec=\"seconds\") + \"Z\",\n    }\n\n\ndef normalize_schwab_row(\n    row: dict[str, Any], account_id: str = \"schwab-1\"\n) -> dict[str, Any] | None:\n    \"\"\"Normalize Schwab position CSV row into structured document.\"\"\"\n    source_file_name = row.get(\"filename\")\n    source_file_id = row.get(\"source_file_id\")\n    snapshot_date, snapshot_at, _ = _parse_snapshot_metadata(source_file_name)\n\n    symbol, desc, _, _ = _extract_asset_identifiers(row)\n    if not symbol and not desc:\n        return None\n\n    asset_key = _build_asset_key(symbol, desc)\n    doc_id = f\"{account_id}|{asset_key}|{source_file_name}\"\n\n    asset_doc = _build_asset_document(account_id, asset_key, row)\n\n    position_metadata = {\n        \"account_id\": account_id,\n        \"asset_key\": asset_key,\n        \"snapshot_date\": snapshot_date,\n        \"snapshot_at\": snapshot_at,\n    }\n    position_doc = _build_position_document(position_metadata, row)\n\n    return {\n        \"doc_id\": doc_id,\n        \"account_id\": account_id,\n        \"asset_key\": asset_key,\n        \"snapshot_date\": snapshot_date,\n        \"snapshot_at\": snapshot_at,\n        \"source_file_id\": source_file_id,\n        \"source_file_name\": source_file_name,\n        \"asset\": asset_doc,\n        \"position\": position_doc,\n    }\n\n\ndef cleanup_raw_data_for_storage(\n    items: list[dict[str, Any]] | None = None,\n) -> list[dict[str, Any]]:\n    \"\"\"Clean and normalize raw position data for storage.\"\"\"\n    if items is None:\n        try:\n            items = _items  # type: ignore[name-defined]\n        except NameError as exc:\n            raise NameError(\"_items is not defined\") from exc\n\n    clean_docs = []\n    for item in items:\n        row_data = item[\"json\"]\n        normalized = normalize_schwab_row(row_data)\n        if normalized is not None:\n            clean_docs.append(normalized)\n\n    return clean_docs\n\nreturn cleanup_raw_data_for_storage(_items)\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1424,
+        496
+      ],
+      "id": "f34992b1-b3e7-4a00-b75a-8a6e5fb2f4fb",
+      "name": "cleanup-raw-data-for-storage-py"
+    },
+    {
+      "parameters": {
+        "language": "pythonNative",
+        "pythonCode": "\"\"\"\nExtract the original filename from the first n8n item.\n\"\"\"\n\nfrom typing import Any\n\n\ndef extract_filename(items: list[dict[str, Any]] | None = None) -> dict[str, str]:\n    \"\"\"Return the filename from the first n8n item.\n\n    Args:\n        items: List of n8n items containing json data with originalFilename.\n               If None, attempts to use global _items (legacy behavior).\n\n    Returns:\n        Dictionary with 'filename' key containing the original filename.\n\n    Raises:\n        NameError: If items is None and _items is not defined.\n        ValueError: If items list is empty.\n        KeyError: If item is missing json.originalFilename field.\n    \"\"\"\n    if items is None:\n        try:\n            items = _items  # type: ignore[name-defined]\n        except NameError as exc:\n            raise NameError(\"_items is not defined\") from exc\n\n    if not items:\n        raise ValueError(\"No items provided\")\n\n    first_item = items[0]\n    try:\n        return {\"filename\": first_item[\"json\"][\"originalFilename\"]}\n    except KeyError as exc:\n        raise KeyError(\"Missing json.originalFilename in item\") from exc\n\nreturn extract_filename(_items)"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        752,
+        496
+      ],
+      "id": "ebcb57d5-372f-4e2b-bd6f-3837335694ae",
+      "name": "python-extract-filename-py"
+    },
+    {
+      "parameters": {
+        "language": "pythonNative",
+        "pythonCode": "\"\"\"Calculate security type aggregations from portfolio position data.\n\nThis module aggregates portfolio positions by security type and snapshot date,\ncomputing both market values and allocation percentages. The output is in a\nwide format with one row per snapshot date and columns for each security type.\n\"\"\"\n\nimport re\nfrom typing import Any\n\nimport pandas as pd\n\nTOTAL_KEY = \"--\"\n\n\ndef slugify(col: str) -> str:\n    \"\"\"Convert a column name to a lowercase slug format.\n\n    Normalizes column names by converting to lowercase, replacing special\n    characters with underscores, and removing any invalid characters.\n\n    Args:\n        col: Column name to slugify\n\n    Returns:\n        Normalized column name (e.g., \"Cash & Money Market\" -> \"cash_and_money_market\")\n    \"\"\"\n    s = (\n        str(col)\n        .strip()\n        .lower()\n        .replace(\"&\", \"and\")\n        .replace(\"/\", \"_\")\n        .replace(\"-\", \"_\")\n    )\n    s = re.sub(r\"\\s+\", \"_\", s)\n    s = re.sub(r\"[^a-z0-9_]\", \"\", s)\n    s = re.sub(r\"_+\", \"_\", s)\n    return s.strip(\"_\")\n\n\ndef prepare_dataframe(items: list[dict[str, Any]]) -> pd.DataFrame:\n    \"\"\"Convert n8n items to a DataFrame with normalized types.\n\n    Args:\n        items: List of n8n items with 'json' key containing position data\n\n    Returns:\n        DataFrame with normalized datetime and numeric columns\n\n    Raises:\n        ValueError: If 'snapshot_at' column is missing\n    \"\"\"\n    rows = [it.get(\"json\", it) for it in items]\n    if not rows:\n        return pd.DataFrame()\n\n    df = pd.DataFrame(rows)\n\n    if \"snapshot_at\" not in df.columns:\n        raise ValueError(\"Missing 'snapshot_at' in input items\")\n\n    df[\"snapshot_at\"] = pd.to_datetime(df[\"snapshot_at\"], errors=\"coerce\")\n\n    numeric_cols = [\n        \"market_value\",\n        \"cost_basis\",\n        \"gain_abs\",\n        \"positions\",\n        \"rows\",\n        \"allocation_pct\",\n    ]\n    for c in numeric_cols:\n        if c in df.columns:\n            df[c] = pd.to_numeric(df[c], errors=\"coerce\")\n\n    return df\n\n\ndef aggregate_by_security_type(df: pd.DataFrame) -> pd.DataFrame:\n    \"\"\"Aggregate data by snapshot date and security type.\n\n    Args:\n        df: DataFrame with position data\n\n    Returns:\n        Aggregated DataFrame with one row per (snapshot_at, security_type)\n    \"\"\"\n    agg_map = {}\n    for c in [\"market_value\", \"cost_basis\", \"gain_abs\"]:\n        if c in df.columns:\n            agg_map[c] = \"sum\"\n    for c in [\"positions\", \"rows\"]:\n        if c in df.columns:\n            agg_map[c] = \"sum\"\n\n    grouped = df.groupby([\"snapshot_at\", \"security_type\"], as_index=False).agg(\n        agg_map\n    )\n    return grouped\n\n\ndef calculate_allocations(grouped: pd.DataFrame) -> pd.DataFrame:\n    \"\"\"Calculate allocation percentages for non-total security types.\n\n    Args:\n        grouped: Aggregated DataFrame with security types\n\n    Returns:\n        DataFrame with allocation_pct calculated for non-total rows\n\n    Raises:\n        ValueError: If 'market_value' column is missing\n    \"\"\"\n    if \"market_value\" not in grouped.columns:\n        raise ValueError(\"Missing 'market_value' in input items\")\n\n    totals = grouped[grouped[\"security_type\"] == TOTAL_KEY].copy()\n    non_totals = grouped[grouped[\"security_type\"] != TOTAL_KEY].copy()\n\n    denom = totals[[\"snapshot_at\", \"market_value\"]].rename(\n        columns={\"market_value\": \"total_market_value\"}\n    )\n    non_totals = non_totals.merge(denom, on=\"snapshot_at\", how=\"left\")\n\n    fallback = non_totals.groupby(\"snapshot_at\")[\"market_value\"].transform(\n        \"sum\"\n    )\n    non_totals[\"denom_mv\"] = non_totals[\"total_market_value\"].fillna(fallback)\n\n    non_totals[\"allocation_pct\"] = (\n        non_totals[\"market_value\"] / non_totals[\"denom_mv\"]\n    ).fillna(0.0)\n\n    return non_totals\n\n\ndef pivot_to_wide_format(\n    grouped: pd.DataFrame, non_totals: pd.DataFrame\n) -> pd.DataFrame:\n    \"\"\"Pivot data to wide format with security types as columns.\n\n    Args:\n        grouped: Aggregated DataFrame with all security types (including totals)\n        non_totals: DataFrame with non-total security types and allocations\n\n    Returns:\n        Wide-format DataFrame with mv__ and alloc__ prefixed columns\n    \"\"\"\n    mv_for_pivot = grouped.copy()\n    mv_for_pivot[\"security_type\"] = mv_for_pivot[\"security_type\"].replace(\n        {TOTAL_KEY: \"TOTAL\"}\n    )\n\n    wide_mv = mv_for_pivot.pivot_table(\n        index=\"snapshot_at\",\n        columns=\"security_type\",\n        values=\"market_value\",\n        aggfunc=\"sum\",\n        fill_value=0.0,\n    ).reset_index()\n    wide_mv.columns = [\"snapshot_at\"] + [\n        f\"mv__{slugify(c)}\" for c in wide_mv.columns[1:]\n    ]\n\n    wide_alloc = non_totals.pivot_table(\n        index=\"snapshot_at\",\n        columns=\"security_type\",\n        values=\"allocation_pct\",\n        aggfunc=\"sum\",\n        fill_value=0.0,\n    ).reset_index()\n    wide_alloc.columns = [\"snapshot_at\"] + [\n        f\"alloc__{slugify(c)}\" for c in wide_alloc.columns[1:]\n    ]\n\n    wide = wide_mv.merge(wide_alloc, on=\"snapshot_at\", how=\"left\")\n    wide[\"snapshot_at\"] = wide[\"snapshot_at\"].astype(str)\n    wide = wide.fillna(0.0)\n\n    return wide\n\n\ndef main(items: list[dict[str, Any]] | None = None) -> list[dict[str, Any]]:\n    \"\"\"Aggregate portfolio positions by security type and snapshot date.\n\n    Takes n8n items with position data and returns aggregated data in wide format\n    with one row per snapshot date. Market values include totals, allocations\n    exclude totals.\n\n    Args:\n        items: List of n8n items containing position data. If None, uses global _items.\n\n    Returns:\n        List of n8n items with aggregated data in wide format\n\n    Raises:\n        NameError: If items is None and _items global is not defined\n        ValueError: If required columns are missing from input data\n    \"\"\"\n    if items is None:\n        try:\n            items = _items  # type: ignore[name-defined]\n        except NameError as exc:\n            raise NameError(\"_items is not defined\") from exc\n\n    if not items:\n        return []\n\n    df = prepare_dataframe(items)\n    if df.empty:\n        return []\n\n    grouped = aggregate_by_security_type(df)\n    non_totals = calculate_allocations(grouped)\n    wide = pivot_to_wide_format(grouped, non_totals)\n\n    out = wide.to_dict(orient=\"records\")\n    return [{\"json\": row} for row in out]\n\n# n8n provides `items` in scope in the Python Code node\nreturn main(_items)"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1872,
+        304
+      ],
+      "id": "b80f2245-2f18-4dba-b6f3-73da4f4f9d2e",
+      "name": "calculate-security-type-aggregation-py"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "collection": "historical_equity_sector_allocation",
+        "updateKey": "snapshot_at",
+        "fields": "={{ $json.keys().filter(k => !['_id','id'].includes(k)).join(',') }}",
+        "upsert": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mongoDb",
+      "typeVersion": 1.2,
+      "position": [
+        2096,
+        496
+      ],
+      "id": "ec6efc98-ae52-4a49-95f7-7a1b9cce94dd",
+      "name": "Update documents",
+      "credentials": {
+        "mongoDb": {
+          "id": "T9DgdtgaTRnaLRbg",
+          "name": "MongoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "collection": "historical_equity_sector_detailed_allocation",
+        "updateKey": "snapshot_at",
+        "fields": "={{ $json.keys().filter(k => !['_id','id'].includes(k)).join(',') }}",
+        "upsert": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mongoDb",
+      "typeVersion": 1.2,
+      "position": [
+        2096,
+        688
+      ],
+      "id": "0d378366-c633-45f4-9846-d1070da9ceef",
+      "name": "Create or Update Security Aggregation Detail",
+      "credentials": {
+        "mongoDb": {
+          "id": "T9DgdtgaTRnaLRbg",
+          "name": "MongoDB account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "language": "pythonNative",
+        "pythonCode": "import re\nfrom typing import Any\n\nimport pandas as pd\n\nTOTAL_KEY = \"--\"\nEQUITY_ASSET_PREFIX = \"EQUITY:\"\nDROP_UNKNOWN_SECTOR = True\n\n\ndef slugify(col: str) -> str:\n    s = (\n        str(col)\n        .strip()\n        .lower()\n        .replace(\"&\", \"and\")\n        .replace(\"/\", \"_\")\n        .replace(\"-\", \"_\")\n    )\n    s = re.sub(r\"\\s+\", \"_\", s)\n    s = re.sub(r\"[^a-z0-9_]\", \"\", s)\n    s = re.sub(r\"_+\", \"_\", s)\n    return s.strip(\"_\")\n\n\ndef _validate_required_columns(df: pd.DataFrame) -> None:\n    required_columns = [\"snapshot_at\", \"market_value\", \"asset_key\"]\n    for col in required_columns:\n        if col not in df.columns:\n            raise ValueError(f\"Missing '{col}' in input items\")\n\n\ndef _normalize_numeric_columns(df: pd.DataFrame) -> pd.DataFrame:\n    df[\"snapshot_at\"] = pd.to_datetime(df[\"snapshot_at\"], errors=\"coerce\")\n    df[\"market_value\"] = pd.to_numeric(\n        df[\"market_value\"], errors=\"coerce\"\n    ).fillna(0.0)\n\n    if \"quantity\" not in df.columns:\n        df[\"quantity\"] = 0\n    df[\"quantity\"] = pd.to_numeric(df[\"quantity\"], errors=\"coerce\").fillna(0.0)\n    return df\n\n\ndef _normalize_text_columns(df: pd.DataFrame) -> pd.DataFrame:\n    if \"sector\" not in df.columns:\n        df[\"sector\"] = \"\"\n    df[\"sector\"] = df[\"sector\"].fillna(\"\").astype(str).str.strip()\n\n    for col in [\"symbol\", \"name\"]:\n        if col not in df.columns:\n            df[col] = None\n    return df\n\n\ndef _normalize_dataframe(df: pd.DataFrame) -> pd.DataFrame:\n    df = _normalize_numeric_columns(df)\n    df = _normalize_text_columns(df)\n    return df\n\n\ndef _extract_account_total(df: pd.DataFrame) -> pd.DataFrame | None:\n    if \"security_type\" not in df.columns:\n        return None\n    totals = df[df[\"security_type\"] == TOTAL_KEY].copy()\n    if totals.empty:\n        return None\n    return totals.groupby(\"snapshot_at\", as_index=False).agg(\n        mv__account_total=(\"market_value\", \"sum\")\n    )\n\n\ndef _create_account_total_map(\n    account_total: pd.DataFrame | None,\n) -> dict[Any, float]:\n    if account_total is None or account_total.empty:\n        return {}\n    return {\n        r[\"snapshot_at\"]: float(r[\"mv__account_total\"])\n        for r in account_total.to_dict(orient=\"records\")\n    }\n\n\ndef _filter_equity_positions(df: pd.DataFrame) -> pd.DataFrame:\n    df_positions = df.copy()\n    if \"security_type\" in df_positions.columns:\n        df_positions = df_positions[df_positions[\"security_type\"] != TOTAL_KEY]\n\n    df_equity = df_positions[\n        df_positions[\"asset_key\"].astype(str).str.startswith(EQUITY_ASSET_PREFIX)\n    ].copy()\n\n    if DROP_UNKNOWN_SECTOR:\n        df_equity = df_equity[df_equity[\"sector\"] != \"\"]\n    else:\n        df_equity.loc[df_equity[\"sector\"] == \"\", \"sector\"] = \"unknown\"\n\n    return df_equity\n\n\ndef _calculate_totals(\n    df_equity: pd.DataFrame,\n) -> tuple[pd.DataFrame, pd.DataFrame]:\n    equity_totals = df_equity.groupby(\"snapshot_at\", as_index=False).agg(\n        mv__equity_total=(\"market_value\", \"sum\")\n    )\n    sector_totals = df_equity.groupby(\n        [\"snapshot_at\", \"sector\"], as_index=False\n    ).agg(sector_market_value=(\"market_value\", \"sum\"))\n    return equity_totals, sector_totals\n\n\ndef _enrich_with_allocations(\n    df_equity: pd.DataFrame,\n    equity_totals: pd.DataFrame,\n    sector_totals: pd.DataFrame,\n) -> pd.DataFrame:\n    df_equity = df_equity.merge(\n        equity_totals, on=\"snapshot_at\", how=\"left\"\n    ).merge(sector_totals, on=[\"snapshot_at\", \"sector\"], how=\"left\")\n\n    df_equity[\"alloc_of_equity\"] = (\n        df_equity[\"market_value\"] / df_equity[\"mv__equity_total\"]\n    ).fillna(0.0)\n    df_equity[\"alloc_of_sector\"] = (\n        df_equity[\"market_value\"] / df_equity[\"sector_market_value\"]\n    ).fillna(0.0)\n\n    return df_equity\n\n\ndef _aggregate_holdings_by_symbol(df_sector: pd.DataFrame) -> pd.DataFrame:\n    return (\n        df_sector.groupby([\"symbol\", \"name\", \"sector\"], as_index=False)\n        .agg(\n            market_value=(\"market_value\", \"sum\"),\n            quantity=(\"quantity\", \"sum\"),\n            alloc_of_equity=(\"alloc_of_equity\", \"sum\"),\n            alloc_of_sector=(\"alloc_of_sector\", \"sum\"),\n        )\n        .sort_values(\"market_value\", ascending=False)\n    )\n\n\ndef _build_holding_dict(\n    row: pd.Series, account_total_val: float\n) -> dict[str, Any]:\n    mv = float(row.get(\"market_value\", 0.0))\n    alloc_of_account = (mv / account_total_val) if account_total_val else 0.0\n\n    return {\n        \"symbol\": row.get(\"symbol\"),\n        \"name\": row.get(\"name\"),\n        \"quantity\": float(row.get(\"quantity\", 0.0)),\n        \"market_value\": mv,\n        \"alloc_of_equity\": float(row.get(\"alloc_of_equity\", 0.0)),\n        \"alloc_of_sector\": float(row.get(\"alloc_of_sector\", 0.0)),\n        \"alloc_of_account\": float(alloc_of_account),\n    }\n\n\ndef _calculate_sector_allocations(\n    sec_mv: float, equity_total: float, account_total_val: float\n) -> tuple[float, float]:\n    sec_alloc_equity = (sec_mv / equity_total) if equity_total else 0.0\n    sec_alloc_account = (sec_mv / account_total_val) if account_total_val else 0.0\n    return sec_alloc_equity, sec_alloc_account\n\n\ndef _build_sector_dict(\n    sector_name: str,\n    sec_mv: float,\n    sec_alloc_equity: float,\n    sec_alloc_account: float,\n    holdings: list[dict[str, Any]],\n) -> dict[str, Any]:\n    return {\n        \"sector\": sector_name,\n        \"market_value\": sec_mv,\n        \"alloc_pct_of_equity\": float(sec_alloc_equity),\n        \"alloc_pct_of_account\": float(sec_alloc_account),\n        \"holdings\": holdings,\n    }\n\n\ndef _build_holdings_list(\n    sec_df_aggregated: pd.DataFrame, account_total_val: float\n) -> list[dict[str, Any]]:\n    return [\n        _build_holding_dict(row, account_total_val)\n        for _, row in sec_df_aggregated.iterrows()\n    ]\n\n\ndef _process_sector(\n    sector_name: str,\n    sec_df: pd.DataFrame,\n    equity_total: float,\n    account_total_val: float,\n) -> tuple[str, dict[str, Any]]:\n    sec_mv = float(sec_df[\"sector_market_value\"].iloc[0])\n    sec_df_aggregated = _aggregate_holdings_by_symbol(sec_df)\n    holdings = _build_holdings_list(sec_df_aggregated, account_total_val)\n\n    sec_alloc_equity, sec_alloc_account = _calculate_sector_allocations(\n        sec_mv, equity_total, account_total_val\n    )\n\n    sector_dict = _build_sector_dict(\n        sector_name, sec_mv, sec_alloc_equity, sec_alloc_account, holdings\n    )\n\n    return slugify(sector_name), sector_dict\n\n\ndef _process_snapshot(\n    snap_df: pd.DataFrame, acct_map: dict[Any, float], snap_at: Any\n) -> dict[str, Any]:\n    equity_total = float(snap_df[\"mv__equity_total\"].iloc[0])\n    account_total_val = float(acct_map.get(snap_at, 0.0))\n\n    sectors_obj = {\n        key: value\n        for sector_name, sec_df in snap_df.groupby(\"sector\", sort=False)\n        for key, value in [\n            _process_sector(sector_name, sec_df, equity_total, account_total_val)\n        ]\n    }\n\n    return {\n        \"snapshot_at\": str(snap_at),\n        \"mv__equity_total\": equity_total,\n        \"mv__account_total\": account_total_val,\n        \"sectors\": sectors_obj,\n    }\n\n\ndef _build_empty_result(account_total: pd.DataFrame | None) -> list[dict[str, Any]]:\n    if account_total is None or account_total.empty:\n        return []\n\n    tmp = account_total.copy()\n    tmp[\"snapshot_at\"] = tmp[\"snapshot_at\"].astype(str)\n    return [\n        {\n            \"json\": {\n                **r,\n                \"mv__equity_total\": 0.0,\n                \"sectors\": {},\n            }\n        }\n        for r in tmp.to_dict(orient=\"records\")\n    ]\n\n\ndef _get_items(items: list[dict[str, Any]] | None) -> list[dict[str, Any]]:\n    if items is None:\n        try:\n            items = _items  # type: ignore[name-defined]\n        except NameError as exc:\n            raise NameError(\"_items is not defined\") from exc\n    return items\n\n\ndef _prepare_dataframe(items: list[dict[str, Any]]) -> pd.DataFrame:\n    rows = [it.get(\"json\", it) for it in items]\n    if not rows:\n        return pd.DataFrame()\n\n    df = pd.DataFrame(rows)\n    _validate_required_columns(df)\n    return _normalize_dataframe(df)\n\n\ndef _process_equity_data(\n    df_equity: pd.DataFrame, acct_map: dict[Any, float]\n) -> list[dict[str, Any]]:\n    equity_totals, sector_totals = _calculate_totals(df_equity)\n    df_equity = _enrich_with_allocations(df_equity, equity_totals, sector_totals)\n\n    return [\n        _process_snapshot(snap_df, acct_map, snap_at)\n        for snap_at, snap_df in df_equity.groupby(\"snapshot_at\", sort=False)\n    ]\n\n\ndef main(items: list[dict[str, Any]] | None = None) -> list[dict[str, Any]]:\n    items = _get_items(items)\n    df = _prepare_dataframe(items)\n    if df.empty:\n        return []\n\n    account_total = _extract_account_total(df)\n    acct_map = _create_account_total_map(account_total)\n\n    df_equity = _filter_equity_positions(df)\n    if df_equity.empty:\n        return _build_empty_result(account_total)\n\n    out_items = _process_equity_data(df_equity, acct_map)\n    return [{\"json\": row} for row in out_items]\n\nreturn main(_items)"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1872,
+        784
+      ],
+      "id": "3a0dc3a6-59a6-4df5-9b7c-ab97520f03b9",
+      "name": "calculate-security-type-aggregation-detailed-py"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "advanced": true,
+        "mergeByFields": {
+          "values": [
+            {
+              "field1": "snapshot_at",
+              "field2": "snapshot_at"
+            },
+            {
+              "field1": "symbol",
+              "field2": "symbol"
+            }
+          ]
+        },
+        "joinMode": "enrichInput1",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        2320,
+        960
+      ],
+      "id": "6be01328-8b2f-429e-b29a-f622c1105a28",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "language": "pythonNative",
+        "pythonCode": "import re\nfrom typing import Any\n\nimport pandas as pd\n\nTOTAL_KEY = \"--\"\n\n# --- knobs you can tweak ---\nDROP_UNKNOWN_SECTOR = True\nEQUITY_ASSET_PREFIX = \"EQUITY:\"\n# ---------------------------\n\n\ndef slugify(col: str) -> str:\n    s = (\n        str(col)\n        .strip()\n        .lower()\n        .replace(\"&\", \"and\")\n        .replace(\"/\", \"_\")\n        .replace(\"-\", \"_\")\n    )\n    s = re.sub(r\"\\s+\", \"_\", s)\n    s = re.sub(r\"[^a-z0-9_]\", \"\", s)\n    s = re.sub(r\"_+\", \"_\", s)\n    return s.strip(\"_\")\n\n\ndef _validate_required_columns(df: pd.DataFrame) -> None:\n    required_columns = [\"snapshot_at\", \"market_value\", \"asset_key\"]\n    for col in required_columns:\n        if col not in df.columns:\n            raise ValueError(f\"Missing '{col}' in input items\")\n\n\ndef _normalize_snapshot_date(df: pd.DataFrame) -> pd.DataFrame:\n    df[\"snapshot_at\"] = pd.to_datetime(df[\"snapshot_at\"], errors=\"coerce\")\n    return df\n\n\ndef _normalize_market_value(df: pd.DataFrame) -> pd.DataFrame:\n    df[\"market_value\"] = pd.to_numeric(\n        df[\"market_value\"], errors=\"coerce\"\n    ).fillna(0.0)\n    return df\n\n\ndef _normalize_sector(df: pd.DataFrame) -> pd.DataFrame:\n    if \"sector\" not in df.columns:\n        df[\"sector\"] = None\n    df[\"sector\"] = df[\"sector\"].astype(\"object\")\n    df[\"sector\"] = df[\"sector\"].where(df[\"sector\"].notna(), \"\")\n    df[\"sector\"] = df[\"sector\"].astype(str).str.strip()\n    return df\n\n\ndef _extract_account_total(df: pd.DataFrame) -> pd.DataFrame | None:\n    if \"security_type\" not in df.columns:\n        return None\n    totals = df[df[\"security_type\"] == TOTAL_KEY]\n    if totals.empty:\n        return None\n    return totals.groupby(\"snapshot_at\", as_index=False).agg(\n        mv__account_total=(\"market_value\", \"sum\")\n    )\n\n\ndef _filter_equity_positions(df: pd.DataFrame) -> pd.DataFrame:\n    df_positions = df.copy()\n    if \"security_type\" in df_positions.columns:\n        df_positions = df_positions[df_positions[\"security_type\"] != TOTAL_KEY]\n\n    df_equity = df_positions[\n        df_positions[\"asset_key\"]\n        .astype(str)\n        .str.startswith(EQUITY_ASSET_PREFIX)\n    ].copy()\n\n    if DROP_UNKNOWN_SECTOR:\n        df_equity = df_equity[df_equity[\"sector\"] != \"\"]\n\n    df_equity.loc[df_equity[\"sector\"] == \"\", \"sector\"] = \"unknown\"\n    return df_equity\n\n\ndef _calculate_sector_aggregations(df_equity: pd.DataFrame) -> pd.DataFrame:\n    sector_grouped = df_equity.groupby(\n        [\"snapshot_at\", \"sector\"], as_index=False\n    ).agg(market_value=(\"market_value\", \"sum\"))\n\n    equity_total = df_equity.groupby(\"snapshot_at\", as_index=False).agg(\n        mv__equity_total=(\"market_value\", \"sum\")\n    )\n\n    sector_grouped = sector_grouped.merge(\n        equity_total, on=\"snapshot_at\", how=\"left\"\n    )\n    sector_grouped[\"allocation_pct\"] = (\n        sector_grouped[\"market_value\"] / sector_grouped[\"mv__equity_total\"]\n    ).fillna(0.0)\n\n    return sector_grouped, equity_total\n\n\ndef _pivot_market_values(sector_grouped: pd.DataFrame) -> pd.DataFrame:\n    wide_mv = sector_grouped.pivot_table(\n        index=\"snapshot_at\",\n        columns=\"sector\",\n        values=\"market_value\",\n        aggfunc=\"sum\",\n        fill_value=0.0,\n    ).reset_index()\n    wide_mv.columns = [\"snapshot_at\"] + [\n        f\"mv__{slugify(c)}\" for c in wide_mv.columns[1:]\n    ]\n    return wide_mv\n\n\ndef _pivot_allocations(sector_grouped: pd.DataFrame) -> pd.DataFrame:\n    wide_alloc = sector_grouped.pivot_table(\n        index=\"snapshot_at\",\n        columns=\"sector\",\n        values=\"allocation_pct\",\n        aggfunc=\"sum\",\n        fill_value=0.0,\n    ).reset_index()\n    wide_alloc.columns = [\"snapshot_at\"] + [\n        f\"alloc__{slugify(c)}\" for c in wide_alloc.columns[1:]\n    ]\n    return wide_alloc\n\n\ndef _merge_results(\n    wide_mv: pd.DataFrame,\n    wide_alloc: pd.DataFrame,\n    equity_total: pd.DataFrame,\n    account_total: pd.DataFrame | None,\n) -> pd.DataFrame:\n    wide = wide_mv.merge(wide_alloc, on=\"snapshot_at\", how=\"left\")\n\n    equity_total_out = equity_total.copy()\n    equity_total_out[\"snapshot_at\"] = equity_total_out[\"snapshot_at\"].astype(\n        str\n    )\n\n    wide[\"snapshot_at\"] = wide[\"snapshot_at\"].astype(str)\n    wide = wide.merge(equity_total_out, on=\"snapshot_at\", how=\"left\")\n\n    if account_total is not None:\n        account_total_out = account_total.copy()\n        account_total_out[\"snapshot_at\"] = account_total_out[\n            \"snapshot_at\"\n        ].astype(str)\n        wide = wide.merge(account_total_out, on=\"snapshot_at\", how=\"left\")\n\n    return wide.fillna(0.0)\n\n\ndef main(items: list[dict[str, Any]] | None = None) -> list[dict[str, Any]]:\n    if items is None:\n        try:\n            items = _items  # type: ignore[name-defined]\n        except NameError as exc:\n            raise NameError(\"_items is not defined\") from exc\n\n    if not items:\n        return []\n\n    rows = [it.get(\"json\", it) for it in items]\n    if not rows:\n        return []\n\n    df = pd.DataFrame(rows)\n    _validate_required_columns(df)\n\n    df = _normalize_snapshot_date(df)\n    df = _normalize_market_value(df)\n    df = _normalize_sector(df)\n\n    account_total = _extract_account_total(df)\n    df_equity = _filter_equity_positions(df)\n\n    sector_grouped, equity_total = _calculate_sector_aggregations(df_equity)\n    wide_mv = _pivot_market_values(sector_grouped)\n    wide_alloc = _pivot_allocations(sector_grouped)\n\n    result = _merge_results(wide_mv, wide_alloc, equity_total, account_total)\n\n    return [{\"json\": row} for row in result.to_dict(orient=\"records\")]\n\n\nreturn main(_items)"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1872,
+        496
+      ],
+      "id": "1725b057-4f84-44ad-880c-3ab0d2a09a10",
+      "name": "calculate-security-type-aggregation-by-sector-py"
+    },
+    {
+      "parameters": {
+        "language": "pythonNative",
+        "pythonCode": "\"\"\"Flattens sector aggregation data with holdings into individual rows.\"\"\"\n\nfrom typing import Any\n\n\ndef main(items: list[dict[str, Any]] | None = None) -> list[dict[str, Any]]:\n    \"\"\"Transform nested sector/holdings data into flat rows.\n\n    Args:\n        items: List of portfolio items with sector aggregation data\n\n    Returns:\n        List of flattened holding records wrapped in {\"json\": record} format\n\n    Raises:\n        NameError: If items is None and _items global is not defined\n    \"\"\"\n    if items is None:\n        try:\n            items = _items  # type: ignore[name-defined]\n        except NameError as exc:\n            raise NameError(\"_items is not defined\") from exc\n\n    if not items:\n        return []\n\n    flattened_holdings = []\n\n    for item in items:\n        document = _extract_document(item)\n        snapshot_metadata = _extract_snapshot_metadata(document)\n        sectors = document.get(\"sectors\", {}) or {}\n\n        for sector_slug, sector_data in sectors.items():\n            sector_metadata = _extract_sector_metadata(\n                sector_slug, sector_data\n            )\n            holdings = sector_data.get(\"holdings\", []) or []\n\n            for holding in holdings:\n                flat_holding = _create_flat_holding(\n                    holding, snapshot_metadata, sector_metadata\n                )\n                flattened_holdings.append(flat_holding)\n\n    return [{\"json\": record} for record in flattened_holdings]\n\n\ndef _extract_document(item: dict[str, Any]) -> dict[str, Any]:\n    \"\"\"Extract document data from item, handling n8n wrapper format.\"\"\"\n    return item.get(\"json\", item)\n\n\ndef _extract_snapshot_metadata(document: dict[str, Any]) -> dict[str, Any]:\n    \"\"\"Extract snapshot-level metadata from document.\"\"\"\n    return {\n        \"snapshot_at\": document.get(\"snapshot_at\"),\n        \"mv_equity_total\": document.get(\"mv__equity_total\", 0.0),\n        \"mv_account_total\": document.get(\"mv__account_total\", 0.0),\n    }\n\n\ndef _extract_sector_metadata(\n    sector_slug: str, sector_data: dict[str, Any]\n) -> dict[str, Any]:\n    \"\"\"Extract sector-level metadata.\"\"\"\n    return {\n        \"sector_slug\": sector_slug,\n        \"sector_name\": sector_data.get(\"sector\"),\n        \"sector_market_value\": sector_data.get(\"market_value\", 0.0),\n        \"sector_alloc_pct_of_equity\": sector_data.get(\n            \"alloc_pct_of_equity\", 0.0\n        ),\n        \"sector_alloc_pct_of_account\": sector_data.get(\n            \"alloc_pct_of_account\", 0.0\n        ),\n    }\n\n\ndef _create_flat_holding(\n    holding: dict[str, Any],\n    snapshot_metadata: dict[str, Any],\n    sector_metadata: dict[str, Any],\n) -> dict[str, Any]:\n    \"\"\"Create a flat holding record combining all metadata.\"\"\"\n    return {\n        \"snapshot_at\": snapshot_metadata[\"snapshot_at\"],\n        \"sector_slug\": sector_metadata[\"sector_slug\"],\n        \"sector\": sector_metadata[\"sector_name\"],\n        \"symbol\": holding.get(\"symbol\"),\n        \"name\": holding.get(\"name\"),\n        \"market_value\": holding.get(\"market_value\", 0.0),\n        \"alloc_of_equity\": holding.get(\"alloc_of_equity\", 0.0),\n        \"alloc_of_sector\": holding.get(\"alloc_of_sector\", 0.0),\n        \"alloc_of_account\": holding.get(\"alloc_of_account\", 0.0),\n        \"sector_market_value\": sector_metadata[\"sector_market_value\"],\n        \"sector_alloc_pct_of_equity\": sector_metadata[\n            \"sector_alloc_pct_of_equity\"\n        ],\n        \"sector_alloc_pct_of_account\": sector_metadata[\n            \"sector_alloc_pct_of_account\"\n        ],\n        \"mv__equity_total\": snapshot_metadata[\"mv_equity_total\"],\n        \"mv__account_total\": snapshot_metadata[\"mv_account_total\"],\n    }\n\n\nreturn main(_items)"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2096,
+        880
+      ],
+      "id": "d2de9f86-0dfe-4026-a11e-dc06faf53c9f",
+      "name": "flat-aggregation-py"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "collection": "historical_equity_sector_detailed_allocation_flat",
+        "updateKey": "doc_id",
+        "fields": "={{ $json.keys().filter(k => !['_id','id'].includes(k)).join(',') }}",
+        "upsert": true,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mongoDb",
+      "typeVersion": 1.2,
+      "position": [
+        2544,
+        960
+      ],
+      "id": "2cdb745b-2039-4d1e-a863-2a1a60f050a1",
+      "name": "Save Flat Aggregation",
+      "alwaysOutputData": false,
+      "credentials": {
+        "mongoDb": {
+          "id": "T9DgdtgaTRnaLRbg",
+          "name": "MongoDB account"
+        }
+      }
+    }
+  ],
+  "pinData": {
+    "Google Drive Trigger": [
+      {
+        "json": {
+          "parents": [
+            "1KPRkjbkggrFqcIppv_Q27YqBwitZlS2p"
+          ],
+          "lastModifyingUser": {
+            "displayName": "jfgonzalezm",
+            "kind": "drive#user",
+            "me": false,
+            "permissionId": "10175447638795150651",
+            "emailAddress": "jfgonzalezm@gmail.com",
+            "photoLink": "https://lh3.googleusercontent.com/a-/ALV-UjUkJYdCDVl7zDU32A4xXk-ya7vOEePjrW8XHgyz4ZiG1hBNPtPn=s64"
+          },
+          "owners": [
+            {
+              "displayName": "jfgonzalezm",
+              "kind": "drive#user",
+              "me": false,
+              "permissionId": "10175447638795150651",
+              "emailAddress": "jfgonzalezm@gmail.com",
+              "photoLink": "https://lh3.googleusercontent.com/a-/ALV-UjUkJYdCDVl7zDU32A4xXk-ya7vOEePjrW8XHgyz4ZiG1hBNPtPn=s64"
+            }
+          ],
+          "permissions": [
+            {
+              "kind": "drive#permission",
+              "id": "10175447638795150651",
+              "type": "user",
+              "emailAddress": "jfgonzalezm@gmail.com",
+              "role": "owner",
+              "displayName": "jfgonzalezm",
+              "photoLink": "https://lh3.googleusercontent.com/a-/ALV-UjUkJYdCDVl7zDU32A4xXk-ya7vOEePjrW8XHgyz4ZiG1hBNPtPn=s64",
+              "deleted": false,
+              "pendingOwner": false
+            },
+            {
+              "kind": "drive#permission",
+              "id": "01939395557398070086",
+              "type": "user",
+              "emailAddress": "n8n-test-workflow@n8n-mycoolserver.iam.gserviceaccount.com",
+              "role": "writer",
+              "displayName": "n8n-test-workflow@n8n-mycoolserver.iam.gserviceaccount.com",
+              "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocIZvtdXi0ZDzdJZCwt4TsdByaIIU9vxmOs-lwXj2w3eepG31Eo=s64",
+              "deleted": false,
+              "pendingOwner": false
+            }
+          ],
+          "spaces": [
+            "drive"
+          ],
+          "capabilities": {
+            "canAcceptOwnership": false,
+            "canAddChildren": false,
+            "canAddMyDriveParent": false,
+            "canChangeCopyRequiresWriterPermission": false,
+            "canChangeItemDownloadRestriction": false,
+            "canChangeSecurityUpdateEnabled": false,
+            "canChangeViewersCanCopyContent": false,
+            "canComment": true,
+            "canCopy": true,
+            "canDelete": false,
+            "canDisableInheritedPermissions": false,
+            "canDownload": true,
+            "canEdit": true,
+            "canEnableInheritedPermissions": true,
+            "canListChildren": false,
+            "canModifyContent": true,
+            "canModifyContentRestriction": true,
+            "canModifyEditorContentRestriction": true,
+            "canModifyOwnerContentRestriction": false,
+            "canModifyLabels": false,
+            "canMoveChildrenWithinDrive": false,
+            "canMoveItemIntoTeamDrive": false,
+            "canMoveItemOutOfDrive": false,
+            "canMoveItemWithinDrive": true,
+            "canReadLabels": false,
+            "canReadRevisions": true,
+            "canRemoveChildren": false,
+            "canRemoveContentRestriction": false,
+            "canRemoveMyDriveParent": true,
+            "canRename": true,
+            "canShare": true,
+            "canTrash": false,
+            "canUntrash": false
+          },
+          "permissionIds": [
+            "10175447638795150651",
+            "01939395557398070086"
+          ],
+          "linkShareMetadata": {
+            "securityUpdateEligible": false,
+            "securityUpdateEnabled": true
+          },
+          "downloadRestrictions": {
+            "itemDownloadRestriction": {
+              "restrictedForReaders": false,
+              "restrictedForWriters": false
+            },
+            "effectiveDownloadRestrictionWithContext": {
+              "restrictedForReaders": false,
+              "restrictedForWriters": false
+            }
+          },
+          "kind": "drive#file",
+          "id": "1OSOboZaZ9aA_-1LdX1S-ZieAeilkyB2z",
+          "name": "Individual-Positions-2025-12-14-155319.csv",
+          "mimeType": "text/csv",
+          "starred": false,
+          "trashed": false,
+          "explicitlyTrashed": false,
+          "version": "3",
+          "webContentLink": "https://drive.google.com/uc?id=1OSOboZaZ9aA_-1LdX1S-ZieAeilkyB2z&export=download",
+          "webViewLink": "https://drive.google.com/file/d/1OSOboZaZ9aA_-1LdX1S-ZieAeilkyB2z/view?usp=drivesdk",
+          "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/text/csv",
+          "hasThumbnail": true,
+          "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBPM9BqAsOQEvHEr10ujaYg8Fcd-qB_W2EbwXHqpKE33Qgez2XaR9SuwfvjhaYaDmO3I8hie4m5gVeSk95BcxijwJDLe5hmiede54Eoacl8KvIs=s220",
+          "thumbnailVersion": "1",
+          "viewedByMe": false,
+          "createdTime": "2025-12-14T20:53:50.854Z",
+          "modifiedTime": "2025-12-14T20:53:19.000Z",
+          "modifiedByMe": false,
+          "shared": true,
+          "ownedByMe": false,
+          "viewersCanCopyContent": true,
+          "copyRequiresWriterPermission": false,
+          "writersCanShare": true,
+          "originalFilename": "Individual-Positions-2025-12-14-155319.csv",
+          "fullFileExtension": "csv",
+          "fileExtension": "csv",
+          "md5Checksum": "7ee1aee1d4f8302b5a40e037f2373fbf",
+          "sha1Checksum": "729e3c74c32ed859f0a86fbbe2f9033fad2da522",
+          "sha256Checksum": "13a97dc35ebec28168d44eb84242fc7c1d92fbaac5acc2fd00c9cf7555b005ef",
+          "size": "8585",
+          "quotaBytesUsed": "8585",
+          "headRevisionId": "0BzlhHEQ6b9QDdEtJdHhxWXp4aTFnWDdSK2lreGhrSUJuaElnPQ",
+          "isAppAuthorized": false,
+          "inheritedPermissionsDisabled": false
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ],
+    "Merge": [
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "information_technology",
+          "sector": "Information Technology",
+          "symbol": "AVGO",
+          "name": "BROADCOM INC",
+          "market_value": 1439.72,
+          "alloc_of_equity": 0.03324876343661392,
+          "alloc_of_sector": 0.17344018041286793,
+          "alloc_of_account": 0.01861404177674036,
+          "sector_market_value": 8300.96,
+          "sector_alloc_pct_of_equity": 0.1917016192987488,
+          "sector_alloc_pct_of_account": 0.10732254620832567,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:AVGO",
+          "security_type": "Equity",
+          "rating": "C",
+          "quantity": 4,
+          "price": 359.93,
+          "cost_basis": 1363.87,
+          "gain_abs": 75.85,
+          "gain_pct": 0.0556,
+          "day_change_abs": -185.76,
+          "day_change_pct": -0.1143,
+          "price_change_abs": -46.44,
+          "price_change_pct": -0.1143,
+          "low_52w": 138.1,
+          "high_52w": 414.61,
+          "pe_ratio": 89.31,
+          "price_low_52w_ratio": 0.3836857166671297,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:AVGO|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 0
+          },
+          {
+            "item": 5,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "information_technology",
+          "sector": "Information Technology",
+          "symbol": "MSFT",
+          "name": "MICROSOFT CORP",
+          "market_value": 1435.59,
+          "alloc_of_equity": 0.03315338559023183,
+          "alloc_of_sector": 0.17294264759738634,
+          "alloc_of_account": 0.018560645288160676,
+          "sector_market_value": 8300.96,
+          "sector_alloc_pct_of_equity": 0.1917016192987488,
+          "sector_alloc_pct_of_account": 0.10732254620832567,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:MSFT",
+          "security_type": "Equity",
+          "rating": "B",
+          "quantity": 3,
+          "price": 478.53,
+          "cost_basis": 1519.85,
+          "gain_abs": -84.26,
+          "gain_pct": -0.0554,
+          "day_change_abs": -14.82,
+          "day_change_pct": -0.0102,
+          "price_change_abs": -4.94,
+          "price_change_pct": -0.0102,
+          "low_52w": 344.79,
+          "high_52w": 555.45,
+          "pe_ratio": 34.03,
+          "price_low_52w_ratio": 0.7205190897122439,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:MSFT|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 1
+          },
+          {
+            "item": 23,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "information_technology",
+          "sector": "Information Technology",
+          "symbol": "AAPL",
+          "name": "APPLE INC",
+          "market_value": 1113.12,
+          "alloc_of_equity": 0.025706292582282443,
+          "alloc_of_sector": 0.13409533355178196,
+          "alloc_of_account": 0.014391452631431963,
+          "sector_market_value": 8300.96,
+          "sector_alloc_pct_of_equity": 0.1917016192987488,
+          "sector_alloc_pct_of_account": 0.10732254620832567,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:AAPL",
+          "security_type": "Equity",
+          "rating": "A",
+          "quantity": 4,
+          "price": 278.28,
+          "cost_basis": 996.82,
+          "gain_abs": 116.3,
+          "gain_pct": 0.1167,
+          "day_change_abs": 1,
+          "day_change_pct": 0.0009,
+          "price_change_abs": 0.25,
+          "price_change_pct": 0.0009,
+          "low_52w": 169.21,
+          "high_52w": 288.62,
+          "pe_ratio": 37.3,
+          "price_low_52w_ratio": 0.6080566336064397,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:AAPL|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 2
+          },
+          {
+            "item": 0,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "information_technology",
+          "sector": "Information Technology",
+          "symbol": "ADBE",
+          "name": "ADOBE INC",
+          "market_value": 1069.29,
+          "alloc_of_equity": 0.02469408652733649,
+          "alloc_of_sector": 0.1288152213719859,
+          "alloc_of_account": 0.013824777548030657,
+          "sector_market_value": 8300.96,
+          "sector_alloc_pct_of_equity": 0.1917016192987488,
+          "sector_alloc_pct_of_account": 0.10732254620832567,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:ADBE",
+          "security_type": "Equity",
+          "rating": "A",
+          "quantity": 3,
+          "price": 356.43,
+          "cost_basis": 1062.97,
+          "gain_abs": 6.32,
+          "gain_pct": 0.0059,
+          "day_change_abs": 18,
+          "day_change_pct": 0.0171,
+          "price_change_abs": 6,
+          "price_change_pct": 0.0171,
+          "low_52w": 311.59,
+          "high_52w": 494,
+          "pe_ratio": 21.34,
+          "price_low_52w_ratio": 0.8741968970064248,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:ADBE|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 3
+          },
+          {
+            "item": 2,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "information_technology",
+          "sector": "Information Technology",
+          "symbol": "AMD",
+          "name": "ADVANCED MICRO DEVIC",
+          "market_value": 843.12,
+          "alloc_of_equity": 0.019470937007666715,
+          "alloc_of_sector": 0.10156897515468091,
+          "alloc_of_account": 0.010900641029370524,
+          "sector_market_value": 8300.96,
+          "sector_alloc_pct_of_equity": 0.1917016192987488,
+          "sector_alloc_pct_of_account": 0.10732254620832567,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:AMD",
+          "security_type": "Equity",
+          "rating": "D",
+          "quantity": 4,
+          "price": 210.78,
+          "cost_basis": 637.81,
+          "gain_abs": 205.31,
+          "gain_pct": 0.32189999999999996,
+          "day_change_abs": -42.6,
+          "day_change_pct": -0.0481,
+          "price_change_abs": -10.65,
+          "price_change_pct": -0.0481,
+          "low_52w": 76.48,
+          "high_52w": 267.08,
+          "pe_ratio": 110.36,
+          "price_low_52w_ratio": 0.3628427744567796,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:AMD|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 4
+          },
+          {
+            "item": 3,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "information_technology",
+          "sector": "Information Technology",
+          "symbol": "TXN",
+          "name": "TEXAS INSTRS INC",
+          "market_value": 717.68,
+          "alloc_of_equity": 0.01657403699551932,
+          "alloc_of_sector": 0.08645746997937588,
+          "alloc_of_account": 0.009278835816916497,
+          "sector_market_value": 8300.96,
+          "sector_alloc_pct_of_equity": 0.1917016192987488,
+          "sector_alloc_pct_of_account": 0.10732254620832567,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:TXN",
+          "security_type": "Equity",
+          "rating": "B",
+          "quantity": 4,
+          "price": 179.42,
+          "cost_basis": 722.85,
+          "gain_abs": -5.17,
+          "gain_pct": -0.0072,
+          "day_change_abs": -9,
+          "day_change_pct": -0.0124,
+          "price_change_abs": -2.25,
+          "price_change_pct": -0.0124,
+          "low_52w": 139.95,
+          "high_52w": 221.69,
+          "pe_ratio": 32.68,
+          "price_low_52w_ratio": 0.78001337643518,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:TXN|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 5
+          },
+          {
+            "item": 35,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "information_technology",
+          "sector": "Information Technology",
+          "symbol": "NVDA",
+          "name": "NVIDIA CORP",
+          "market_value": 700.08,
+          "alloc_of_equity": 0.016167584187692517,
+          "alloc_of_sector": 0.08433723328386115,
+          "alloc_of_account": 0.00905128661618953,
+          "sector_market_value": 8300.96,
+          "sector_alloc_pct_of_equity": 0.1917016192987488,
+          "sector_alloc_pct_of_account": 0.10732254620832567,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:NVDA",
+          "security_type": "Equity",
+          "rating": "B",
+          "quantity": 4,
+          "price": 175.02,
+          "cost_basis": 756.77,
+          "gain_abs": -56.69,
+          "gain_pct": -0.07490000000000001,
+          "day_change_abs": -23.64,
+          "day_change_pct": -0.0327,
+          "price_change_abs": -5.91,
+          "price_change_pct": -0.0327,
+          "low_52w": 86.62,
+          "high_52w": 212.19,
+          "pe_ratio": 43.32,
+          "price_low_52w_ratio": 0.4949148668723574,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:NVDA|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 6
+          },
+          {
+            "item": 26,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "information_technology",
+          "sector": "Information Technology",
+          "symbol": "PLTR",
+          "name": "PALANTIR TECHNOLOGIES INCLASS A",
+          "market_value": 367.14,
+          "alloc_of_equity": 0.008478697946905254,
+          "alloc_of_sector": 0.04422861934041364,
+          "alloc_of_account": 0.00474672804289199,
+          "sector_market_value": 8300.96,
+          "sector_alloc_pct_of_equity": 0.1917016192987488,
+          "sector_alloc_pct_of_account": 0.10732254620832567,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:PLTR",
+          "security_type": "Equity",
+          "rating": "C",
+          "quantity": 2,
+          "price": 183.57,
+          "cost_basis": 381.72,
+          "gain_abs": -14.58,
+          "gain_pct": -0.0382,
+          "day_change_abs": -7.94,
+          "day_change_pct": -0.0212,
+          "price_change_abs": -3.97,
+          "price_change_pct": -0.0212,
+          "low_52w": 63.4,
+          "high_52w": 207.52,
+          "pe_ratio": 425.2,
+          "price_low_52w_ratio": 0.3453723375279185,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:PLTR|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 7
+          },
+          {
+            "item": 29,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "information_technology",
+          "sector": "Information Technology",
+          "symbol": "QCOM",
+          "name": "QUALCOMM INC",
+          "market_value": 356.58,
+          "alloc_of_equity": 0.008234826262209172,
+          "alloc_of_sector": 0.0429564773231048,
+          "alloc_of_account": 0.004610198522455809,
+          "sector_market_value": 8300.96,
+          "sector_alloc_pct_of_equity": 0.1917016192987488,
+          "sector_alloc_pct_of_account": 0.10732254620832567,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:QCOM",
+          "security_type": "Equity",
+          "rating": "A",
+          "quantity": 2,
+          "price": 178.29,
+          "cost_basis": 325.64,
+          "gain_abs": 30.94,
+          "gain_pct": 0.095,
+          "day_change_abs": -5.96,
+          "day_change_pct": -0.016399999999999998,
+          "price_change_abs": -2.98,
+          "price_change_pct": -0.016399999999999998,
+          "low_52w": 120.8,
+          "high_52w": 205.95,
+          "pe_ratio": 35.59,
+          "price_low_52w_ratio": 0.6775478153570027,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:QCOM|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 8
+          },
+          {
+            "item": 30,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "information_technology",
+          "sector": "Information Technology",
+          "symbol": "SMCI",
+          "name": "SUPER MICRO COMPUTER INC",
+          "market_value": 258.64,
+          "alloc_of_equity": 0.005973008762291156,
+          "alloc_of_sector": 0.031157841984541548,
+          "alloc_of_account": 0.00334393893613767,
+          "sector_market_value": 8300.96,
+          "sector_alloc_pct_of_equity": 0.1917016192987488,
+          "sector_alloc_pct_of_account": 0.10732254620832567,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:SMCI",
+          "security_type": "Equity",
+          "rating": "D",
+          "quantity": 8,
+          "price": 32.33,
+          "cost_basis": 406.32,
+          "gain_abs": -147.68,
+          "gain_pct": -0.3635,
+          "day_change_abs": -13.52,
+          "day_change_pct": -0.049699999999999994,
+          "price_change_abs": -1.69,
+          "price_change_pct": -0.049699999999999994,
+          "low_52w": 25.71,
+          "high_52w": 66.44,
+          "pe_ratio": 25.72,
+          "price_low_52w_ratio": 0.7952366223321993,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:SMCI|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 9
+          },
+          {
+            "item": 32,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "health_care",
+          "sector": "Health Care",
+          "symbol": "JNJ",
+          "name": "JOHNSON & JOHNSON",
+          "market_value": 2750.54,
+          "alloc_of_equity": 0.06352072193408721,
+          "alloc_of_sector": 0.3281918746099758,
+          "alloc_of_account": 0.03556154423679287,
+          "sector_market_value": 8380.89,
+          "sector_alloc_pct_of_equity": 0.19354751548793042,
+          "sector_alloc_pct_of_account": 0.10835595573185446,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:JNJ",
+          "security_type": "Equity",
+          "rating": "A",
+          "quantity": 13,
+          "price": 211.58,
+          "cost_basis": 2376.13,
+          "gain_abs": 374.41,
+          "gain_pct": 0.1576,
+          "day_change_abs": 20.41,
+          "day_change_pct": 0.0075,
+          "price_change_abs": 1.57,
+          "price_change_pct": 0.0075,
+          "low_52w": 140.68,
+          "high_52w": 212.27,
+          "pe_ratio": 20.45,
+          "price_low_52w_ratio": 0.6649021646658474,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:JNJ|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 10
+          },
+          {
+            "item": 17,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "health_care",
+          "sector": "Health Care",
+          "symbol": "ABT",
+          "name": "ABBOTT LABS",
+          "market_value": 1630.98,
+          "alloc_of_equity": 0.037665704574395414,
+          "alloc_of_sector": 0.1946070166772264,
+          "alloc_of_account": 0.021086829284185808,
+          "sector_market_value": 8380.89,
+          "sector_alloc_pct_of_equity": 0.19354751548793042,
+          "sector_alloc_pct_of_account": 0.10835595573185446,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:ABT",
+          "security_type": "Equity",
+          "rating": "B",
+          "quantity": 13,
+          "price": 125.46,
+          "cost_basis": 1700.03,
+          "gain_abs": -69.05,
+          "gain_pct": -0.0406,
+          "day_change_abs": 28.34,
+          "day_change_pct": 0.0177,
+          "price_change_abs": 2.18,
+          "price_change_pct": 0.0177,
+          "low_52w": 110.86,
+          "high_52w": 141.23,
+          "pe_ratio": 15.76,
+          "price_low_52w_ratio": 0.8836282480471864,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:ABT|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 11
+          },
+          {
+            "item": 1,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "health_care",
+          "sector": "Health Care",
+          "symbol": "BSX",
+          "name": "BOSTON SCIENTIFIC CORP",
+          "market_value": 1203.54,
+          "alloc_of_equity": 0.027794443882492647,
+          "alloc_of_sector": 0.14360527342561472,
+          "alloc_of_account": 0.015560486650166763,
+          "sector_market_value": 8380.89,
+          "sector_alloc_pct_of_equity": 0.19354751548793042,
+          "sector_alloc_pct_of_account": 0.10835595573185446,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:BSX",
+          "security_type": "Equity",
+          "rating": "C",
+          "quantity": 13,
+          "price": 92.58,
+          "cost_basis": 1303.12,
+          "gain_abs": -99.58,
+          "gain_pct": -0.0764,
+          "day_change_abs": 10.79,
+          "day_change_pct": 0.009000000000000001,
+          "price_change_abs": 0.83,
+          "price_change_pct": 0.009000000000000001,
+          "low_52w": 85.98,
+          "high_52w": 109.5,
+          "pe_ratio": 49.51,
+          "price_low_52w_ratio": 0.9287103046014259,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:BSX|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 12
+          },
+          {
+            "item": 7,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "health_care",
+          "sector": "Health Care",
+          "symbol": "ISRG",
+          "name": "INTUITIVE SURGICAL INC",
+          "market_value": 1084.64,
+          "alloc_of_equity": 0.025048578038708167,
+          "alloc_of_sector": 0.12941823601073396,
+          "alloc_of_account": 0.014023236652073782,
+          "sector_market_value": 8380.89,
+          "sector_alloc_pct_of_equity": 0.19354751548793042,
+          "sector_alloc_pct_of_account": 0.10835595573185446,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:ISRG",
+          "security_type": "Equity",
+          "rating": "D",
+          "quantity": 2,
+          "price": 542.32,
+          "cost_basis": 877.74,
+          "gain_abs": 206.9,
+          "gain_pct": 0.2357,
+          "day_change_abs": -10.08,
+          "day_change_pct": -0.0092,
+          "price_change_abs": -5.04,
+          "price_change_pct": -0.0092,
+          "low_52w": 425,
+          "high_52w": 616,
+          "pe_ratio": 71.75,
+          "price_low_52w_ratio": 0.7836701578403894,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:ISRG|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 13
+          },
+          {
+            "item": 16,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "health_care",
+          "sector": "Health Care",
+          "symbol": "LLY",
+          "name": "ELI LILLY AND CO",
+          "market_value": 1027.51,
+          "alloc_of_equity": 0.023729222986938546,
+          "alloc_of_sector": 0.12260153754553514,
+          "alloc_of_account": 0.0132846067749413,
+          "sector_market_value": 8380.89,
+          "sector_alloc_pct_of_equity": 0.19354751548793042,
+          "sector_alloc_pct_of_account": 0.10835595573185446,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:LLY",
+          "security_type": "Equity",
+          "rating": "C",
+          "quantity": 1,
+          "price": 1027.51,
+          "cost_basis": 750.4,
+          "gain_abs": 277.11,
+          "gain_pct": 0.3693,
+          "day_change_abs": 18.13,
+          "day_change_pct": 0.018000000000000002,
+          "price_change_abs": 18.13,
+          "price_change_pct": 0.018000000000000002,
+          "low_52w": 623.78,
+          "high_52w": 1111.99,
+          "pe_ratio": 50.26,
+          "price_low_52w_ratio": 0.6070792498369846,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:LLY|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 14
+          },
+          {
+            "item": 20,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "health_care",
+          "sector": "Health Care",
+          "symbol": "UNH",
+          "name": "UNITEDHEALTH GROUP INC",
+          "market_value": 683.68,
+          "alloc_of_equity": 0.01578884407130845,
+          "alloc_of_sector": 0.08157606173091402,
+          "alloc_of_account": 0.008839252133693945,
+          "sector_market_value": 8380.89,
+          "sector_alloc_pct_of_equity": 0.19354751548793042,
+          "sector_alloc_pct_of_account": 0.10835595573185446,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:UNH",
+          "security_type": "Equity",
+          "rating": "C",
+          "quantity": 2,
+          "price": 341.84,
+          "cost_basis": 645.97,
+          "gain_abs": 37.71,
+          "gain_pct": 0.0584,
+          "day_change_abs": 10.22,
+          "day_change_pct": 0.0152,
+          "price_change_abs": 5.11,
+          "price_change_pct": 0.0152,
+          "low_52w": 234.6,
+          "high_52w": 606.36,
+          "pe_ratio": 17.79,
+          "price_low_52w_ratio": 0.6862859817458461,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:UNH|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 15
+          },
+          {
+            "item": 36,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "consumer_discretionary",
+          "sector": "Consumer Discretionary",
+          "symbol": "AMZN",
+          "name": "AMAZON.COM INC",
+          "market_value": 1130.95,
+          "alloc_of_equity": 0.02611805698930244,
+          "alloc_of_sector": 0.5519871929404989,
+          "alloc_of_account": 0.014621975486486615,
+          "sector_market_value": 2048.87,
+          "sector_alloc_pct_of_equity": 0.04731641843023306,
+          "sector_alloc_pct_of_account": 0.026489700618946753,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:AMZN",
+          "security_type": "Equity",
+          "rating": "C",
+          "quantity": 5,
+          "price": 226.19,
+          "cost_basis": 1137.78,
+          "gain_abs": -6.83,
+          "gain_pct": -0.006,
+          "day_change_abs": -20.45,
+          "day_change_pct": -0.0178,
+          "price_change_abs": -4.09,
+          "price_change_pct": -0.0178,
+          "low_52w": 161.38,
+          "high_52w": 258.6,
+          "pe_ratio": 31.96,
+          "price_low_52w_ratio": 0.7134709757283699,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:AMZN|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 16
+          },
+          {
+            "item": 4,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "consumer_discretionary",
+          "sector": "Consumer Discretionary",
+          "symbol": "TSLA",
+          "name": "TESLA INC",
+          "market_value": 917.92,
+          "alloc_of_equity": 0.021198361440930628,
+          "alloc_of_sector": 0.4480128070595011,
+          "alloc_of_account": 0.011867725132460137,
+          "sector_market_value": 2048.87,
+          "sector_alloc_pct_of_equity": 0.04731641843023306,
+          "sector_alloc_pct_of_account": 0.026489700618946753,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:TSLA",
+          "security_type": "Equity",
+          "rating": "D",
+          "quantity": 2,
+          "price": 458.96,
+          "cost_basis": 917.41,
+          "gain_abs": 0.51,
+          "gain_pct": 0.0006,
+          "day_change_abs": 24.14,
+          "day_change_pct": 0.027000000000000003,
+          "price_change_abs": 12.07,
+          "price_change_pct": 0.027000000000000003,
+          "low_52w": 214.25,
+          "high_52w": 488.54,
+          "pe_ratio": 316.72,
+          "price_low_52w_ratio": 0.4668162802858637,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:TSLA|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 17
+          },
+          {
+            "item": 34,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "industrials",
+          "sector": "Industrials",
+          "symbol": "HON",
+          "name": "HONEYWELL INTL INC",
+          "market_value": 1936.6,
+          "alloc_of_equity": 0.044723665206669705,
+          "alloc_of_sector": 0.18153849326612742,
+          "alloc_of_account": 0.02503816943908217,
+          "sector_market_value": 10667.71,
+          "sector_alloc_pct_of_equity": 0.24635912969216278,
+          "sector_alloc_pct_of_account": 0.13792209568676608,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:HON",
+          "security_type": "Equity",
+          "rating": "B",
+          "quantity": 10,
+          "price": 193.66,
+          "cost_basis": 1993.03,
+          "gain_abs": -56.43,
+          "gain_pct": -0.028300000000000002,
+          "day_change_abs": -1.9,
+          "day_change_pct": -0.001,
+          "price_change_abs": -0.19,
+          "price_change_pct": -0.001,
+          "low_52w": 179.36,
+          "high_52w": 241.72,
+          "pe_ratio": 20.44,
+          "price_low_52w_ratio": 0.9261592481668905,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:HON|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 18
+          },
+          {
+            "item": 15,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "industrials",
+          "sector": "Industrials",
+          "symbol": "BA",
+          "name": "BOEING CO",
+          "market_value": 1839.42,
+          "alloc_of_equity": 0.04247939907799876,
+          "alloc_of_sector": 0.17242875931197982,
+          "alloc_of_account": 0.02378173584097724,
+          "sector_market_value": 10667.71,
+          "sector_alloc_pct_of_equity": 0.24635912969216278,
+          "sector_alloc_pct_of_account": 0.13792209568676608,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:BA",
+          "security_type": "Equity",
+          "rating": "F",
+          "quantity": 9,
+          "price": 204.38,
+          "cost_basis": 1983.59,
+          "gain_abs": -144.17,
+          "gain_pct": -0.0727,
+          "day_change_abs": 33.03,
+          "day_change_pct": 0.0183,
+          "price_change_abs": 3.67,
+          "price_change_pct": 0.0183,
+          "low_52w": 128.88,
+          "high_52w": 242.69,
+          "pe_ratio": -15.12,
+          "price_low_52w_ratio": 0.6305900773069771,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:BA|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 19
+          },
+          {
+            "item": 6,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "industrials",
+          "sector": "Industrials",
+          "symbol": "NOC",
+          "name": "NORTHROP GRUMMAN CORP",
+          "market_value": 1709.28,
+          "alloc_of_equity": 0.03947395769103398,
+          "alloc_of_sector": 0.16022932756889718,
+          "alloc_of_account": 0.022099164648783625,
+          "sector_market_value": 10667.71,
+          "sector_alloc_pct_of_equity": 0.24635912969216278,
+          "sector_alloc_pct_of_account": 0.13792209568676608,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:NOC",
+          "security_type": "Equity",
+          "rating": "C",
+          "quantity": 3,
+          "price": 569.76,
+          "cost_basis": 1764.61,
+          "gain_abs": -55.33,
+          "gain_pct": -0.031400000000000004,
+          "day_change_abs": 29.16,
+          "day_change_pct": 0.0174,
+          "price_change_abs": 9.72,
+          "price_change_pct": 0.0174,
+          "low_52w": 426.24,
+          "high_52w": 640.9,
+          "pe_ratio": 20.49,
+          "price_low_52w_ratio": 0.7481044650379107,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:NOC|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 20
+          },
+          {
+            "item": 25,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "industrials",
+          "sector": "Industrials",
+          "symbol": "GD",
+          "name": "GENERAL DYNAMICS CORP",
+          "market_value": 1349.96,
+          "alloc_of_equity": 0.03117585411669722,
+          "alloc_of_sector": 0.12654637218297088,
+          "alloc_of_account": 0.017453540853032825,
+          "sector_market_value": 10667.71,
+          "sector_alloc_pct_of_equity": 0.24635912969216278,
+          "sector_alloc_pct_of_account": 0.13792209568676608,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:GD",
+          "security_type": "Equity",
+          "rating": "A",
+          "quantity": 4,
+          "price": 337.49,
+          "cost_basis": 1322.26,
+          "gain_abs": 27.7,
+          "gain_pct": 0.0209,
+          "day_change_abs": -15.96,
+          "day_change_pct": -0.011699999999999999,
+          "price_change_abs": -3.99,
+          "price_change_pct": -0.011699999999999999,
+          "low_52w": 239.2,
+          "high_52w": 360.5,
+          "pe_ratio": 21.86,
+          "price_low_52w_ratio": 0.7087617410886248,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:GD|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 21
+          },
+          {
+            "item": 12,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "industrials",
+          "sector": "Industrials",
+          "symbol": "LMT",
+          "name": "LOCKHEED MARTIN CORP",
+          "market_value": 960.5,
+          "alloc_of_equity": 0.022181700108957064,
+          "alloc_of_sector": 0.09003806815145894,
+          "alloc_of_account": 0.012418239051037087,
+          "sector_market_value": 10667.71,
+          "sector_alloc_pct_of_equity": 0.24635912969216278,
+          "sector_alloc_pct_of_account": 0.13792209568676608,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:LMT",
+          "security_type": "Equity",
+          "rating": "C",
+          "quantity": 2,
+          "price": 480.25,
+          "cost_basis": 905.03,
+          "gain_abs": 55.47,
+          "gain_pct": 0.0613,
+          "day_change_abs": 10.74,
+          "day_change_pct": 0.0113,
+          "price_change_abs": 5.37,
+          "price_change_pct": 0.0113,
+          "low_52w": 410.11,
+          "high_52w": 516,
+          "pe_ratio": 26.86,
+          "price_low_52w_ratio": 0.8539510671525248,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:LMT|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 22
+          },
+          {
+            "item": 21,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "industrials",
+          "sector": "Industrials",
+          "symbol": "UNP",
+          "name": "UNION PAC CORP",
+          "market_value": 959.8,
+          "alloc_of_equity": 0.022165534372282136,
+          "alloc_of_sector": 0.08997244956977646,
+          "alloc_of_account": 0.012409188798735446,
+          "sector_market_value": 10667.71,
+          "sector_alloc_pct_of_equity": 0.24635912969216278,
+          "sector_alloc_pct_of_account": 0.13792209568676608,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:UNP",
+          "security_type": "Equity",
+          "rating": "C",
+          "quantity": 4,
+          "price": 239.95,
+          "cost_basis": 874.59,
+          "gain_abs": 85.21,
+          "gain_pct": 0.0974,
+          "day_change_abs": 15.32,
+          "day_change_pct": 0.016200000000000003,
+          "price_change_abs": 3.83,
+          "price_change_pct": 0.016200000000000003,
+          "low_52w": 204.66,
+          "high_52w": 256.84,
+          "pe_ratio": 20.37,
+          "price_low_52w_ratio": 0.8529276932694312,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:UNP|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 23
+          },
+          {
+            "item": 37,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "industrials",
+          "sector": "Industrials",
+          "symbol": "RTX",
+          "name": "RTX CORP",
+          "market_value": 714.64,
+          "alloc_of_equity": 0.016503831510531055,
+          "alloc_of_sector": 0.06699094744795275,
+          "alloc_of_account": 0.009239531864063658,
+          "sector_market_value": 10667.71,
+          "sector_alloc_pct_of_equity": 0.24635912969216278,
+          "sector_alloc_pct_of_account": 0.13792209568676608,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:RTX",
+          "security_type": "Equity",
+          "rating": "B",
+          "quantity": 4,
+          "price": 178.66,
+          "cost_basis": 666.4,
+          "gain_abs": 48.24,
+          "gain_pct": 0.0724,
+          "day_change_abs": 4.96,
+          "day_change_pct": 0.006999999999999999,
+          "price_change_abs": 1.24,
+          "price_change_pct": 0.006999999999999999,
+          "low_52w": 112.27,
+          "high_52w": 181.31,
+          "pe_ratio": 36.69,
+          "price_low_52w_ratio": 0.6284003134445315,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:RTX|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 24
+          },
+          {
+            "item": 31,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "industrials",
+          "sector": "Industrials",
+          "symbol": "GE",
+          "name": "GE AEROSPACE",
+          "market_value": 599.62,
+          "alloc_of_equity": 0.013847570035744754,
+          "alloc_of_sector": 0.056208877069211675,
+          "alloc_of_account": 0.007752446121585485,
+          "sector_market_value": 10667.71,
+          "sector_alloc_pct_of_equity": 0.24635912969216278,
+          "sector_alloc_pct_of_account": 0.13792209568676608,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:GE",
+          "security_type": "Equity",
+          "rating": "B",
+          "quantity": 2,
+          "price": 299.81,
+          "cost_basis": 549.52,
+          "gain_abs": 50.1,
+          "gain_pct": 0.09119999999999999,
+          "day_change_abs": 22.78,
+          "day_change_pct": 0.0395,
+          "price_change_abs": 11.39,
+          "price_change_pct": 0.0395,
+          "low_52w": 159.36,
+          "high_52w": 316.67,
+          "pe_ratio": 40.01,
+          "price_low_52w_ratio": 0.5315366398719189,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:GE|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 25
+          },
+          {
+            "item": 13,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "industrials",
+          "sector": "Industrials",
+          "symbol": "CAT",
+          "name": "CATERPILLAR INC",
+          "market_value": 597.89,
+          "alloc_of_equity": 0.01380761757224814,
+          "alloc_of_sector": 0.056046705431624974,
+          "alloc_of_account": 0.007730079069468572,
+          "sector_market_value": 10667.71,
+          "sector_alloc_pct_of_equity": 0.24635912969216278,
+          "sector_alloc_pct_of_account": 0.13792209568676608,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:CAT",
+          "security_type": "Equity",
+          "rating": "C",
+          "quantity": 1,
+          "price": 597.89,
+          "cost_basis": 420,
+          "gain_abs": 177.89,
+          "gain_pct": 0.4235,
+          "day_change_abs": -27.72,
+          "day_change_pct": -0.0443,
+          "price_change_abs": -27.72,
+          "price_change_pct": -0.0443,
+          "low_52w": 267.3,
+          "high_52w": 627.5,
+          "pe_ratio": 30.67,
+          "price_low_52w_ratio": 0.4470722039171085,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:CAT|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 26
+          },
+          {
+            "item": 8,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "utilities",
+          "sector": "Utilities",
+          "symbol": "SO",
+          "name": "SOUTHERN CO",
+          "market_value": 1351.04,
+          "alloc_of_equity": 0.03120079553899568,
+          "alloc_of_sector": 0.40378729915837797,
+          "alloc_of_account": 0.017467504099441068,
+          "sector_market_value": 3345.92,
+          "sector_alloc_pct_of_equity": 0.07727037379340096,
+          "sector_alloc_pct_of_account": 0.04325917168729413,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:SO",
+          "security_type": "Equity",
+          "rating": "C",
+          "quantity": 16,
+          "price": 84.44,
+          "cost_basis": 1501.47,
+          "gain_abs": -150.43,
+          "gain_pct": -0.1002,
+          "day_change_abs": -4.64,
+          "day_change_pct": -0.0034000000000000002,
+          "price_change_abs": -0.29,
+          "price_change_pct": -0.0034000000000000002,
+          "low_52w": 80.46,
+          "high_52w": 100.84,
+          "pe_ratio": 20.99,
+          "price_low_52w_ratio": 0.952865940312648,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:SO|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 27
+          },
+          {
+            "item": 33,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "utilities",
+          "sector": "Utilities",
+          "symbol": "DUK",
+          "name": "DUKE ENERGY CORP NEW",
+          "market_value": 1153,
+          "alloc_of_equity": 0.026627277694562725,
+          "alloc_of_sector": 0.3445987949502678,
+          "alloc_of_account": 0.0149070584339883,
+          "sector_market_value": 3345.92,
+          "sector_alloc_pct_of_equity": 0.07727037379340096,
+          "sector_alloc_pct_of_account": 0.04325917168729413,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:DUK",
+          "security_type": "Equity",
+          "rating": "A",
+          "quantity": 10,
+          "price": 115.3,
+          "cost_basis": 1248.06,
+          "gain_abs": -95.06,
+          "gain_pct": -0.0762,
+          "day_change_abs": 9.1,
+          "day_change_pct": 0.008,
+          "price_change_abs": 0.91,
+          "price_change_pct": 0.008,
+          "low_52w": 105.2,
+          "high_52w": 130.03,
+          "pe_ratio": 18.19,
+          "price_low_52w_ratio": 0.9124024284475283,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:DUK|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 28
+          },
+          {
+            "item": 11,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "utilities",
+          "sector": "Utilities",
+          "symbol": "NEE",
+          "name": "NEXTERA ENERGY INC",
+          "market_value": 489.9,
+          "alloc_of_equity": 0.011313706281497206,
+          "alloc_of_sector": 0.14641712892119357,
+          "alloc_of_account": 0.0063338837179625915,
+          "sector_market_value": 3345.92,
+          "sector_alloc_pct_of_equity": 0.07727037379340096,
+          "sector_alloc_pct_of_account": 0.04325917168729413,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:NEE",
+          "security_type": "Equity",
+          "rating": "C",
+          "quantity": 6,
+          "price": 81.65,
+          "cost_basis": 426.19,
+          "gain_abs": 63.71,
+          "gain_pct": 0.1495,
+          "day_change_abs": 2.64,
+          "day_change_pct": 0.0054,
+          "price_change_abs": 0.44,
+          "price_change_pct": 0.0054,
+          "low_52w": 61.72,
+          "high_52w": 87.53,
+          "pe_ratio": 25.91,
+          "price_low_52w_ratio": 0.7559093692590324,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:NEE|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 29
+          },
+          {
+            "item": 24,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "utilities",
+          "sector": "Utilities",
+          "symbol": "CEG",
+          "name": "CONSTELLATION ENERGY COR",
+          "market_value": 351.98,
+          "alloc_of_equity": 0.00812859427834535,
+          "alloc_of_sector": 0.10519677697016068,
+          "alloc_of_account": 0.00455072543590217,
+          "sector_market_value": 3345.92,
+          "sector_alloc_pct_of_equity": 0.07727037379340096,
+          "sector_alloc_pct_of_account": 0.04325917168729413,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:CEG",
+          "security_type": "Equity",
+          "rating": "B",
+          "quantity": 1,
+          "price": 351.98,
+          "cost_basis": 300.7,
+          "gain_abs": 51.28,
+          "gain_pct": 0.1705,
+          "day_change_abs": -26.62,
+          "day_change_pct": -0.0703,
+          "price_change_abs": -26.62,
+          "price_change_pct": -0.0703,
+          "low_52w": 161.35,
+          "high_52w": 412.7,
+          "pe_ratio": 40.3,
+          "price_low_52w_ratio": 0.45840672765498036,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:CEG|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 30
+          },
+          {
+            "item": 9,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "consumer_staples",
+          "sector": "Consumer Staples",
+          "symbol": "KO",
+          "name": "THE COCA-COLA CO",
+          "market_value": 1974.56,
+          "alloc_of_equity": 0.04560031001264161,
+          "alloc_of_sector": 0.21143163079558838,
+          "alloc_of_account": 0.02552895169246829,
+          "sector_market_value": 9339,
+          "sector_alloc_pct_of_equity": 0.2156740211530974,
+          "sector_alloc_pct_of_account": 0.12074329463574737,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:KO",
+          "security_type": "Equity",
+          "rating": "D",
+          "quantity": 28,
+          "price": 70.52,
+          "cost_basis": 1882.9,
+          "gain_abs": 91.66,
+          "gain_pct": 0.0487,
+          "day_change_abs": 39.48,
+          "day_change_pct": 0.0204,
+          "price_change_abs": 1.41,
+          "price_change_pct": 0.0204,
+          "low_52w": 60.62,
+          "high_52w": 74.38,
+          "pe_ratio": 23.35,
+          "price_low_52w_ratio": 0.8596142938173568,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:KO|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 31
+          },
+          {
+            "item": 19,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "consumer_staples",
+          "sector": "Consumer Staples",
+          "symbol": "COST",
+          "name": "COSTCO WHSL CORP NEW",
+          "market_value": 1768.94,
+          "alloc_of_equity": 0.040851740333928695,
+          "alloc_of_sector": 0.1894142841846022,
+          "alloc_of_account": 0.02287050472352061,
+          "sector_market_value": 9339,
+          "sector_alloc_pct_of_equity": 0.2156740211530974,
+          "sector_alloc_pct_of_account": 0.12074329463574737,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:COST",
+          "security_type": "Equity",
+          "rating": "D",
+          "quantity": 2,
+          "price": 884.47,
+          "cost_basis": 1908.62,
+          "gain_abs": -139.68,
+          "gain_pct": -0.0732,
+          "day_change_abs": -0.02,
+          "day_change_pct": 0,
+          "price_change_abs": -0.01,
+          "price_change_pct": 0,
+          "low_52w": 867.12,
+          "high_52w": 1078.24,
+          "pe_ratio": 48.57,
+          "price_low_52w_ratio": 0.980383732630841,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:COST|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 32
+          },
+          {
+            "item": 10,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "consumer_staples",
+          "sector": "Consumer Staples",
+          "symbol": "PEP",
+          "name": "PEPSICO INC",
+          "market_value": 1657.15,
+          "alloc_of_equity": 0.03827007218694243,
+          "alloc_of_sector": 0.17744405182567727,
+          "alloc_of_account": 0.021425179430948578,
+          "sector_market_value": 9339,
+          "sector_alloc_pct_of_equity": 0.2156740211530974,
+          "sector_alloc_pct_of_account": 0.12074329463574737,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:PEP",
+          "security_type": "Equity",
+          "rating": "B",
+          "quantity": 11,
+          "price": 150.65,
+          "cost_basis": 1590.76,
+          "gain_abs": 66.39,
+          "gain_pct": 0.0417,
+          "day_change_abs": 17.71,
+          "day_change_pct": 0.0108,
+          "price_change_abs": 1.61,
+          "price_change_pct": 0.0108,
+          "low_52w": 127.6,
+          "high_52w": 160.15,
+          "pe_ratio": 28.65,
+          "price_low_52w_ratio": 0.8469963491536674,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:PEP|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 33
+          },
+          {
+            "item": 27,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "consumer_staples",
+          "sector": "Consumer Staples",
+          "symbol": "PG",
+          "name": "PROCTER & GAMBLE CO",
+          "market_value": 1428.4,
+          "alloc_of_equity": 0.03298734038067077,
+          "alloc_of_sector": 0.15294999464610773,
+          "alloc_of_account": 0.01846768626809097,
+          "sector_market_value": 9339,
+          "sector_alloc_pct_of_equity": 0.2156740211530974,
+          "sector_alloc_pct_of_account": 0.12074329463574737,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:PG",
+          "security_type": "Equity",
+          "rating": "C",
+          "quantity": 10,
+          "price": 142.84,
+          "cost_basis": 1545.98,
+          "gain_abs": -117.58,
+          "gain_pct": -0.0761,
+          "day_change_abs": 20.8,
+          "day_change_pct": 0.0148,
+          "price_change_abs": 2.08,
+          "price_change_pct": 0.0148,
+          "low_52w": 138.14,
+          "high_52w": 179.99,
+          "pe_ratio": 20.85,
+          "price_low_52w_ratio": 0.967096051526183,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:PG|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 34
+          },
+          {
+            "item": 28,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "consumer_staples",
+          "sector": "Consumer Staples",
+          "symbol": "WMT",
+          "name": "WALMART INC",
+          "market_value": 1400.4,
+          "alloc_of_equity": 0.03234071091367358,
+          "alloc_of_sector": 0.14995181496948282,
+          "alloc_of_account": 0.018105676176025338,
+          "sector_market_value": 9339,
+          "sector_alloc_pct_of_equity": 0.2156740211530974,
+          "sector_alloc_pct_of_account": 0.12074329463574737,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:WMT",
+          "security_type": "Equity",
+          "rating": "B",
+          "quantity": 12,
+          "price": 116.7,
+          "cost_basis": 1229.25,
+          "gain_abs": 171.15,
+          "gain_pct": 0.1392,
+          "day_change_abs": 14.16,
+          "day_change_pct": 0.0102,
+          "price_change_abs": 1.18,
+          "price_change_pct": 0.0102,
+          "low_52w": 79.81,
+          "high_52w": 116.95,
+          "pe_ratio": 40.81,
+          "price_low_52w_ratio": 0.6838903170522708,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:WMT|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 35
+          },
+          {
+            "item": 38,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "consumer_staples",
+          "sector": "Consumer Staples",
+          "symbol": "MNST",
+          "name": "MONSTER BEVERAGE CORP NE",
+          "market_value": 1109.55,
+          "alloc_of_equity": 0.0256238473252403,
+          "alloc_of_sector": 0.1188082235785416,
+          "alloc_of_account": 0.014345296344693597,
+          "sector_market_value": 9339,
+          "sector_alloc_pct_of_equity": 0.2156740211530974,
+          "sector_alloc_pct_of_account": 0.12074329463574737,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:MNST",
+          "security_type": "Equity",
+          "rating": "D",
+          "quantity": 15,
+          "price": 73.97,
+          "cost_basis": 1003.2,
+          "gain_abs": 106.35,
+          "gain_pct": 0.106,
+          "day_change_abs": 22.2,
+          "day_change_pct": 0.0204,
+          "price_change_abs": 1.48,
+          "price_change_pct": 0.0204,
+          "low_52w": 45.7,
+          "high_52w": 76.28,
+          "pe_ratio": 42.11,
+          "price_low_52w_ratio": 0.6178180343382453,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:MNST|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 36
+          },
+          {
+            "item": 22,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "communication_services",
+          "sector": "Communication Services",
+          "symbol": "GOOGL",
+          "name": "ALPHABET INC CLASS A",
+          "market_value": 309.29,
+          "alloc_of_equity": 0.0071427152802699964,
+          "alloc_of_sector": 1,
+          "alloc_of_account": 0.003998789334820678,
+          "sector_market_value": 309.29,
+          "sector_alloc_pct_of_equity": 0.0071427152802699964,
+          "sector_alloc_pct_of_account": 0.003998789334820678,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:GOOGL",
+          "security_type": "Equity",
+          "rating": "B",
+          "quantity": 1,
+          "price": 309.29,
+          "cost_basis": 236.83,
+          "gain_abs": 72.46,
+          "gain_pct": 0.306,
+          "day_change_abs": -3.14,
+          "day_change_pct": -0.0101,
+          "price_change_abs": -3.14,
+          "price_change_pct": -0.0101,
+          "low_52w": 140.53,
+          "high_52w": 328.83,
+          "pe_ratio": 30.52,
+          "price_low_52w_ratio": 0.4543632189854182,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:GOOGL|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 37
+          },
+          {
+            "item": 14,
+            "input": 1
+          }
+        ]
+      },
+      {
+        "json": {
+          "snapshot_at": "2025-12-14 15:53:19+01:00",
+          "sector_slug": "energy",
+          "sector": "Energy",
+          "symbol": "KMI",
+          "name": "KINDER MORGAN INC DEL",
+          "market_value": 908.82,
+          "alloc_of_equity": 0.020988206864156544,
+          "alloc_of_sector": 1,
+          "alloc_of_account": 0.01175007185253881,
+          "sector_market_value": 908.82,
+          "sector_alloc_pct_of_equity": 0.020988206864156544,
+          "sector_alloc_pct_of_account": 0.01175007185253881,
+          "mv__equity_total": 43301.46,
+          "mv__account_total": 77345.91,
+          "account_id": "schwab-1",
+          "asset_key": "EQUITY:SYMBOL:KMI",
+          "security_type": "Equity",
+          "rating": "F",
+          "quantity": 34,
+          "price": 26.73,
+          "cost_basis": 903.99,
+          "gain_abs": 4.83,
+          "gain_pct": 0.0053,
+          "day_change_abs": -3.06,
+          "day_change_pct": -0.0034000000000000002,
+          "price_change_abs": -0.09,
+          "price_change_pct": -0.0034000000000000002,
+          "low_52w": 23.94,
+          "high_52w": 31.48,
+          "pe_ratio": 21.9,
+          "price_low_52w_ratio": 0.8956228956228957,
+          "updated_at": "2026-01-09T14:07:21+00:00Z",
+          "doc_id": "schwab-1|EQUITY:SYMBOL:KMI|Individual-Positions-2025-12-14-155319.csv",
+          "snapshot_date": "2025-12-14",
+          "filename": "Individual-Positions-2025-12-14-155319.csv"
+        },
+        "binary": {},
+        "pairedItem": [
+          {
+            "item": 38
+          },
+          {
+            "item": 18,
+            "input": 1
+          }
+        ]
+      }
+    ]
+  },
+  "connections": {
+    "Google Drive Trigger": {
+      "main": [
+        [
+          {
+            "node": "Download file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download file": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "python-extract-filename-py",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get Symbol Sector Mapping",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Enrich raw data with filename",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Clean Up and Prepare Fields": {
+      "main": [
+        [
+          {
+            "node": "Create or Update raw data",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "calculate-security-type-aggregation-py",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "calculate-security-type-aggregation-by-sector-py",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "calculate-security-type-aggregation-detailed-py",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Enrich raw data with filename": {
+      "main": [
+        [
+          {
+            "node": "Enrich raw data with sector names",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Symbol Sector Mapping": {
+      "main": [
+        [
+          {
+            "node": "Enrich raw data with sector names",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Enrich raw data with sector names": {
+      "main": [
+        [
+          {
+            "node": "cleanup-raw-data-for-storage-py",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "cleanup-raw-data-for-storage-py": {
+      "main": [
+        [
+          {
+            "node": "Clean Up and Prepare Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "python-extract-filename-py": {
+      "main": [
+        [
+          {
+            "node": "Enrich raw data with filename",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "calculate-security-type-aggregation-py": {
+      "main": [
+        [
+          {
+            "node": "Create or Update Security Type Aggregation",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "calculate-security-type-aggregation-detailed-py": {
+      "main": [
+        [
+          {
+            "node": "Create or Update Security Aggregation Detail",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "flat-aggregation-py",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "calculate-security-type-aggregation-by-sector-py": {
+      "main": [
+        [
+          {
+            "node": "Update documents",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "flat-aggregation-py": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        []
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "timeSavedMode": "fixed",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
+  },
+  "versionId": "7f0a8870-f287-4b42-94e8-d7b6e7215b2c",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "c3c7f54b993f84f632a79f6a973ce6b81e322ea16f0d75f84c7e35f6974bd495"
+  },
+  "id": "RcV9Nspj6RVt5I5Z",
+  "tags": [
+    {
+      "name": "data",
+      "id": "EPpUS7Jhjwm1zhjB",
+      "updatedAt": "2026-01-09T22:11:02.133Z",
+      "createdAt": "2026-01-09T22:11:02.133Z"
+    }
+  ]
+}
