@@ -10,6 +10,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2026-01-09]
 
 ### Added
+- Semantic versioning with automatic version management to commit-and-push skill
+  - `.version` file tracks current version following MAJOR.MINOR.PATCH format
+  - Auto-increments version based on commit type: feat→minor, fix→patch, breaking→major
+  - Creates annotated git tags for each release (e.g., v0.2.0)
+  - Pushes tags along with commits using --follow-tags
+  - Version starts at 0.1.0 if file doesn't exist
 - `.claude/skills/commit-and-push/` custom skill for automated git workflow
   - Runs ruff linting with auto-fix capability before committing
   - Executes full test suite as quality gate

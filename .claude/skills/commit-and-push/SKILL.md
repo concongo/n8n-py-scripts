@@ -1,8 +1,8 @@
 ---
 name: commit-and-push
-description: Complete git workflow with quality checks - runs ruff linting and tests, stages changes, generates commit messages following conventional commits format, updates CHANGELOG.md, creates commit, and pushes to remote after confirmation. Use when ready to commit and push changes.
+description: Complete git workflow with quality checks and versioning - runs ruff linting and tests, stages changes, auto-increments semantic version, generates commit messages, updates CHANGELOG.md, creates tagged commits, and pushes to remote after confirmation. Use when ready to commit and push changes.
 invocations: ["commit-and-push", "cap"]
-allowed-tools: ["Bash(git:*)", "Bash(uv:*)", "Read", "Edit", "Grep", "Glob", "AskUserQuestion"]
+allowed-tools: ["Bash(git:*)", "Bash(uv:*)", "Read", "Edit", "Write", "Grep", "Glob", "AskUserQuestion"]
 ---
 
 # Commit and Push Workflow
@@ -77,7 +77,30 @@ The commit message should:
 - Include a body explaining what and why (if needed)
 - Follow the project's commit standards from [.claude/instructions.md](../../instructions.md)
 
-### 6. Update CHANGELOG.md
+### 6. Determine Version Bump
+
+Read the `.version` file to get the current version:
+- If `.version` doesn't exist, initialize it with `0.1.0`
+- Parse the version as MAJOR.MINOR.PATCH (semantic versioning)
+
+Based on the commit message type, determine the version bump:
+- `feat:` → bump MINOR (e.g., 0.1.0 → 0.2.0)
+- `fix:` → bump PATCH (e.g., 0.1.0 → 0.1.1)
+- `feat!:`, `fix!:`, or contains `BREAKING CHANGE:` → bump MAJOR (e.g., 0.1.0 → 1.0.0)
+- `refactor:`, `docs:`, `test:`, `chore:` → bump PATCH by default
+
+Version bump rules:
+- When bumping MAJOR, reset MINOR and PATCH to 0 (e.g., 0.5.3 → 1.0.0)
+- When bumping MINOR, reset PATCH to 0 (e.g., 0.5.3 → 0.6.0)
+- When bumping PATCH, only increment PATCH (e.g., 0.5.3 → 0.5.4)
+
+Update the `.version` file with the new version and stage it:
+```bash
+echo "0.2.0" > .version
+git add .version
+```
+
+### 7. Update CHANGELOG.md
 
 Based on the commit message and changes, update [CHANGELOG.md](../../../CHANGELOG.md):
 
@@ -93,7 +116,7 @@ The changelog should include:
 - References to relevant files or modules
 - Proper categorization (Added, Changed, Removed, Fixed, etc.)
 
-### 7. Stage CHANGELOG.md
+### 8. Stage CHANGELOG.md
 
 After updating the changelog:
 
@@ -101,7 +124,7 @@ After updating the changelog:
 git add CHANGELOG.md
 ```
 
-### 8. Create the Commit
+### 9. Create the Commit
 
 Create the commit with the generated message:
 
@@ -116,7 +139,17 @@ EOF
 )"
 ```
 
-### 9. Show What Will Be Pushed
+### 10. Create Annotated Git Tag
+
+After creating the commit, tag it with the new version:
+
+```bash
+git tag -a "v0.2.0" -m "Release version 0.2.0"
+```
+
+The tag message should be: "Release version X.Y.Z"
+
+### 11. Show What Will Be Pushed
 
 Before pushing, show the user what commits will be pushed:
 
@@ -130,31 +163,38 @@ Or if the branch doesn't have an upstream yet:
 git log --oneline -5
 ```
 
-### 10. Confirm Before Pushing
+Also show the new version tag:
+```bash
+git describe --tags --abbrev=0
+```
+
+### 12. Confirm Before Pushing
 
 **CRITICAL GUARDRAIL**: Always ask the user for explicit confirmation before pushing:
 
 Use the AskUserQuestion tool to ask:
 - Question: "Ready to push these commits to remote?"
 - Options:
-  - "Yes, push now" (description: "Push the commits to the remote repository")
+  - "Yes, push now" (description: "Push the commits and tags to the remote repository")
   - "No, cancel" (description: "Do not push, stop here")
 
-### 11. Push to Remote (Only After Confirmation)
+### 13. Push to Remote (Only After Confirmation)
 
-If the user confirms, push to remote:
+If the user confirms, push commits AND tags to remote:
 
 ```bash
-git push origin $(git rev-parse --abbrev-ref HEAD)
+git push origin $(git rev-parse --abbrev-ref HEAD) --follow-tags
 ```
+
+The `--follow-tags` flag ensures annotated tags are pushed along with the commit.
 
 If the branch doesn't have an upstream yet, set it:
 
 ```bash
-git push -u origin $(git rev-parse --abbrev-ref HEAD)
+git push -u origin $(git rev-parse --abbrev-ref HEAD) --follow-tags
 ```
 
-If the user declines, stop and inform them that the commits are ready locally but not pushed.
+If the user declines, stop and inform them that the commits and tags are ready locally but not pushed.
 
 ## Usage
 
@@ -173,9 +213,15 @@ Or use the shorter alias:
 ## Important Notes
 
 - **Quality gates are enforced**: Ruff linting and tests MUST pass before committing
+- **Automatic versioning**: The `.version` file is auto-incremented based on commit type
+  - `feat:` → minor bump (0.1.0 → 0.2.0)
+  - `fix:` → patch bump (0.1.0 → 0.1.1)
+  - `feat!:` or `BREAKING CHANGE:` → major bump (0.1.0 → 1.0.0)
+- **Git tags**: Each commit is tagged with an annotated version tag (e.g., `v0.2.0`)
 - This skill will stage ALL changes (including untracked files) after quality checks pass
 - The CHANGELOG.md will be automatically updated based on your changes
 - You will always be asked for confirmation before pushing to remote
+- Tags are pushed with commits using `--follow-tags`
 - Commit messages follow conventional commits format
 - The skill respects the project's commit and changelog standards from [.claude/instructions.md](../../instructions.md)
 
@@ -187,20 +233,25 @@ Or use the shorter alias:
 4. If quality gates fail, I STOP and report the issues
 5. If quality gates pass, I stage all changes
 6. I analyze the diff and generate a commit message
-7. I update CHANGELOG.md with today's date
-8. I create the commit
-9. I show you what will be pushed
-10. **I ask: "Ready to push these commits to remote?"**
-11. Only after you confirm "Yes, push now", I push to remote
-12. I confirm the push was successful
+7. I determine version bump based on commit type and update `.version` file
+8. I update CHANGELOG.md with today's date
+9. I create the commit
+10. I create an annotated git tag with the new version (e.g., `v0.2.0`)
+11. I show you what will be pushed (commits and tags)
+12. **I ask: "Ready to push these commits to remote?"**
+13. Only after you confirm "Yes, push now", I push commits and tags to remote
+14. I confirm the push was successful
 
 ## Safety & Quality Features
 
 - **Ruff linting must pass** before committing
 - **All tests must pass** before committing
+- **Semantic versioning**: Automatic version management via `.version` file
+- **Git tagging**: Each release is properly tagged with annotated tags
 - Always shows git status first
 - Shows full diff before committing
 - Updates changelog systematically
-- Shows what will be pushed
+- Shows what will be pushed (commits and tags)
 - **Requires explicit confirmation before push**
 - Never pushes without user approval
+- Tags are pushed with commits for complete version tracking
