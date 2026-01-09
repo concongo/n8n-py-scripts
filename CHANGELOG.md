@@ -7,7 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-## [2026-01-09]
+## [0.2.1] - 2026-01-09
+
+### Changed
+- Updated commit-and-push skill to use version-based CHANGELOG entries
+  - Step 7 now specifies format as `[X.Y.Z] - YYYY-MM-DD` instead of `[YYYY-MM-DD]`
+  - Version number is primary identifier, date is secondary reference
+  - Instructions updated in `.claude/instructions.md` to reflect new format
+- Restructured CHANGELOG.md to use semantic version numbers
+  - Converted from date-based to version-based section headers
+  - Previous entries retroactively assigned version 0.1.0
+  - Pre-versioning entries moved to legacy section for historical reference
+
+## [0.2.0] - 2026-01-09
 
 ### Added
 - Semantic versioning with automatic version management to commit-and-push skill
@@ -16,11 +28,21 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Creates annotated git tags for each release (e.g., v0.2.0)
   - Pushes tags along with commits using --follow-tags
   - Version starts at 0.1.0 if file doesn't exist
+
+### Changed
+- CHANGELOG.md format now uses version numbers as primary identifiers
+  - Format changed from `[YYYY-MM-DD]` to `[X.Y.Z] - YYYY-MM-DD`
+  - Version numbers align with semantic versioning in `.version` file
+  - Dates remain as secondary reference
+
+## [0.1.0] - 2026-01-09
+
+### Added
 - `.claude/skills/commit-and-push/` custom skill for automated git workflow
   - Runs ruff linting with auto-fix capability before committing
   - Executes full test suite as quality gate
   - Generates conventional commit messages automatically
-  - Updates CHANGELOG.md systematically with dated entries
+  - Updates CHANGELOG.md systematically with version-based entries
   - Creates commits with proper attribution
   - Requires explicit confirmation before pushing to remote
   - Invocable via `/commit-and-push` or `/cap` alias
@@ -31,10 +53,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Produces wide-format output with sector breakdowns
   - Includes slugified column names for downstream processing
   - Provides both equity-total and account-total denominators
-
-## [2026-01-09] (earlier)
-
-### Added
 - `calculate_security_type_aggregation.py` module for aggregating portfolio positions by security type
   - Computes market values and allocation percentages in wide format
   - Includes helper functions: `prepare_dataframe()`, `aggregate_by_security_type()`, `calculate_allocations()`, and `pivot_to_wide_format()`
@@ -56,7 +74,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Clean separation between test setup and test logic
   - Fixtures organized by workflow matching `test/fixtures/` hierarchy
 
-## [2026-01-08]
+## Previous Releases
+
+For releases prior to version 0.1.0, please refer to the git commit history.
+
+---
+
+## Legacy Date-Based Entries (Pre-Versioning)
+
+The following entries used date-based identifiers before semantic versioning was implemented:
+
+### 2026-01-08
 
 ### Added
 - `load_module()` utility function in `test/utils.py` for dynamic module loading

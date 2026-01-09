@@ -107,14 +107,16 @@ Based on the commit message and changes, update [CHANGELOG.md](../../../CHANGELO
 1. Read the current CHANGELOG.md
 2. Determine the appropriate category (Added, Changed, Fixed, etc.)
 3. Add entries under the `[Unreleased]` section
-4. Move unreleased changes to a dated section `[YYYY-MM-DD]` using today's date
-5. Follow the format from [.claude/instructions.md](../../instructions.md)
+4. Move unreleased changes to a **version-based section** using the NEW version number (e.g., `[0.2.0]`)
+5. Include the date as a reference: `## [0.2.0] - 2026-01-09`
+6. Follow the format from [.claude/instructions.md](../../instructions.md)
 
 The changelog should include:
 - Clear descriptions of what changed
 - Bullet points for each significant change
 - References to relevant files or modules
 - Proper categorization (Added, Changed, Removed, Fixed, etc.)
+- Version number as the primary identifier (dates are secondary)
 
 ### 8. Stage CHANGELOG.md
 

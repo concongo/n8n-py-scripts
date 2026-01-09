@@ -24,12 +24,17 @@ Update the CHANGELOG.md file whenever you:
    - **Fixed** - for any bug fixes
    - **Security** - in case of vulnerabilities
 
-3. When making commits, move unreleased changes to a dated section using the format `[YYYY-MM-DD]`
+3. When making commits, move unreleased changes to a **version-based section** using the format `[X.Y.Z] - YYYY-MM-DD`
+   - The version number comes from the `.version` file
+   - The date is included as a secondary reference
+   - Example: `## [0.2.0] - 2026-01-09`
 
 ### Example Entry
 
 ```markdown
 ## [Unreleased]
+
+## [0.2.0] - 2026-01-09
 
 ### Added
 - New utility function for data processing with comprehensive documentation
