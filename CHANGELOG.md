@@ -10,6 +10,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [2026-01-09]
 
 ### Added
+- `.claude/skills/commit-and-push/` custom skill for automated git workflow
+  - Runs ruff linting with auto-fix capability before committing
+  - Executes full test suite as quality gate
+  - Generates conventional commit messages automatically
+  - Updates CHANGELOG.md systematically with dated entries
+  - Creates commits with proper attribution
+  - Requires explicit confirmation before pushing to remote
+  - Invocable via `/commit-and-push` or `/cap` alias
+- `calculate_security_type_aggregation_by_sector.py` module for sector-based equity portfolio analysis
+  - Filters equity positions using asset_key prefix matching
+  - Aggregates market values and allocation percentages by sector
+  - Configurable option to exclude unknown sectors
+  - Produces wide-format output with sector breakdowns
+  - Includes slugified column names for downstream processing
+  - Provides both equity-total and account-total denominators
+
+## [2026-01-09] (earlier)
+
+### Added
 - `calculate_security_type_aggregation.py` module for aggregating portfolio positions by security type
   - Computes market values and allocation percentages in wide format
   - Includes helper functions: `prepare_dataframe()`, `aggregate_by_security_type()`, `calculate_allocations()`, and `pivot_to_wide_format()`
