@@ -1,0 +1,424 @@
+[
+  {
+    "snapshot_at": "2025-12-14 15:53:19+01:00",
+    "mv__equity_total": 43301.46,
+    "mv__account_total": 77345.91,
+    "sectors": {
+      "information_technology": {
+        "sector": "Information Technology",
+        "market_value": 8300.96,
+        "alloc_pct_of_equity": 0.1917016192987488,
+        "alloc_pct_of_account": 0.10732254620832567,
+        "holdings": [
+          {
+            "symbol": "AVGO",
+            "name": "BROADCOM INC",
+            "quantity": 4,
+            "market_value": 1439.72,
+            "alloc_of_equity": 0.03324876343661392,
+            "alloc_of_sector": 0.17344018041286793,
+            "alloc_of_account": 0.01861404177674036
+          },
+          {
+            "symbol": "MSFT",
+            "name": "MICROSOFT CORP",
+            "quantity": 3,
+            "market_value": 1435.59,
+            "alloc_of_equity": 0.03315338559023183,
+            "alloc_of_sector": 0.17294264759738634,
+            "alloc_of_account": 0.018560645288160676
+          },
+          {
+            "symbol": "AAPL",
+            "name": "APPLE INC",
+            "quantity": 4,
+            "market_value": 1113.12,
+            "alloc_of_equity": 0.025706292582282443,
+            "alloc_of_sector": 0.13409533355178196,
+            "alloc_of_account": 0.014391452631431963
+          },
+          {
+            "symbol": "ADBE",
+            "name": "ADOBE INC",
+            "quantity": 3,
+            "market_value": 1069.29,
+            "alloc_of_equity": 0.02469408652733649,
+            "alloc_of_sector": 0.1288152213719859,
+            "alloc_of_account": 0.013824777548030657
+          },
+          {
+            "symbol": "AMD",
+            "name": "ADVANCED MICRO DEVIC",
+            "quantity": 4,
+            "market_value": 843.12,
+            "alloc_of_equity": 0.019470937007666715,
+            "alloc_of_sector": 0.10156897515468091,
+            "alloc_of_account": 0.010900641029370524
+          },
+          {
+            "symbol": "TXN",
+            "name": "TEXAS INSTRS INC",
+            "quantity": 4,
+            "market_value": 717.68,
+            "alloc_of_equity": 0.01657403699551932,
+            "alloc_of_sector": 0.08645746997937588,
+            "alloc_of_account": 0.009278835816916497
+          },
+          {
+            "symbol": "NVDA",
+            "name": "NVIDIA CORP",
+            "quantity": 4,
+            "market_value": 700.08,
+            "alloc_of_equity": 0.016167584187692517,
+            "alloc_of_sector": 0.08433723328386115,
+            "alloc_of_account": 0.00905128661618953
+          },
+          {
+            "symbol": "PLTR",
+            "name": "PALANTIR TECHNOLOGIES INCLASS A",
+            "quantity": 2,
+            "market_value": 367.14,
+            "alloc_of_equity": 0.008478697946905254,
+            "alloc_of_sector": 0.04422861934041364,
+            "alloc_of_account": 0.00474672804289199
+          },
+          {
+            "symbol": "QCOM",
+            "name": "QUALCOMM INC",
+            "quantity": 2,
+            "market_value": 356.58,
+            "alloc_of_equity": 0.008234826262209172,
+            "alloc_of_sector": 0.0429564773231048,
+            "alloc_of_account": 0.004610198522455809
+          },
+          {
+            "symbol": "SMCI",
+            "name": "SUPER MICRO COMPUTER INC",
+            "quantity": 8,
+            "market_value": 258.64,
+            "alloc_of_equity": 0.005973008762291156,
+            "alloc_of_sector": 0.031157841984541548,
+            "alloc_of_account": 0.00334393893613767
+          }
+        ]
+      },
+      "health_care": {
+        "sector": "Health Care",
+        "market_value": 8380.89,
+        "alloc_pct_of_equity": 0.19354751548793042,
+        "alloc_pct_of_account": 0.10835595573185446,
+        "holdings": [
+          {
+            "symbol": "JNJ",
+            "name": "JOHNSON & JOHNSON",
+            "quantity": 13,
+            "market_value": 2750.54,
+            "alloc_of_equity": 0.06352072193408721,
+            "alloc_of_sector": 0.3281918746099758,
+            "alloc_of_account": 0.03556154423679287
+          },
+          {
+            "symbol": "ABT",
+            "name": "ABBOTT LABS",
+            "quantity": 13,
+            "market_value": 1630.98,
+            "alloc_of_equity": 0.037665704574395414,
+            "alloc_of_sector": 0.1946070166772264,
+            "alloc_of_account": 0.021086829284185808
+          },
+          {
+            "symbol": "BSX",
+            "name": "BOSTON SCIENTIFIC CORP",
+            "quantity": 13,
+            "market_value": 1203.54,
+            "alloc_of_equity": 0.027794443882492647,
+            "alloc_of_sector": 0.14360527342561472,
+            "alloc_of_account": 0.015560486650166763
+          },
+          {
+            "symbol": "ISRG",
+            "name": "INTUITIVE SURGICAL INC",
+            "quantity": 2,
+            "market_value": 1084.64,
+            "alloc_of_equity": 0.025048578038708167,
+            "alloc_of_sector": 0.12941823601073396,
+            "alloc_of_account": 0.014023236652073782
+          },
+          {
+            "symbol": "LLY",
+            "name": "ELI LILLY AND CO",
+            "quantity": 1,
+            "market_value": 1027.51,
+            "alloc_of_equity": 0.023729222986938546,
+            "alloc_of_sector": 0.12260153754553514,
+            "alloc_of_account": 0.0132846067749413
+          },
+          {
+            "symbol": "UNH",
+            "name": "UNITEDHEALTH GROUP INC",
+            "quantity": 2,
+            "market_value": 683.68,
+            "alloc_of_equity": 0.01578884407130845,
+            "alloc_of_sector": 0.08157606173091402,
+            "alloc_of_account": 0.008839252133693945
+          }
+        ]
+      },
+      "consumer_discretionary": {
+        "sector": "Consumer Discretionary",
+        "market_value": 2048.87,
+        "alloc_pct_of_equity": 0.04731641843023306,
+        "alloc_pct_of_account": 0.026489700618946753,
+        "holdings": [
+          {
+            "symbol": "AMZN",
+            "name": "AMAZON.COM INC",
+            "quantity": 5,
+            "market_value": 1130.95,
+            "alloc_of_equity": 0.02611805698930244,
+            "alloc_of_sector": 0.5519871929404989,
+            "alloc_of_account": 0.014621975486486615
+          },
+          {
+            "symbol": "TSLA",
+            "name": "TESLA INC",
+            "quantity": 2,
+            "market_value": 917.92,
+            "alloc_of_equity": 0.021198361440930628,
+            "alloc_of_sector": 0.4480128070595011,
+            "alloc_of_account": 0.011867725132460137
+          }
+        ]
+      },
+      "industrials": {
+        "sector": "Industrials",
+        "market_value": 10667.71,
+        "alloc_pct_of_equity": 0.24635912969216278,
+        "alloc_pct_of_account": 0.13792209568676608,
+        "holdings": [
+          {
+            "symbol": "HON",
+            "name": "HONEYWELL INTL INC",
+            "quantity": 10,
+            "market_value": 1936.6,
+            "alloc_of_equity": 0.044723665206669705,
+            "alloc_of_sector": 0.18153849326612742,
+            "alloc_of_account": 0.02503816943908217
+          },
+          {
+            "symbol": "BA",
+            "name": "BOEING CO",
+            "quantity": 9,
+            "market_value": 1839.42,
+            "alloc_of_equity": 0.04247939907799876,
+            "alloc_of_sector": 0.17242875931197982,
+            "alloc_of_account": 0.02378173584097724
+          },
+          {
+            "symbol": "NOC",
+            "name": "NORTHROP GRUMMAN CORP",
+            "quantity": 3,
+            "market_value": 1709.28,
+            "alloc_of_equity": 0.03947395769103398,
+            "alloc_of_sector": 0.16022932756889718,
+            "alloc_of_account": 0.022099164648783625
+          },
+          {
+            "symbol": "GD",
+            "name": "GENERAL DYNAMICS CORP",
+            "quantity": 4,
+            "market_value": 1349.96,
+            "alloc_of_equity": 0.03117585411669722,
+            "alloc_of_sector": 0.12654637218297088,
+            "alloc_of_account": 0.017453540853032825
+          },
+          {
+            "symbol": "LMT",
+            "name": "LOCKHEED MARTIN CORP",
+            "quantity": 2,
+            "market_value": 960.5,
+            "alloc_of_equity": 0.022181700108957064,
+            "alloc_of_sector": 0.09003806815145894,
+            "alloc_of_account": 0.012418239051037087
+          },
+          {
+            "symbol": "UNP",
+            "name": "UNION PAC CORP",
+            "quantity": 4,
+            "market_value": 959.8,
+            "alloc_of_equity": 0.022165534372282136,
+            "alloc_of_sector": 0.08997244956977646,
+            "alloc_of_account": 0.012409188798735446
+          },
+          {
+            "symbol": "RTX",
+            "name": "RTX CORP",
+            "quantity": 4,
+            "market_value": 714.64,
+            "alloc_of_equity": 0.016503831510531055,
+            "alloc_of_sector": 0.06699094744795275,
+            "alloc_of_account": 0.009239531864063658
+          },
+          {
+            "symbol": "GE",
+            "name": "GE AEROSPACE",
+            "quantity": 2,
+            "market_value": 599.62,
+            "alloc_of_equity": 0.013847570035744754,
+            "alloc_of_sector": 0.056208877069211675,
+            "alloc_of_account": 0.007752446121585485
+          },
+          {
+            "symbol": "CAT",
+            "name": "CATERPILLAR INC",
+            "quantity": 1,
+            "market_value": 597.89,
+            "alloc_of_equity": 0.01380761757224814,
+            "alloc_of_sector": 0.056046705431624974,
+            "alloc_of_account": 0.007730079069468572
+          }
+        ]
+      },
+      "utilities": {
+        "sector": "Utilities",
+        "market_value": 3345.92,
+        "alloc_pct_of_equity": 0.07727037379340096,
+        "alloc_pct_of_account": 0.04325917168729413,
+        "holdings": [
+          {
+            "symbol": "SO",
+            "name": "SOUTHERN CO",
+            "quantity": 16,
+            "market_value": 1351.04,
+            "alloc_of_equity": 0.03120079553899568,
+            "alloc_of_sector": 0.40378729915837797,
+            "alloc_of_account": 0.017467504099441068
+          },
+          {
+            "symbol": "DUK",
+            "name": "DUKE ENERGY CORP NEW",
+            "quantity": 10,
+            "market_value": 1153,
+            "alloc_of_equity": 0.026627277694562725,
+            "alloc_of_sector": 0.3445987949502678,
+            "alloc_of_account": 0.0149070584339883
+          },
+          {
+            "symbol": "NEE",
+            "name": "NEXTERA ENERGY INC",
+            "quantity": 6,
+            "market_value": 489.9,
+            "alloc_of_equity": 0.011313706281497206,
+            "alloc_of_sector": 0.14641712892119357,
+            "alloc_of_account": 0.0063338837179625915
+          },
+          {
+            "symbol": "CEG",
+            "name": "CONSTELLATION ENERGY COR",
+            "quantity": 1,
+            "market_value": 351.98,
+            "alloc_of_equity": 0.00812859427834535,
+            "alloc_of_sector": 0.10519677697016068,
+            "alloc_of_account": 0.00455072543590217
+          }
+        ]
+      },
+      "consumer_staples": {
+        "sector": "Consumer Staples",
+        "market_value": 9339,
+        "alloc_pct_of_equity": 0.2156740211530974,
+        "alloc_pct_of_account": 0.12074329463574737,
+        "holdings": [
+          {
+            "symbol": "KO",
+            "name": "THE COCA-COLA CO",
+            "quantity": 28,
+            "market_value": 1974.56,
+            "alloc_of_equity": 0.04560031001264161,
+            "alloc_of_sector": 0.21143163079558838,
+            "alloc_of_account": 0.02552895169246829
+          },
+          {
+            "symbol": "COST",
+            "name": "COSTCO WHSL CORP NEW",
+            "quantity": 2,
+            "market_value": 1768.94,
+            "alloc_of_equity": 0.040851740333928695,
+            "alloc_of_sector": 0.1894142841846022,
+            "alloc_of_account": 0.02287050472352061
+          },
+          {
+            "symbol": "PEP",
+            "name": "PEPSICO INC",
+            "quantity": 11,
+            "market_value": 1657.15,
+            "alloc_of_equity": 0.03827007218694243,
+            "alloc_of_sector": 0.17744405182567727,
+            "alloc_of_account": 0.021425179430948578
+          },
+          {
+            "symbol": "PG",
+            "name": "PROCTER & GAMBLE CO",
+            "quantity": 10,
+            "market_value": 1428.4,
+            "alloc_of_equity": 0.03298734038067077,
+            "alloc_of_sector": 0.15294999464610773,
+            "alloc_of_account": 0.01846768626809097
+          },
+          {
+            "symbol": "WMT",
+            "name": "WALMART INC",
+            "quantity": 12,
+            "market_value": 1400.4,
+            "alloc_of_equity": 0.03234071091367358,
+            "alloc_of_sector": 0.14995181496948282,
+            "alloc_of_account": 0.018105676176025338
+          },
+          {
+            "symbol": "MNST",
+            "name": "MONSTER BEVERAGE CORP NE",
+            "quantity": 15,
+            "market_value": 1109.55,
+            "alloc_of_equity": 0.0256238473252403,
+            "alloc_of_sector": 0.1188082235785416,
+            "alloc_of_account": 0.014345296344693597
+          }
+        ]
+      },
+      "communication_services": {
+        "sector": "Communication Services",
+        "market_value": 309.29,
+        "alloc_pct_of_equity": 0.0071427152802699964,
+        "alloc_pct_of_account": 0.003998789334820678,
+        "holdings": [
+          {
+            "symbol": "GOOGL",
+            "name": "ALPHABET INC CLASS A",
+            "quantity": 1,
+            "market_value": 309.29,
+            "alloc_of_equity": 0.0071427152802699964,
+            "alloc_of_sector": 1,
+            "alloc_of_account": 0.003998789334820678
+          }
+        ]
+      },
+      "energy": {
+        "sector": "Energy",
+        "market_value": 908.82,
+        "alloc_pct_of_equity": 0.020988206864156544,
+        "alloc_pct_of_account": 0.01175007185253881,
+        "holdings": [
+          {
+            "symbol": "KMI",
+            "name": "KINDER MORGAN INC DEL",
+            "quantity": 34,
+            "market_value": 908.82,
+            "alloc_of_equity": 0.020988206864156544,
+            "alloc_of_sector": 1,
+            "alloc_of_account": 0.01175007185253881
+          }
+        ]
+      }
+    }
+  }
+]

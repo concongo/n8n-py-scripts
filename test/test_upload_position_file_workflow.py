@@ -91,7 +91,9 @@ class TestStep:
         assert result[0]["json"] == expected_result
 
     @with_n8n_items(
-        module_fixture_name="calculate_security_type_by_sector_aggregation_module",
+        module_fixture_name=(
+            "calculate_security_type_by_sector_aggregation_module"
+        ),
         items_fixture_name="clean_raw_data_for_storage_output",
     )
     def test_calculate_security_type_by_sector_aggregation(
@@ -122,3 +124,18 @@ class TestStep:
             "mv__account_total": 77345.91,
         }
         assert result[0]["json"] == expected_result
+
+    @with_n8n_items(
+        module_fixture_name=(
+            "calculate_security_type_aggregation_detailed_module"
+        ),
+        items_fixture_name="clean_raw_data_for_storage_output",
+    )
+    def test_calculate_security_type_aggregation_detailed(
+        self,
+        request,
+        calculate_security_type_aggregation_detailed_module,
+        calculate_security_type_aggregation_detailed_output,
+    ):
+        result = calculate_security_type_aggregation_detailed_module.main()
+        assert result == calculate_security_type_aggregation_detailed_output

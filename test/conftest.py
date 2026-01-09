@@ -91,6 +91,18 @@ def clean_raw_data_for_storage_output(upload_position_fixtures_dir):
 
 
 @pytest.fixture
+def calculate_security_type_aggregation_detailed_output(
+    upload_position_fixtures_dir,
+):
+    """Load calculate_security_type_aggregation_detailed output fixture."""
+    with open(
+        upload_position_fixtures_dir
+        / "calculate_security_type_aggregation_detailed_output.json"
+    ) as f:
+        return [{"json": row} for row in json.load(f)]
+
+
+@pytest.fixture
 def extract_filename_module():
     """Load extract_filename module."""
     return load_module(
@@ -125,6 +137,16 @@ def calculate_security_type_by_sector_aggregation_module():
     """Load calculate_security_type_aggregation module."""
     return load_module(
         "calculate_security_type_aggregation_by_sector",
+        src_relative_path="portfolio_analysis/upload_position_file",
+        test_file=Path(__file__),
+    )
+
+
+@pytest.fixture
+def calculate_security_type_aggregation_detailed_module():
+    """Load calculate_security_type_aggregation_detailed module."""
+    return load_module(
+        "calculate_security_type_aggregation_detailed",
         src_relative_path="portfolio_analysis/upload_position_file",
         test_file=Path(__file__),
     )

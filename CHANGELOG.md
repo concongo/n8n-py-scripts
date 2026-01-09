@@ -7,6 +7,26 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.3.0] - 2026-01-09
+
+### Added
+- `calculate_security_type_aggregation_detailed.py` module for detailed sector-level equity holdings analysis
+  - Provides granular breakdown of all holdings within each sector
+  - Includes per-holding metrics: symbol, name, quantity, market_value
+  - Calculates three allocation perspectives: allocation of equity, allocation of sector, allocation of account
+  - Outputs nested structure with sector summaries and individual holdings
+  - Follows functional decomposition pattern with 20+ focused helper functions
+  - Comprehensive test coverage in `test_upload_position_file_workflow.py`
+  - Test fixture `calculate_security_type_aggregation_detailed_output.json` with sample data
+- Fixtures for the detailed aggregation module in `test/conftest.py`
+  - `calculate_security_type_aggregation_detailed_module` fixture for module loading
+  - `calculate_security_type_aggregation_detailed_output` fixture for expected results
+
+### Changed
+- Fixed import ordering in test files to comply with ruff linting rules
+  - Corrected import block formatting in `test/conftest.py`
+  - Corrected import block formatting in `test/test_upload_position_file_workflow.py`
+
 ## [0.2.2] - 2026-01-09
 
 ### Changed
