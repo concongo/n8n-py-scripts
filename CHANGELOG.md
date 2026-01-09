@@ -7,17 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2026-01-09]
+
 ### Added
 - `calculate_security_type_aggregation.py` module for aggregating portfolio positions by security type
   - Computes market values and allocation percentages in wide format
   - Includes helper functions: `prepare_dataframe()`, `aggregate_by_security_type()`, `calculate_allocations()`, and `pivot_to_wide_format()`
   - Comprehensive docstrings and type hints throughout
+- `test/conftest.py` for centralized test fixture management
+  - Organized by project and workflow following fixtures directory structure
+  - Automatic fixture discovery for all test files
+  - Clear sections with template for adding new workflows
+- `.claude/instructions.md` with project guidelines for changelog maintenance and coding standards
 
 ### Changed
 - Refactored `calculate_security_type_aggregation.py` to follow Python best practices
-  - Split monolithic `main()` function into focused, single-responsibility functions
+  - Split monolithic `main()` function (112 lines) into focused, single-responsibility functions
   - Each function now under 50 lines for better maintainability
   - Enhanced documentation with detailed Args, Returns, and Raises sections
+- Reorganized test fixtures for better scalability
+  - Extracted all fixtures from `test_upload_position_file_workflow.py` to `conftest.py`
+  - Test file reduced from 181 to 92 lines (49% reduction)
+  - Clean separation between test setup and test logic
+  - Fixtures organized by workflow matching `test/fixtures/` hierarchy
 
 ## [2026-01-08]
 
