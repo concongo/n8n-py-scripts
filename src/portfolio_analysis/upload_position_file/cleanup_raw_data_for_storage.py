@@ -7,12 +7,23 @@ from zoneinfo import ZoneInfo
 
 
 def to_number(value: Any) -> float | None:
-    """Convert string to number, handling currency and accounting formats."""
+    """Convert string to number, handling currency and accounting formats.
+
+    Supports multiple formats:
+    - Simple currency: "$278.28"
+    - Excel formula: "=\"$259.939\""
+    - Accounting (negative): "($123.45)"
+    """
     if value is None:
         return None
     s = str(value).strip()
     if not s or s.lower() == "n/a":
         return None
+
+    # Handle Excel formula format: ="$value"
+    if s.startswith('="') and s.endswith('"'):
+        s = s[2:-1]  # Remove =" prefix and " suffix
+
     neg = bool(re.match(r"^\(.*\)$", s))
     s = s.strip("()").replace("$", "").replace(",", "")
     try:

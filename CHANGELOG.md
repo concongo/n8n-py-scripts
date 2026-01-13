@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.5.0] - 2026-01-13
+
+### Added
+- Excel formula price format support in `cleanup_raw_data_for_storage.py`
+  - `to_number()` function now handles Excel formula format `="$value"` in addition to simple currency format
+  - Supports both positive and negative values in formula format (e.g., `="$259.939"`, `="-$0.311"`)
+  - Maintains backward compatibility with existing simple format (`"$278.28"`)
+  - Enhanced docstring documenting all supported formats
+- Test coverage for new Excel formula format
+  - `test_cleanup_raw_data_for_storage_new_format()` validates formula parsing with real-world data
+  - New test fixture `enrich_raw_data_with_sector_names_output_format_changed.json` with 49 positions in new format
+  - Fixture loading support in `test/conftest.py` via `cleanup_raw_data_for_storage_input_changed` fixture
+  - Verifies correct parsing of decimal values (259.939) and negative values (-0.311)
+
 ## [0.4.1] - 2026-01-10
 
 ### Added

@@ -69,6 +69,46 @@ class TestStep:
         assert result_json == expected_json
 
     @with_n8n_items(
+        module_fixture_name="cleanup_raw_data_for_storage_module",
+        items_fixture_name="cleanup_raw_data_for_storage_input_changed",
+    )
+    def test_cleanup_raw_data_for_storage_new_format(
+        self,
+        request,
+        cleanup_raw_data_for_storage_module,
+    ):
+        """Test cleanup with Excel formula format (="$value")."""
+        result = (
+            cleanup_raw_data_for_storage_module.cleanup_raw_data_for_storage()
+        )
+
+        # Verify we got results
+        assert len(result) > 0
+
+        # Find AAPL position to verify Excel formula parsing
+        aapl = next(
+            (r for r in result if r["asset"]["symbol"] == "AAPL"), None
+        )
+        assert aapl is not None
+
+        # Verify Excel formula format was correctly parsed
+        # Input: "=\"$259.939\"" should be parsed as 259.939
+        assert aapl["position"]["price"] == 259.939
+
+        # Verify negative value in Excel formula format
+        # Input: "=\"-$0.311\"" should be parsed as -0.311
+        assert aapl["position"]["price_change_abs"] == -0.311
+
+        # Verify the source file is the new format
+        assert "2026-01-13" in aapl["source_file_name"]
+
+        # Verify basic structure is maintained
+        assert "account_id" in aapl
+        assert "asset_key" in aapl
+        assert "position" in aapl
+        assert "asset" in aapl
+
+    @with_n8n_items(
         module_fixture_name="calculate_security_type_aggregation_module",
         items_fixture_name="clean_raw_data_for_storage_output",
     )

@@ -57,6 +57,18 @@ def enrich_raw_data_with_sector_names_output(upload_position_fixtures_dir):
 
 
 @pytest.fixture
+def enrich_raw_data_with_sector_names_output_format_changed(
+    upload_position_fixtures_dir,
+):
+    """Load enrich_raw_data_with_sector_names output fixture."""
+    with open(
+        upload_position_fixtures_dir
+        / "enrich_raw_data_with_sector_names_output_format_changed.json"
+    ) as f:
+        return json.load(f)
+
+
+@pytest.fixture
 def n8n_items(download_file_step_output):
     """Wrap fixture data using n8n's item shape."""
     return [{"json": download_file_step_output[0]}]
@@ -69,6 +81,17 @@ def cleanup_raw_data_for_storage_input(
     """Input data for cleanup_raw_data_for_storage step."""
     return [
         {"json": item} for item in enrich_raw_data_with_sector_names_output
+    ]
+
+
+@pytest.fixture
+def cleanup_raw_data_for_storage_input_changed(
+    enrich_raw_data_with_sector_names_output_format_changed,
+):
+    """Input data for cleanup_raw_data_for_storage step."""
+    return [
+        {"json": item}
+        for item in enrich_raw_data_with_sector_names_output_format_changed
     ]
 
 
