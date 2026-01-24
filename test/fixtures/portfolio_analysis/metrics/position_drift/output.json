@@ -1,0 +1,542 @@
+[
+  {
+    "metric": "Position drift / concentration (latest snapshot)",
+    "snapshot_date": "2026-01-22",
+    "all_positions_count": 39,
+    "total_market_value": 49502.94,
+    "total_alloc_sum": 0.49975104790056457,
+    "top5_weight": 0.12818206414201375,
+    "top10_weight": 0.2267386265435838,
+    "rating_weight_breakdown": {
+      "D": 0.11521969568483029,
+      "A": 0.07783377349195197,
+      "B": 0.16285586218593268,
+      "F": 0.02569476413151455,
+      "C": 0.11814695240633506
+    },
+    "bad_rating_weight": 0.14091445981634482,
+    "enrichment_missing_count": 0,
+    "flags": {
+      "concentration_high": false,
+      "top5_high": false,
+      "bad_rating_weight_high": false,
+      "alloc_sum_not_one": true,
+      "enrichment_missing_any": false,
+      "enrichment_missing_many": false
+    },
+    "thresholds_used": {
+      "top10_concentration_high": 0.45,
+      "top5_concentration_high": 0.25,
+      "trim_gain_pct": 0.15,
+      "trim_weight": 0.05,
+      "add_weight_max": 0.03,
+      "add_near_52w_low": 0.7,
+      "replace_weight_min": 0.02,
+      "bad_rating_weight_high": 0.2
+    },
+    "top3_positions": [
+      {
+        "symbol": "COST",
+        "sector": "Consumer Staples",
+        "rating": "D",
+        "alloc_of_account": 0.02974735299105953,
+        "market_value": 2946.63,
+        "gain_pct": 0.0608,
+        "gain_abs": 168.81,
+        "pe_ratio": 51.65,
+        "price_low_52w_ratio": 0.8593464849474883,
+        "enrichment_missing": false,
+        "rating_low_confidence": false
+      },
+      {
+        "symbol": "JNJ",
+        "sector": "Health Care",
+        "rating": "A",
+        "alloc_of_account": 0.028660181393808708,
+        "market_value": 2838.94,
+        "gain_pct": 0.1948,
+        "gain_abs": 462.81,
+        "pe_ratio": 21.09,
+        "price_low_52w_ratio": 0.6479531092590897,
+        "enrichment_missing": false,
+        "rating_low_confidence": false
+      },
+      {
+        "symbol": "ABT",
+        "sector": "Health Care",
+        "rating": "B",
+        "alloc_of_account": 0.024511585459420608,
+        "market_value": 2428,
+        "gain_pct": -0.0552,
+        "gain_abs": -141.98,
+        "pe_ratio": 15.22,
+        "price_low_52w_ratio": 0.9349258649093904,
+        "enrichment_missing": false,
+        "rating_low_confidence": false
+      }
+    ],
+    "top_positions": [
+      {
+        "symbol": "COST",
+        "sector": "Consumer Staples",
+        "rating": "D",
+        "alloc_of_account": 0.02974735299105953,
+        "market_value": 2946.63,
+        "gain_pct": 0.0608,
+        "gain_abs": 168.81,
+        "pe_ratio": 51.65,
+        "price_low_52w_ratio": 0.8593464849474883,
+        "enrichment_missing": false,
+        "rating_low_confidence": false
+      },
+      {
+        "symbol": "JNJ",
+        "sector": "Health Care",
+        "rating": "A",
+        "alloc_of_account": 0.028660181393808708,
+        "market_value": 2838.94,
+        "gain_pct": 0.1948,
+        "gain_abs": 462.81,
+        "pe_ratio": 21.09,
+        "price_low_52w_ratio": 0.6479531092590897,
+        "enrichment_missing": false,
+        "rating_low_confidence": false
+      },
+      {
+        "symbol": "ABT",
+        "sector": "Health Care",
+        "rating": "B",
+        "alloc_of_account": 0.024511585459420608,
+        "market_value": 2428,
+        "gain_pct": -0.0552,
+        "gain_abs": -141.98,
+        "pe_ratio": 15.22,
+        "price_low_52w_ratio": 0.9349258649093904,
+        "enrichment_missing": false,
+        "rating_low_confidence": false
+      },
+      {
+        "symbol": "BA",
+        "sector": "Industrials",
+        "rating": "F",
+        "alloc_of_account": 0.02273913938894677,
+        "market_value": 2252.43,
+        "gain_pct": 0.1355,
+        "gain_abs": 268.84,
+        "pe_ratio": -18.43,
+        "price_low_52w_ratio": 0.5149638390538218,
+        "enrichment_missing": false,
+        "rating_low_confidence": false
+      },
+      {
+        "symbol": "MSFT",
+        "sector": "Information Technology",
+        "rating": "B",
+        "alloc_of_account": 0.022523804908778134,
+        "market_value": 2231.1,
+        "gain_pct": -0.0955,
+        "gain_abs": -235.51,
+        "pe_ratio": 32.33,
+        "price_low_52w_ratio": 0.77269060104881,
+        "enrichment_missing": false,
+        "rating_low_confidence": false
+      },
+      {
+        "symbol": "HON",
+        "sector": "Industrials",
+        "rating": "B",
+        "alloc_of_account": 0.022129075505374782,
+        "market_value": 2192,
+        "gain_pct": 0.0998,
+        "gain_abs": 198.97,
+        "pe_ratio": 22.7,
+        "price_low_52w_ratio": 0.8182481751824818,
+        "enrichment_missing": false,
+        "rating_low_confidence": false
+      },
+      {
+        "symbol": "KO",
+        "sector": "Consumer Staples",
+        "rating": "D",
+        "alloc_of_account": 0.020321194647025094,
+        "market_value": 2012.92,
+        "gain_pct": 0.0691,
+        "gain_abs": 130.02,
+        "pe_ratio": 23.76,
+        "price_low_52w_ratio": 0.8536653220197523,
+        "enrichment_missing": false,
+        "rating_low_confidence": false
+      },
+      {
+        "symbol": "NOC",
+        "sector": "Industrials",
+        "rating": "C",
+        "alloc_of_account": 0.02014028541661619,
+        "market_value": 1995,
+        "gain_pct": 0.1306,
+        "gain_abs": 230.39,
+        "pe_ratio": 23.63,
+        "price_low_52w_ratio": 0.6409624060150376,
+        "enrichment_missing": false,
+        "rating_low_confidence": false
+      },
+      {
+        "symbol": "DUK",
+        "sector": "Utilities",
+        "rating": "A",
+        "alloc_of_account": 0.018086884888425848,
+        "market_value": 1791.6,
+        "gain_pct": -0.0222,
+        "gain_abs": -40.6,
+        "pe_ratio": 18.86,
+        "price_low_52w_ratio": 0.9094943067649028,
+        "enrichment_missing": false,
+        "rating_low_confidence": false
+      },
+      {
+        "symbol": "ADBE",
+        "sector": "Information Technology",
+        "rating": "A",
+        "alloc_of_account": 0.017879121944128124,
+        "market_value": 1771.02,
+        "gain_pct": -0.1416,
+        "gain_abs": -292.24,
+        "pe_ratio": 17.39,
+        "price_low_52w_ratio": 0.9768269133041975,
+        "enrichment_missing": false,
+        "rating_low_confidence": false
+      },
+      {
+        "symbol": "PEP",
+        "sector": "Consumer Staples",
+        "rating": "B",
+        "alloc_of_account": 0.01629091657984639,
+        "market_value": 1613.7,
+        "gain_pct": 0.0144,
+        "gain_abs": 22.94,
+        "pe_ratio": 28.08,
+        "price_low_52w_ratio": 0.8698023176550784,
+        "enrichment_missing": false,
+        "rating_low_confidence": false
+      },
+      {
+        "symbol": "PG",
+        "sector": "Consumer Staples",
+        "rating": "C",
+        "alloc_of_account": 0.01615654705659067,
+        "market_value": 1600.39,
+        "gain_pct": -0.053399999999999996,
+        "gain_abs": -90.21,
+        "pe_ratio": 21.46,
+        "price_low_52w_ratio": 0.9459069351845487,
+        "enrichment_missing": false,
+        "rating_low_confidence": false
+      },
+      {
+        "symbol": "GD",
+        "sector": "Industrials",
+        "rating": "B",
+        "alloc_of_account": 0.01473925649536824,
+        "market_value": 1460,
+        "gain_pct": 0.1042,
+        "gain_abs": 137.74,
+        "pe_ratio": 23.27,
+        "price_low_52w_ratio": 0.6553424657534246,
+        "enrichment_missing": false,
+        "rating_low_confidence": false
+      },
+      {
+        "symbol": "WMT",
+        "sector": "Consumer Staples",
+        "rating": "B",
+        "alloc_of_account": 0.014488891042570205,
+        "market_value": 1435.2,
+        "gain_pct": 0.1675,
+        "gain_abs": 205.95,
+        "pe_ratio": 41.51,
+        "price_low_52w_ratio": 0.6673076923076924,
+        "enrichment_missing": false,
+        "rating_low_confidence": false
+      },
+      {
+        "symbol": "SO",
+        "sector": "Utilities",
+        "rating": "C",
+        "alloc_of_account": 0.014404897471308927,
+        "market_value": 1426.88,
+        "gain_pct": -0.049699999999999994,
+        "gain_abs": -74.59,
+        "pe_ratio": 22.08,
+        "price_low_52w_ratio": 0.9200493384166852,
+        "enrichment_missing": false,
+        "rating_low_confidence": false
+      }
+    ],
+    "candidates_trim": [],
+    "candidates_add": [
+      {
+        "symbol": "CEG",
+        "sector": "Utilities",
+        "rating": "B",
+        "alloc_of_account": 0.002986920424167535,
+        "market_value": 295.87,
+        "gain_pct": -0.0161,
+        "gain_abs": -4.83,
+        "pe_ratio": 33.82,
+        "price_low_52w_ratio": 0.5453500752032177,
+        "enrichment_missing": false,
+        "rating_low_confidence": false,
+        "reasons": [
+          "Good rating (B), underweight (0.30%), down (-1.61%)",
+          "Good rating (B), underweight (0.30%), near 52w low (ratio 0.55)"
+        ]
+      },
+      {
+        "symbol": "QCOM",
+        "sector": "Information Technology",
+        "rating": "A",
+        "alloc_of_account": 0.003164700086416463,
+        "market_value": 313.48,
+        "gain_pct": -0.0373,
+        "gain_abs": -12.16,
+        "pe_ratio": 30.75,
+        "price_low_52w_ratio": 0.7707030751563098,
+        "enrichment_missing": false,
+        "rating_low_confidence": false,
+        "reasons": [
+          "Good rating (A), underweight (0.32%), down (-3.73%)"
+        ]
+      },
+      {
+        "symbol": "GOOGL",
+        "sector": "Communication Services",
+        "rating": "B",
+        "alloc_of_account": 0.0033314757831996705,
+        "market_value": 330,
+        "gain_pct": 0.3934,
+        "gain_abs": 93.17,
+        "pe_ratio": 31.77,
+        "price_low_52w_ratio": 0.42584848484848487,
+        "enrichment_missing": false,
+        "rating_low_confidence": false,
+        "reasons": [
+          "Good rating (B), underweight (0.33%), near 52w low (ratio 0.43)"
+        ]
+      },
+      {
+        "symbol": "PLTR",
+        "sector": "Information Technology",
+        "rating": "C",
+        "alloc_of_account": 0.0033651943562781157,
+        "market_value": 333.34,
+        "gain_pct": -0.1267,
+        "gain_abs": -48.38,
+        "pe_ratio": 390.36,
+        "price_low_52w_ratio": 0.3967120657586849,
+        "enrichment_missing": false,
+        "rating_low_confidence": false,
+        "reasons": [
+          "Good rating (C), underweight (0.34%), down (-12.67%)",
+          "Good rating (C), underweight (0.34%), near 52w low (ratio 0.40)"
+        ]
+      },
+      {
+        "symbol": "GE",
+        "sector": "Industrials",
+        "rating": "B",
+        "alloc_of_account": 0.0064499390238977865,
+        "market_value": 638.9,
+        "gain_pct": 0.16269999999999998,
+        "gain_abs": 89.38,
+        "pe_ratio": 41.68,
+        "price_low_52w_ratio": 0.4988574111754579,
+        "enrichment_missing": false,
+        "rating_low_confidence": false,
+        "reasons": [
+          "Good rating (B), underweight (0.64%), near 52w low (ratio 0.50)"
+        ]
+      },
+      {
+        "symbol": "CAT",
+        "sector": "Industrials",
+        "rating": "C",
+        "alloc_of_account": 0.006536557394260978,
+        "market_value": 647.48,
+        "gain_pct": 0.5416,
+        "gain_abs": 227.48,
+        "pe_ratio": 32.27,
+        "price_low_52w_ratio": 0.4128312843639958,
+        "enrichment_missing": false,
+        "rating_low_confidence": false,
+        "reasons": [
+          "Good rating (C), underweight (0.65%), near 52w low (ratio 0.41)"
+        ]
+      },
+      {
+        "symbol": "UNH",
+        "sector": "Health Care",
+        "rating": "B",
+        "alloc_of_account": 0.007015583230360445,
+        "market_value": 694.93,
+        "gain_pct": 0.0758,
+        "gain_abs": 48.96,
+        "pe_ratio": 17.61,
+        "price_low_52w_ratio": 0.675173585229297,
+        "enrichment_missing": false,
+        "rating_low_confidence": false,
+        "reasons": [
+          "Good rating (B), underweight (0.70%), near 52w low (ratio 0.68)"
+        ]
+      },
+      {
+        "symbol": "NVDA",
+        "sector": "Information Technology",
+        "rating": "B",
+        "alloc_of_account": 0.007424950936447557,
+        "market_value": 735.48,
+        "gain_pct": -0.0281,
+        "gain_abs": -21.29,
+        "pe_ratio": 44.07,
+        "price_low_52w_ratio": 0.4710937075107413,
+        "enrichment_missing": false,
+        "rating_low_confidence": false,
+        "reasons": [
+          "Good rating (B), underweight (0.74%), down (-2.81%)",
+          "Good rating (B), underweight (0.74%), near 52w low (ratio 0.47)"
+        ]
+      },
+      {
+        "symbol": "RTX",
+        "sector": "Industrials",
+        "rating": "B",
+        "alloc_of_account": 0.008015732642001632,
+        "market_value": 794,
+        "gain_pct": 0.19149999999999998,
+        "gain_abs": 127.6,
+        "pe_ratio": 40.33,
+        "price_low_52w_ratio": 0.5655919395465995,
+        "enrichment_missing": false,
+        "rating_low_confidence": false,
+        "reasons": [
+          "Good rating (B), underweight (0.80%), near 52w low (ratio 0.57)"
+        ]
+      },
+      {
+        "symbol": "AAPL",
+        "sector": "Information Technology",
+        "rating": "A",
+        "alloc_of_account": 0.010042885179172826,
+        "market_value": 994.8,
+        "gain_pct": -0.002,
+        "gain_abs": -2.02,
+        "pe_ratio": 33.07,
+        "price_low_52w_ratio": 0.680377965420185,
+        "enrichment_missing": false,
+        "rating_low_confidence": false,
+        "reasons": [
+          "Good rating (A), underweight (1.00%), down (-0.20%)",
+          "Good rating (A), underweight (1.00%), near 52w low (ratio 0.68)"
+        ]
+      }
+    ],
+    "candidates_replace": [
+      {
+        "symbol": "COST",
+        "sector": "Consumer Staples",
+        "rating": "D",
+        "alloc_of_account": 0.02974735299105953,
+        "market_value": 2946.63,
+        "gain_pct": 0.0608,
+        "gain_abs": 168.81,
+        "pe_ratio": 51.65,
+        "price_low_52w_ratio": 0.8593464849474883,
+        "enrichment_missing": false,
+        "rating_low_confidence": false,
+        "reasons": [
+          "Bad rating (D) with meaningful weight (2.97%)"
+        ]
+      },
+      {
+        "symbol": "BA",
+        "sector": "Industrials",
+        "rating": "F",
+        "alloc_of_account": 0.02273913938894677,
+        "market_value": 2252.43,
+        "gain_pct": 0.1355,
+        "gain_abs": 268.84,
+        "pe_ratio": -18.43,
+        "price_low_52w_ratio": 0.5149638390538218,
+        "enrichment_missing": false,
+        "rating_low_confidence": false,
+        "reasons": [
+          "Bad rating (F) with meaningful weight (2.27%)"
+        ]
+      },
+      {
+        "symbol": "KO",
+        "sector": "Consumer Staples",
+        "rating": "D",
+        "alloc_of_account": 0.020321194647025094,
+        "market_value": 2012.92,
+        "gain_pct": 0.0691,
+        "gain_abs": 130.02,
+        "pe_ratio": 23.76,
+        "price_low_52w_ratio": 0.8536653220197523,
+        "enrichment_missing": false,
+        "rating_low_confidence": false,
+        "reasons": [
+          "Bad rating (D) with meaningful weight (2.03%)"
+        ]
+      },
+      {
+        "symbol": "AVGO",
+        "sector": "Information Technology",
+        "rating": "D",
+        "alloc_of_account": 0.013368707548922217,
+        "market_value": 1324.24,
+        "gain_pct": -0.0291,
+        "gain_abs": -39.63,
+        "pe_ratio": 69.73,
+        "price_low_52w_ratio": 0.41714492841176826,
+        "enrichment_missing": false,
+        "rating_low_confidence": false,
+        "reasons": [
+          "Bad rating (D) and losing (-2.91%)"
+        ]
+      },
+      {
+        "symbol": "TSLA",
+        "sector": "Consumer Discretionary",
+        "rating": "D",
+        "alloc_of_account": 0.008765819462279618,
+        "market_value": 868.3,
+        "gain_pct": -0.0535,
+        "gain_abs": -49.11,
+        "pe_ratio": 289.31,
+        "price_low_52w_ratio": 0.49349405538327734,
+        "enrichment_missing": false,
+        "rating_low_confidence": false,
+        "reasons": [
+          "Bad rating (D) and losing (-5.35%)"
+        ]
+      },
+      {
+        "symbol": "SMCI",
+        "sector": "Information Technology",
+        "rating": "F",
+        "alloc_of_account": 0.0029556247425677803,
+        "market_value": 292.77,
+        "gain_pct": -0.3298,
+        "gain_abs": -144.04,
+        "pe_ratio": 24.99,
+        "price_low_52w_ratio": 0.790347371656932,
+        "enrichment_missing": false,
+        "rating_low_confidence": false,
+        "reasons": [
+          "Bad rating (F) and losing (-32.98%)"
+        ]
+      }
+    ],
+    "candidates_review_rating": []
+  }
+]

@@ -7,6 +7,30 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.0] - 2026-01-24
+
+### Added
+- Position drift and concentration analysis module `calculate_position_drift.py`
+  - Analyzes portfolio snapshots to assess concentration risk and generate rebalancing recommendations
+  - Calculates concentration metrics: top 5/10 position weights, rating distribution breakdown
+  - Generates four types of action candidates with reasons:
+    - **Trim candidates**: High weight positions with strong gains or stretched P/E ratios
+    - **Add candidates**: Good-rated positions that are underweight and near 52-week lows
+    - **Replace candidates**: Bad-rated positions with meaningful weight or losing money
+    - **Review candidates**: Bad-rated positions with low confidence (missing enrichment data)
+  - Boolean flags for portfolio alerts: concentration, bad ratings, data quality issues
+  - Comprehensive module docstring documenting all metrics, thresholds, and usage
+  - Clean architecture using dataclasses (`Position`, `Candidate`) instead of raw dicts
+  - Functional decomposition with focused functions under 20 lines each
+  - Modern Python type hints (`list[str]`, `dict[str, Any]`, `float | None`)
+- Test coverage for position drift analysis
+  - `test_calculate_position_drift.py` with fixture-based testing
+  - Input fixture with 39 portfolio positions (`input.json`)
+  - Expected output fixture with full analysis results (`output.json`)
+- Test fixtures and configuration
+  - `position_drift_fixtures_dir`, `position_drift_input`, `position_drift_output` fixtures in `conftest.py`
+  - `calculate_position_drift_module` fixture for module loading
+
 ## [0.5.0] - 2026-01-13
 
 ### Added
