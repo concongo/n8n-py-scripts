@@ -204,3 +204,44 @@ def flat_aggregation_module():
 #     """Fixtures directory for workflow_name."""
 #     return Path(__file__).parent / "fixtures" / "project_name" / "workflow_name"
 # =============================================================================
+
+# =============================================================================
+# Portfolio Analysis - position_drift
+# =============================================================================
+
+
+@pytest.fixture
+def calculate_position_drift_module():
+    return load_module(
+        "calculate_position_drift",
+        src_relative_path="portfolio_analysis/metrics/position_drift",
+        test_file=Path(__file__),
+    )
+
+
+@pytest.fixture
+def position_drift_fixtures_dir():
+    """Fixtures directory for upload_position_file workflow."""
+    return (
+        Path(__file__).parent
+        / "fixtures"
+        / "portfolio_analysis"
+        / "metrics"
+        / "position_drift"
+    )
+
+
+@pytest.fixture
+def position_drift_input(
+    position_drift_fixtures_dir,
+):
+    with open(position_drift_fixtures_dir / "input.json") as f:
+        return [{"json": row} for row in json.load(f)]
+
+
+@pytest.fixture
+def position_drift_output(
+    position_drift_fixtures_dir,
+):
+    with open(position_drift_fixtures_dir / "output.json") as f:
+        return json.load(f)[0]
