@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.6.1] - 2026-01-24
+
+### Added
+- System prompt for position drift analysis module
+  - `src/portfolio_analysis/metrics/position_drift/system.prompt` with LLM instructions
+  - Strict output format for portfolio rebalancing recommendations
+  - Decision rules for handling enrichment gaps and low confidence ratings
+  - Structured output template: snapshot summary, key observations, recommended actions, follow-ups
+  - Action types: TRIM, ADD, REPLACE, REVIEW, HOLD with required format
+
 ## [0.6.0] - 2026-01-24
 
 ### Added
