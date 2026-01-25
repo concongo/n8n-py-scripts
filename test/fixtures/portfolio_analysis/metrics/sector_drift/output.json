@@ -1,0 +1,160 @@
+[
+  {
+    "metric": "Sector drift / concentration",
+    "sectors_count": 8,
+    "top_sector": {
+      "sector": "Industrials",
+      "sector_weight": 0.24360755138987703,
+      "sector_mv": 12059.289999999999,
+      "symbols_count": 9,
+      "avg_pe": 24.053333333333335
+    },
+    "top3_sectors": [
+      {
+        "sector": "Industrials",
+        "sector_weight": 0.24360755138987703,
+        "sector_mv": 12059.289999999999,
+        "symbols_count": 9,
+        "avg_pe": 24.053333333333335
+      },
+      {
+        "sector": "Consumer Staples",
+        "sector_weight": 0.2188261949694301,
+        "sector_mv": 10832.54,
+        "symbols_count": 6,
+        "avg_pe": 35.473333333333336
+      },
+      {
+        "sector": "Information Technology",
+        "sector_weight": 0.19769229867963398,
+        "sector_mv": 9786.35,
+        "symbols_count": 10,
+        "avg_pe": 79.866
+      }
+    ],
+    "concentration": {
+      "top1_weight": 0.24360755138987703,
+      "top3_weight": 0.6601260450389411,
+      "avg_sector_weight": 0.125
+    },
+    "flags": {
+      "sector_concentration_high": false,
+      "top3_sector_concentration_high": true,
+      "sector_count_low": false,
+      "sector_overcrowded": true
+    },
+    "all_sectors": [
+      {
+        "sector": "Industrials",
+        "sector_mv": 12059.289999999999,
+        "sector_weight": 0.24360755138987703,
+        "symbols": [
+          "BA",
+          "CAT",
+          "HON",
+          "GD",
+          "LMT",
+          "NOC",
+          "UNP",
+          "RTX",
+          "GE"
+        ],
+        "symbols_count": 9,
+        "avg_pe": 24.053333333333335
+      },
+      {
+        "sector": "Consumer Staples",
+        "sector_mv": 10832.54,
+        "sector_weight": 0.2188261949694301,
+        "symbols": [
+          "PEP",
+          "COST",
+          "WMT",
+          "PG",
+          "MNST",
+          "KO"
+        ],
+        "symbols_count": 6,
+        "avg_pe": 35.473333333333336
+      },
+      {
+        "sector": "Information Technology",
+        "sector_mv": 9786.35,
+        "sector_weight": 0.19769229867963398,
+        "symbols": [
+          "AMD",
+          "AAPL",
+          "NVDA",
+          "MSFT",
+          "PLTR",
+          "QCOM",
+          "TXN",
+          "ADBE",
+          "AVGO",
+          "SMCI"
+        ],
+        "symbols_count": 10,
+        "avg_pe": 79.866
+      },
+      {
+        "sector": "Health Care",
+        "sector_mv": 9472.37,
+        "sector_weight": 0.19134964509178648,
+        "symbols": [
+          "ABT",
+          "JNJ",
+          "BSX",
+          "LLY",
+          "ISRG",
+          "UNH"
+        ],
+        "symbols_count": 6,
+        "avg_pe": 37.235
+      },
+      {
+        "sector": "Utilities",
+        "sector_mv": 4018.29,
+        "sector_weight": 0.08117275458790932,
+        "symbols": [
+          "SO",
+          "NEE",
+          "DUK",
+          "CEG"
+        ],
+        "symbols_count": 4,
+        "avg_pe": 25.3175
+      },
+      {
+        "sector": "Consumer Discretionary",
+        "sector_mv": 2028.3,
+        "sector_weight": 0.04097332400863463,
+        "symbols": [
+          "AMZN",
+          "TSLA"
+        ],
+        "symbols_count": 2,
+        "avg_pe": 160.975
+      },
+      {
+        "sector": "Energy",
+        "sector_mv": 975.8,
+        "sector_weight": 0.019711960542141537,
+        "symbols": [
+          "KMI"
+        ],
+        "symbols_count": 1,
+        "avg_pe": 22.91
+      },
+      {
+        "sector": "Communication Services",
+        "sector_mv": 330,
+        "sector_weight": 0.006666270730586911,
+        "symbols": [
+          "GOOGL"
+        ],
+        "symbols_count": 1,
+        "avg_pe": 31.77
+      }
+    ]
+  }
+]
