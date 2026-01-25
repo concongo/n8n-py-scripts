@@ -1,0 +1,105 @@
+[
+  {
+    "_id": "Industrials",
+    "sector_mv": 12059.289999999999,
+    "symbols": [
+      "BA",
+      "CAT",
+      "HON",
+      "GD",
+      "LMT",
+      "NOC",
+      "UNP",
+      "RTX",
+      "GE"
+    ],
+    "avg_pe": 24.053333333333335,
+    "sector_weight": 0.24360755138987703
+  },
+  {
+    "_id": "Consumer Staples",
+    "sector_mv": 10832.54,
+    "symbols": [
+      "PEP",
+      "COST",
+      "WMT",
+      "PG",
+      "MNST",
+      "KO"
+    ],
+    "avg_pe": 35.473333333333336,
+    "sector_weight": 0.2188261949694301
+  },
+  {
+    "_id": "Information Technology",
+    "sector_mv": 9786.35,
+    "symbols": [
+      "AMD",
+      "AAPL",
+      "NVDA",
+      "MSFT",
+      "PLTR",
+      "QCOM",
+      "TXN",
+      "ADBE",
+      "AVGO",
+      "SMCI"
+    ],
+    "avg_pe": 79.866,
+    "sector_weight": 0.19769229867963398
+  },
+  {
+    "_id": "Health Care",
+    "sector_mv": 9472.37,
+    "symbols": [
+      "ABT",
+      "JNJ",
+      "BSX",
+      "LLY",
+      "ISRG",
+      "UNH"
+    ],
+    "avg_pe": 37.235,
+    "sector_weight": 0.19134964509178648
+  },
+  {
+    "_id": "Utilities",
+    "sector_mv": 4018.29,
+    "symbols": [
+      "SO",
+      "NEE",
+      "DUK",
+      "CEG"
+    ],
+    "avg_pe": 25.3175,
+    "sector_weight": 0.08117275458790932
+  },
+  {
+    "_id": "Consumer Discretionary",
+    "sector_mv": 2028.3,
+    "symbols": [
+      "AMZN",
+      "TSLA"
+    ],
+    "avg_pe": 160.975,
+    "sector_weight": 0.04097332400863463
+  },
+  {
+    "_id": "Energy",
+    "sector_mv": 975.8,
+    "symbols": [
+      "KMI"
+    ],
+    "avg_pe": 22.91,
+    "sector_weight": 0.019711960542141537
+  },
+  {
+    "_id": "Communication Services",
+    "sector_mv": 330,
+    "symbols": [
+      "GOOGL"
+    ],
+    "avg_pe": 31.77,
+    "sector_weight": 0.006666270730586911
+  }
+]

@@ -181,7 +181,9 @@ def _evaluate_trim_reasons(pos: dict[str, Any]) -> list[str]:
 
     pe_ratio = pos["pe_ratio"]
     if pe_ratio is not None and pe_ratio >= 40:
-        reasons.append(f"High weight ({w:.2%}) and stretched PE ({pe_ratio:.2f})")
+        reasons.append(
+            f"High weight ({w:.2%}) and stretched PE ({pe_ratio:.2f})"
+        )
 
     return reasons
 
@@ -220,7 +222,9 @@ def _evaluate_replace_reasons(pos: dict[str, Any]) -> list[str]:
         return reasons
 
     if w >= THRESHOLDS["replace_weight_min"]:
-        reasons.append(f"Bad rating ({rating}) with meaningful weight ({w:.2%})")
+        reasons.append(
+            f"Bad rating ({rating}) with meaningful weight ({w:.2%})"
+        )
 
     gain_pct = pos["gain_pct"]
     if gain_pct is not None and gain_pct < 0:

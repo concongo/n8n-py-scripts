@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-01-25
+
+### Added
+- Sector drift and concentration analysis module `calculate_sector_drift.py`
+  - Analyzes sector-level portfolio data to assess sector concentration risk
+  - Calculates concentration metrics: top sector weight, top 3 sectors weight, average sector weight
+  - Sector details: market value, symbol count, and average P/E per sector
+  - Boolean flags for concentration alerts: sector_concentration_high, top3_sector_concentration_high, sector_count_low, sector_overcrowded
+  - Configurable thresholds via `THRESHOLDS` constant
+  - Comprehensive module docstring documenting all metrics, thresholds, and usage
+  - Clean functional decomposition with focused helper functions
+  - Modern Python type hints (`list[str]`, `dict[str, Any]`, `float | None`)
+- Test coverage for sector drift analysis
+  - `test_metrics.py` with fixture-based testing (renamed from `test_calculate_position_drift.py`)
+  - Input fixture with 8 sectors (`input.json`)
+  - Expected output fixture with full analysis results (`output.json`)
+- Test fixtures and configuration
+  - `sector_drift_fixtures_dir`, `sector_drift_input`, `sector_drift_output` fixtures in `conftest.py`
+  - `calculate_sector_drift_module` fixture for module loading
+
+### Changed
+- Renamed `test_calculate_position_drift.py` to `test_metrics.py` to consolidate metrics tests
+
 ## [0.6.1] - 2026-01-24
 
 ### Added
