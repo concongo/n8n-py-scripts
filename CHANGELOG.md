@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.7.1] - 2026-01-25
+
+### Added
+- System prompt for sector drift analysis module
+  - `src/portfolio_analysis/metrics/sector_drift/system.prompt` with LLM instructions
+  - Strict output format for sector-level portfolio rebalancing recommendations
+  - Decision rules for sector concentration, overcrowding, and diversification
+  - Structured output template: snapshot summary, key observations, recommended actions, follow-ups
+  - Action types: TRIM_SECTOR, ADD_SECTOR, CONSOLIDATE_SECTOR, HOLD
+
 ## [0.7.0] - 2026-01-25
 
 ### Added
