@@ -1,0 +1,402 @@
+[
+  {
+    "metric": "Position drift (today vs yesterday)",
+    "today_date": "2026-01-26",
+    "yesterday_date": "2026-01-22",
+    "thresholds_used": {
+      "min_abs_delta_weight": 0.001,
+      "big_move_abs_delta_weight": 0.005,
+      "trim_if_weight_above": 0.05,
+      "trim_if_gain_pct_above": 0.15,
+      "trim_if_pe_above": 45,
+      "add_if_weight_below": 0.03,
+      "add_if_near_52w_low": 0.7,
+      "add_if_down_today": 0,
+      "replace_if_bad_rating_weight_min": 0.02,
+      "review_if_missing_enrichment": true
+    },
+    "counts": {
+      "positions": 39,
+      "movers": 2,
+      "new_positions": 0,
+      "closed_positions": 0
+    },
+    "flags": {
+      "has_big_mover": false,
+      "has_new_positions": false,
+      "has_closed_positions": false,
+      "many_movers": false
+    },
+    "biggest_increase": [
+      {
+        "symbol": "MSFT",
+        "sector": "Information Technology",
+        "rating": "B",
+        "direction": "UP",
+        "today_date": "2026-01-26",
+        "yesterday_date": "2026-01-22",
+        "today_weight": 0.02383688373768798,
+        "yesterday_weight": 0.022523804908778134,
+        "delta_weight": 0.0013130788289098458,
+        "today_mv": 2361.25,
+        "yesterday_mv": 2231.1,
+        "delta_mv": 130.1500000000001,
+        "today_qty": 5,
+        "yesterday_qty": 5,
+        "today_price": 472.25,
+        "yesterday_price": 446.22,
+        "today_gain_pct": -0.042699999999999995,
+        "today_day_change_pct": 0.013500000000000002,
+        "today_pe_ratio": 33.14,
+        "today_price_low_52w_ratio": 0.7301005823186871,
+        "new_position": false,
+        "closed_position": false
+      },
+      {
+        "symbol": "ABT",
+        "sector": "Health Care",
+        "rating": "B",
+        "direction": "DOWN",
+        "today_date": "2026-01-26",
+        "yesterday_date": "2026-01-22",
+        "today_weight": 0.021914285746012944,
+        "yesterday_weight": 0.024511585459420608,
+        "delta_weight": -0.0025972997134076636,
+        "today_mv": 2170.8,
+        "yesterday_mv": 2428,
+        "delta_mv": -257.1999999999998,
+        "today_qty": 20,
+        "yesterday_qty": 20,
+        "today_price": 108.54,
+        "yesterday_price": 121.4,
+        "today_gain_pct": -0.1553,
+        "today_day_change_pct": 0.0104,
+        "today_pe_ratio": 28.88,
+        "today_price_low_52w_ratio": 0.974571586511885,
+        "new_position": false,
+        "closed_position": false
+      }
+    ],
+    "biggest_decrease": [
+      {
+        "symbol": "ABT",
+        "sector": "Health Care",
+        "rating": "B",
+        "direction": "DOWN",
+        "today_date": "2026-01-26",
+        "yesterday_date": "2026-01-22",
+        "today_weight": 0.021914285746012944,
+        "yesterday_weight": 0.024511585459420608,
+        "delta_weight": -0.0025972997134076636,
+        "today_mv": 2170.8,
+        "yesterday_mv": 2428,
+        "delta_mv": -257.1999999999998,
+        "today_qty": 20,
+        "yesterday_qty": 20,
+        "today_price": 108.54,
+        "yesterday_price": 121.4,
+        "today_gain_pct": -0.1553,
+        "today_day_change_pct": 0.0104,
+        "today_pe_ratio": 28.88,
+        "today_price_low_52w_ratio": 0.974571586511885,
+        "new_position": false,
+        "closed_position": false
+      },
+      {
+        "symbol": "MSFT",
+        "sector": "Information Technology",
+        "rating": "B",
+        "direction": "UP",
+        "today_date": "2026-01-26",
+        "yesterday_date": "2026-01-22",
+        "today_weight": 0.02383688373768798,
+        "yesterday_weight": 0.022523804908778134,
+        "delta_weight": 0.0013130788289098458,
+        "today_mv": 2361.25,
+        "yesterday_mv": 2231.1,
+        "delta_mv": 130.1500000000001,
+        "today_qty": 5,
+        "yesterday_qty": 5,
+        "today_price": 472.25,
+        "yesterday_price": 446.22,
+        "today_gain_pct": -0.042699999999999995,
+        "today_day_change_pct": 0.013500000000000002,
+        "today_pe_ratio": 33.14,
+        "today_price_low_52w_ratio": 0.7301005823186871,
+        "new_position": false,
+        "closed_position": false
+      }
+    ],
+    "biggest_abs_move": [
+      {
+        "symbol": "ABT",
+        "sector": "Health Care",
+        "rating": "B",
+        "direction": "DOWN",
+        "today_date": "2026-01-26",
+        "yesterday_date": "2026-01-22",
+        "today_weight": 0.021914285746012944,
+        "yesterday_weight": 0.024511585459420608,
+        "delta_weight": -0.0025972997134076636,
+        "today_mv": 2170.8,
+        "yesterday_mv": 2428,
+        "delta_mv": -257.1999999999998,
+        "today_qty": 20,
+        "yesterday_qty": 20,
+        "today_price": 108.54,
+        "yesterday_price": 121.4,
+        "today_gain_pct": -0.1553,
+        "today_day_change_pct": 0.0104,
+        "today_pe_ratio": 28.88,
+        "today_price_low_52w_ratio": 0.974571586511885,
+        "new_position": false,
+        "closed_position": false
+      },
+      {
+        "symbol": "MSFT",
+        "sector": "Information Technology",
+        "rating": "B",
+        "direction": "UP",
+        "today_date": "2026-01-26",
+        "yesterday_date": "2026-01-22",
+        "today_weight": 0.02383688373768798,
+        "yesterday_weight": 0.022523804908778134,
+        "delta_weight": 0.0013130788289098458,
+        "today_mv": 2361.25,
+        "yesterday_mv": 2231.1,
+        "delta_mv": 130.1500000000001,
+        "today_qty": 5,
+        "yesterday_qty": 5,
+        "today_price": 472.25,
+        "yesterday_price": 446.22,
+        "today_gain_pct": -0.042699999999999995,
+        "today_day_change_pct": 0.013500000000000002,
+        "today_pe_ratio": 33.14,
+        "today_price_low_52w_ratio": 0.7301005823186871,
+        "new_position": false,
+        "closed_position": false
+      }
+    ],
+    "new_positions": [],
+    "closed_positions": [],
+    "candidates_trim": [],
+    "candidates_add": [
+      {
+        "symbol": "CEG",
+        "sector": "Utilities",
+        "rating": "B",
+        "today_weight": 0.002884452214026294,
+        "delta_weight": -0.00010246821014124087,
+        "today_mv": 285.73,
+        "today_gain_pct": -0.049800000000000004,
+        "today_pe_ratio": 33.1,
+        "today_price_low_52w_ratio": 0.5647038236066146,
+        "enrichment_missing": false,
+        "rating_low_confidence": false,
+        "reasons": [
+          "Underweight (0.29%) and near 52w low (ratio 0.56)",
+          "Underweight (0.29%) and down today (-1.16%)"
+        ]
+      },
+      {
+        "symbol": "QCOM",
+        "sector": "Information Technology",
+        "rating": "A",
+        "today_weight": 0.0031225939132839154,
+        "delta_weight": -0.00004210617313254745,
+        "today_mv": 309.32,
+        "today_gain_pct": -0.0501,
+        "today_pe_ratio": 31.1,
+        "today_price_low_52w_ratio": 0.7810681494892021,
+        "enrichment_missing": false,
+        "rating_low_confidence": false,
+        "reasons": [
+          "Underweight (0.31%) and down today (-0.74%)"
+        ]
+      },
+      {
+        "symbol": "GOOGL",
+        "sector": "Communication Services",
+        "rating": "B",
+        "today_weight": 0.003371941093091599,
+        "delta_weight": 0.00004046530989192847,
+        "today_mv": 334.02,
+        "today_gain_pct": 0.4104,
+        "today_pe_ratio": 32.36,
+        "today_price_low_52w_ratio": 0.42072330998143825,
+        "enrichment_missing": false,
+        "rating_low_confidence": false,
+        "reasons": [
+          "Underweight (0.34%) and near 52w low (ratio 0.42)"
+        ]
+      },
+      {
+        "symbol": "PLTR",
+        "sector": "Information Technology",
+        "rating": "C",
+        "today_weight": 0.0033955634574944324,
+        "delta_weight": 0.00003036910121631672,
+        "today_mv": 336.36,
+        "today_gain_pct": -0.1188,
+        "today_pe_ratio": 392.84,
+        "today_price_low_52w_ratio": 0.3931501962183375,
+        "enrichment_missing": false,
+        "rating_low_confidence": false,
+        "reasons": [
+          "Underweight (0.34%) and near 52w low (ratio 0.39)",
+          "Underweight (0.34%) and down today (-0.84%)"
+        ]
+      },
+      {
+        "symbol": "GE",
+        "sector": "Industrials",
+        "rating": "B",
+        "today_weight": 0.00593426097887242,
+        "delta_weight": -0.0005156780450253666,
+        "today_mv": 587.84,
+        "today_gain_pct": 0.0697,
+        "today_pe_ratio": 36.53,
+        "today_price_low_52w_ratio": 0.54218558356568,
+        "enrichment_missing": false,
+        "rating_low_confidence": false,
+        "reasons": [
+          "Underweight (0.59%) and near 52w low (ratio 0.54)"
+        ]
+      },
+      {
+        "symbol": "CAT",
+        "sector": "Industrials",
+        "rating": "C",
+        "today_weight": 0.006428412576102626,
+        "delta_weight": -0.00010814481815835195,
+        "today_mv": 636.79,
+        "today_gain_pct": 0.5162,
+        "today_pe_ratio": 32.15,
+        "today_price_low_52w_ratio": 0.41976161685956126,
+        "enrichment_missing": false,
+        "rating_low_confidence": false,
+        "reasons": [
+          "Underweight (0.64%) and near 52w low (ratio 0.42)"
+        ]
+      },
+      {
+        "symbol": "UNH",
+        "sector": "Health Care",
+        "rating": "C",
+        "today_weight": 0.0071026594643356315,
+        "delta_weight": 0.00008707623397518661,
+        "today_mv": 703.58,
+        "today_gain_pct": 0.0892,
+        "today_pe_ratio": 18.54,
+        "today_price_low_52w_ratio": 0.6668751243639671,
+        "enrichment_missing": false,
+        "rating_low_confidence": false,
+        "reasons": [
+          "Underweight (0.71%) and near 52w low (ratio 0.67)",
+          "Underweight (0.71%) and down today (-1.25%)"
+        ]
+      },
+      {
+        "symbol": "NVDA",
+        "sector": "Information Technology",
+        "rating": "B",
+        "today_weight": 0.007526448719733466,
+        "delta_weight": 0.0001014977832859091,
+        "today_mv": 745.56,
+        "today_gain_pct": -0.0148,
+        "today_pe_ratio": 46.45,
+        "today_price_low_52w_ratio": 0.4647272450237112,
+        "enrichment_missing": false,
+        "rating_low_confidence": false,
+        "reasons": [
+          "Underweight (0.75%) and near 52w low (ratio 0.46)",
+          "Underweight (0.75%) and down today (-0.68%)"
+        ]
+      },
+      {
+        "symbol": "RTX",
+        "sector": "Industrials",
+        "rating": "B",
+        "today_weight": 0.007843836385043329,
+        "delta_weight": -0.0001718962569583031,
+        "today_mv": 777,
+        "today_gain_pct": 0.166,
+        "today_pe_ratio": 40.24,
+        "today_price_low_52w_ratio": 0.577966537966538,
+        "enrichment_missing": false,
+        "rating_low_confidence": false,
+        "reasons": [
+          "Underweight (0.78%) and near 52w low (ratio 0.58)",
+          "Underweight (0.78%) and down today (-0.86%)"
+        ]
+      },
+      {
+        "symbol": "AAPL",
+        "sector": "Information Technology",
+        "rating": "A",
+        "today_weight": 0.010323276094863781,
+        "delta_weight": 0.0002803909156909555,
+        "today_mv": 1022.61,
+        "today_gain_pct": 0.0259,
+        "today_pe_ratio": 33.25,
+        "today_price_low_52w_ratio": 0.6618765594935927,
+        "enrichment_missing": false,
+        "rating_low_confidence": false,
+        "reasons": [
+          "Underweight (1.03%) and near 52w low (ratio 0.66)"
+        ]
+      }
+    ],
+    "candidates_replace": [
+      {
+        "symbol": "COST",
+        "sector": "Consumer Staples",
+        "rating": "D",
+        "today_weight": 0.029672920098765713,
+        "delta_weight": -0.00007443289229381797,
+        "today_mv": 2939.36,
+        "today_gain_pct": 0.0582,
+        "today_pe_ratio": 52.66,
+        "today_price_low_52w_ratio": 0.861474711288701,
+        "enrichment_missing": false,
+        "rating_low_confidence": false,
+        "reasons": [
+          "Bad rating (D) with meaningful weight (2.97%)"
+        ]
+      },
+      {
+        "symbol": "BA",
+        "sector": "Industrials",
+        "rating": "F",
+        "today_weight": 0.022562992214613824,
+        "delta_weight": -0.0001761471743329454,
+        "today_mv": 2235.06,
+        "today_gain_pct": 0.1268,
+        "today_pe_ratio": -18.66,
+        "today_price_low_52w_ratio": 0.5189659338004349,
+        "enrichment_missing": false,
+        "rating_low_confidence": false,
+        "reasons": [
+          "Bad rating (F) with meaningful weight (2.26%)"
+        ]
+      },
+      {
+        "symbol": "KO",
+        "sector": "Consumer Staples",
+        "rating": "D",
+        "today_weight": 0.020543784809547716,
+        "delta_weight": 0.00022259016252262204,
+        "today_mv": 2035.04,
+        "today_gain_pct": 0.0808,
+        "today_pe_ratio": 24.13,
+        "today_price_low_52w_ratio": 0.8443863511282332,
+        "enrichment_missing": false,
+        "rating_low_confidence": false,
+        "reasons": [
+          "Bad rating (D) with meaningful weight (2.05%)"
+        ]
+      }
+    ],
+    "candidates_review": []
+  }
+]

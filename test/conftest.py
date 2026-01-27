@@ -284,3 +284,43 @@ def sector_drift_output(
 ):
     with open(sector_drift_fixtures_dir / "output.json") as f:
         return json.load(f)[0]
+
+
+# =============================================================================
+# Portfolio Analysis - position_drift_vs_yesterday
+# =============================================================================
+@pytest.fixture
+def calculate_position_drift_vs_yesterday_module():
+    return load_module(
+        "calculate_position_drift_vs_yesterday",
+        src_relative_path="portfolio_analysis/metrics/position_drift_vs_yesterday",
+        test_file=Path(__file__),
+    )
+
+
+@pytest.fixture
+def position_drift_vs_yesterday_fixtures_dir():
+    """Fixtures directory for upload_position_file workflow."""
+    return (
+        Path(__file__).parent
+        / "fixtures"
+        / "portfolio_analysis"
+        / "metrics"
+        / "position_drift_vs_yesterday"
+    )
+
+
+@pytest.fixture
+def position_drift_vs_yesterday_input(
+    position_drift_vs_yesterday_fixtures_dir,
+):
+    with open(position_drift_vs_yesterday_fixtures_dir / "input.json") as f:
+        return [{"json": row} for row in json.load(f)]
+
+
+@pytest.fixture
+def position_drift_vs_yesterday_output(
+    position_drift_vs_yesterday_fixtures_dir,
+):
+    with open(position_drift_vs_yesterday_fixtures_dir / "output.json") as f:
+        return json.load(f)[0]

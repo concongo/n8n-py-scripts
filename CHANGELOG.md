@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [0.8.0] - 2026-01-27
+
+### Added
+- Position drift vs yesterday analysis module `calculate_position_drift_vs_yesterday.py`
+  - Compares portfolio snapshots between consecutive trading days to identify meaningful weight shifts
+  - Identifies new and closed positions between snapshots
+  - Calculates biggest movers by weight increase, decrease, and absolute change
+  - Generates action candidates: trim, add, replace, and review recommendations
+  - Boolean flags: has_big_mover, has_new_positions, has_closed_positions, many_movers
+  - Configurable thresholds via `THRESHOLDS` constant
+  - Comprehensive module docstring documenting all metrics, thresholds, and usage
+  - Clean functional decomposition with 15+ focused helper functions
+  - Modern Python type hints (`list[str]`, `dict[str, Any]`, `float | None`)
+- System prompt for position drift vs yesterday module
+  - `src/portfolio_analysis/metrics/position_drift_vs_yesterday/system.prompt` with LLM instructions
+- Test coverage for position drift vs yesterday analysis
+  - Test case in `test_metrics.py` with fixture-based testing
+  - Input fixture with 39 portfolio positions comparing two days (`input.json`)
+  - Expected output fixture with full analysis results (`output.json`)
+- Test fixtures and configuration
+  - `position_drift_vs_yesterday_fixtures_dir`, `position_drift_vs_yesterday_input`, `position_drift_vs_yesterday_output` fixtures in `conftest.py`
+  - `calculate_position_drift_vs_yesterday_module` fixture for module loading
+
 ## [0.7.1] - 2026-01-25
 
 ### Added
